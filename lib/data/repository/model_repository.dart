@@ -13,7 +13,7 @@ class ModelRepository {
     : _cacheManager = cacheManager;
 
   Future<Result<String>> getModelFile(String url) async {
-    log.i('inside model repository');
+    log.i('inside model repository fetching model');
     try {
       final File modelFileInfo = await _cacheManager.getSingleFile(url);
 

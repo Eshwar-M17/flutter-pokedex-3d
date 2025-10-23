@@ -19,22 +19,51 @@ Map<String, String> statsLables = {
   'speed': 'SPD',
 };
 
-class ModelViewWidget extends ConsumerWidget {
+class ModelViewWidget extends ConsumerStatefulWidget {
   const ModelViewWidget({super.key});
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final pokemonState = ref.watch(pokemonPageViewmodelProvider);
-    final currentView = ref.watch(toggleModelView);
-    Logger().i('modeliewwidget ${pokemonState.modelPath}');
+  ConsumerState<ModelViewWidget> createState() => _ModelViewWidgetState();
+}
 
-    pokemonState.modelPath.maybeWhen(
-      error: (e, st) {
-        ScaffoldMessenger.of(
-          context,
-        ).showSnackBar(SnackBar(content: Text(e.toString())));
-      },
-      orElse: () {},
+class _ModelViewWidgetState extends ConsumerState<ModelViewWidget> {
+  Logger log = Logger();
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final modelPath = ref.watch(
+      pokemonPageViewmodelProvider.select((s) => s.modelPath),
     );
+    final currentView = ref.watch(toggleModelView);
+    Logger().i('modeliewwidget $modelPath');
+
+    ref.listen(pokemonPageViewmodelProvider.select((s) => s.modelPath), (
+      prev,
+      next,
+    ) {
+      next.maybeWhen(
+        error: (e, st) {
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(e.toString())));
+        },
+        data: (data) {
+          log.t('adding post call back');
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            log.t("Build completed, now calling webcomponent");
+            ref
+                .read(pokemonPageViewmodelProvider.notifier)
+                .notifyWebComponent();
+          });
+        },
+
+        orElse: () {},
+      );
+    });
+
     return LayoutBuilder(
       builder: (context, constrints) {
         final detailHeight = constrints.maxHeight * 3 / 8;
@@ -60,19 +89,9 @@ class ModelViewWidget extends ConsumerWidget {
               duration: const Duration(milliseconds: 300),
               child: Stack(
                 children: [
-                  Center(
-                    child: Image.asset(
-                      pokemonState.backgroundImg!,
-                      width: MediaQuery.of(context).size.width * 0.6,
-                      color: Colors.white12,
-
-                      fit: BoxFit.fitHeight,
-                    ),
-                  ),
+                  const Center(child: TypeBackgroundOverlay()),
                   ModelViewer(
-                    src:
-                        pokemonState.modelPath.value ??
-                        '${pokemonState.modelPath.isLoading}',
+                    src: modelPath.value ?? '${modelPath.isLoading}',
                     autoPlay: true,
                     onWebViewCreated: (controller) {
                       Logger().i("assigning the controller");
@@ -103,6 +122,25 @@ class ModelViewWidget extends ConsumerWidget {
           ],
         );
       },
+    );
+  }
+}
+
+class TypeBackgroundOverlay extends ConsumerWidget {
+  const TypeBackgroundOverlay({super.key});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final bgImg = ref.watch(
+      pokemonPageViewmodelProvider.select((s) => s.backgroundImg),
+    );
+
+    return Image.asset(
+      bgImg!,
+      width: MediaQuery.of(context).size.width * 0.6,
+      color: Colors.white12,
+
+      fit: BoxFit.fitHeight,
     );
   }
 }

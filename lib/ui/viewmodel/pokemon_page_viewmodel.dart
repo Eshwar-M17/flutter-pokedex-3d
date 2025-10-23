@@ -28,7 +28,25 @@ class PokemonPageViewmodel extends StateNotifier<PokemonPageState> {
 
   void selectForm(int formIndex) async {
     state = state.copyWith(currentForm: formIndex);
-    await _modelController.updateModel(state.pokemon.forms[formIndex].model);
+    final modelResponse = await _modelController.updateModel(
+      state.pokemon.forms[formIndex].model,
+    );
+    switch (modelResponse) {
+      case Ok<String>():
+        log.i("selectform method updating state");
+        state = state.copyWith(
+          modelPath: AsyncValue.data(Uri.file(modelResponse.value).toString()),
+        );
+
+      case Error<String>():
+        state = state.copyWith(
+          modelPath: AsyncValue.error(modelResponse.error, StackTrace.current),
+        );
+    }
+  }
+
+  void notifyWebComponent() {
+    _modelController.notifyWebView();
   }
 
   void selectPokemon(Pokemon3dModel pokemon) async {
@@ -51,9 +69,7 @@ class PokemonPageViewmodel extends StateNotifier<PokemonPageState> {
         state = state.copyWith(
           modelPath: AsyncValue.data(Uri.file(modelResponse.value).toString()),
         );
-        log.i('notifying controller');
 
-        _modelController.notifyWebView();
       case Error<String>():
         state = state.copyWith(
           modelPath: AsyncValue.error(modelResponse.error, StackTrace.current),

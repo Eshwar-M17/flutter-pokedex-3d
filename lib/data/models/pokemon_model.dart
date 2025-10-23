@@ -415,7 +415,12 @@ enum PokemonType {
   ),
   dark('Dark', AppColors.black, PokemonTypeIcons.dark, PokemonTypeIcons.darkBg),
   monster('Monster', AppColors.lightBlue, '', ''), // No icons provided
-  unknown('Unknown', AppColors.lightBlue, '', '');
+  unknown(
+    'Unknown',
+    AppColors.lightBlue,
+    PokemonTypeIcons.normal,
+    PokemonTypeIcons.normalBg,
+  );
 
   final String name;
   final Color color;
