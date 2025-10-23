@@ -9,28 +9,7 @@ import 'package:pokedex_3d/ui/view/pages/homepage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Hive.initFlutter();
-  await Hive.deleteFromDisk();
-
-
-  Hive.registerAdapter(PokemonHiveAdapter());
-  Hive.registerAdapter(StatHiveAdapter());
-
-  Hive.registerAdapter(Pokemon3dHiveAdapter());
-  Hive.registerAdapter(PokemonFormHiveAdapter());
-
-  Hive.registerAdapter(SpeciesHiveAdapter());
-  Hive.registerAdapter(PokemonSpeciesHiveAdapter());
-  Hive.registerAdapter(EvolutionDetailHiveAdapter());
-  await Future.wait([
-    Hive.openBox<Pokemon3dHive>(AppConstants.pokemonListboxKey),
-    Hive.openBox<PokemonHive>(AppConstants.pokemonDetailBoxKey),
-    Hive.openBox<SpeciesHive>(AppConstants.pokemonEvolutionBoxKey),
-    Hive.openBox<int>(AppConstants.pokemonEvolutionSpeciesBoxKey),
-  ]);
-  
-
-
+  await initHive();
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -43,4 +22,25 @@ class MyApp extends StatelessWidget {
       home: Homepage(),
     );
   }
+}
+
+Future<void> initHive() async {
+  await Hive.initFlutter();
+
+  Hive.registerAdapter(PokemonHiveAdapter());
+  Hive.registerAdapter(StatHiveAdapter());
+
+  Hive.registerAdapter(Pokemon3dHiveAdapter());
+  Hive.registerAdapter(PokemonFormHiveAdapter());
+
+  Hive.registerAdapter(SpeciesHiveAdapter());
+  Hive.registerAdapter(PokemonSpeciesHiveAdapter());
+  Hive.registerAdapter(EvolutionDetailHiveAdapter());
+
+  await Future.wait([
+    Hive.openBox<Pokemon3dHive>(AppConstants.pokemonListboxKey),
+    Hive.openBox<PokemonHive>(AppConstants.pokemonDetailBoxKey),
+    Hive.openBox<SpeciesHive>(AppConstants.pokemonEvolutionBoxKey),
+    Hive.openBox<int>(AppConstants.pokemonEvolutionSpeciesBoxKey),
+  ]);
 }
