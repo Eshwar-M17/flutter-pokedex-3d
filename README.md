@@ -17,7 +17,7 @@ A Flutter-based 3D Pokédex application featuring interactive Pokémon models an
 <p align="center">
   <img src="demo/Screenshot_1761207453.png" alt="Screenshot 1" width="30%" />
   <img src="demo/Screenshot_1761207473.png" alt="Screenshot 2" width="30%" />
-  <img src="demo/charizard.gif" alt="Charizard 3D demo" width="30%" />
+  <img src="demo/demo_gif.gif" alt="Charizard 3D demo" width="30%" />
   
 </p>
 

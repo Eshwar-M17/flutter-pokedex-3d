@@ -1,7 +1,12 @@
+import 'package:pokedex_3d/core/errors/error.dart';
+import 'package:pokedex_3d/data/models/models/pokemon/pokemon.dart';
+
 sealed class Result<T> {
   Result();
   factory Result.ok(T value) => Ok(value);
-  factory Result.error(Exception e) => Error(e);
+  factory Result.error(AppError  e) => Error(e);
+
+  PokemonModel? toDomain() {}
 }
 
 class Ok<T> extends Result<T> {
@@ -11,5 +16,5 @@ class Ok<T> extends Result<T> {
 
 class Error<T> extends Result<T> {
   Error(this.error);
-  final Exception error;
+  final AppError  error;
 }
