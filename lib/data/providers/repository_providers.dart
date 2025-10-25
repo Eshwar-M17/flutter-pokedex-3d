@@ -2,7 +2,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pokedex_3d/data/providers/service_providers.dart';
 import 'package:pokedex_3d/data/repository/pokemon_details_repository.dart';
 import 'package:pokedex_3d/data/repository/pokemon_evolution_repository.dart';
-import 'package:pokedex_3d/data/repository/pokemon_list_repository.dart';
+import 'package:pokedex_3d/data/repository/pokemon_model_list_repository.dart';
 
 final pokemonEvolutionRepositoryProvider = Provider((ref) {
   return PokemonEvolutionRepository(

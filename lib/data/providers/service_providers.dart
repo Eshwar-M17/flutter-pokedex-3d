@@ -18,11 +18,13 @@ final databaseServiceProvider = Provider(
     pokemonEvolutionBox: Hive.box<SpeciesHive>(
       AppConstants.pokemonEvolutionBoxKey,
     ),
+    pokemonViewedBox: Hive.box<Pokemon3dHive>(
+      AppConstants.pokemonViewedListboxKey,
+    ),
     speciesIdBox: Hive.box<int>(AppConstants.pokemonEvolutionSpeciesBoxKey),
   ),
-);
+);   
 
 final Provider modelCacheServiceProvider = Provider<CacheManager>((ref) {
-  
   return ModelCacheManager.instance;
 });

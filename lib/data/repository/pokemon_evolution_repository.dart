@@ -67,19 +67,9 @@ class PokemonEvolutionRepository {
           );
           return Result<Species>.ok(evolutionModel);
         }
-        return Result.error(
-          ErrorMapper.mapHttpStatus(
-            evolutionResponse.statusCode,
-            evolutionResponse.body,
-          ),
-        );
+        return Result.error(ErrorMapper.mapHttpResponse(evolutionResponse));
       }
-      return Result.error(
-        ErrorMapper.mapHttpStatus(
-          speciesResponse.statusCode,
-          speciesResponse.body,
-        ),
-      );
+      return Result.error(ErrorMapper.mapHttpResponse(speciesResponse));
     } catch (e, st) {
       return Result<Species>.error(ErrorMapper.mapException(e, st));
     }

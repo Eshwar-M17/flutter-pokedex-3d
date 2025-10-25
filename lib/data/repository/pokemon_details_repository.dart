@@ -40,7 +40,7 @@ class PokemonDetailsRepository {
       }
 
       return Result.error(
-        ErrorMapper.mapHttpStatus(response.statusCode, response.body),
+        ErrorMapper.mapHttpResponse(response),
       );
     } catch (error, stackTrace) {
       return Result.error(ErrorMapper.mapException(error, stackTrace));

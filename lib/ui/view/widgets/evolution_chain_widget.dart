@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pokedex_3d/core/errors/error.dart';
 import 'package:pokedex_3d/data/models/evolution_chain_model.dart';
 import 'package:pokedex_3d/ui/providers/pokemon_page_viewmodel_provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -30,6 +31,7 @@ class _EvolutionChainWidgetState extends ConsumerState<EvolutionChainWidget> {
     Widget content = evolutionState.when(
       data: (evolutionData) => _buildEvolutionChart(evolutionData, isLoading),
       error: (e, st) {
+     
         return Center(child: Text(e.toString()));
       },
       loading: () => _buildEvolutionChart(placeHolders, isLoading),

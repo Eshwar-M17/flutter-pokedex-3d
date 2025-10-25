@@ -38,6 +38,7 @@ class MyApp extends StatelessWidget {
 
 Future<void> initHive() async {
   await Hive.initFlutter();
+  
 
   Hive.registerAdapter(PokemonHiveAdapter());
   Hive.registerAdapter(StatHiveAdapter());
@@ -54,5 +55,6 @@ Future<void> initHive() async {
     Hive.openBox<PokemonHive>(AppConstants.pokemonDetailBoxKey),
     Hive.openBox<SpeciesHive>(AppConstants.pokemonEvolutionBoxKey),
     Hive.openBox<int>(AppConstants.pokemonEvolutionSpeciesBoxKey),
+    Hive.openBox<Pokemon3dHive>(AppConstants.pokemonViewedListboxKey),
   ]);
 }

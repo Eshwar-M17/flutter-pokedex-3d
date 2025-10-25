@@ -33,7 +33,7 @@ class ModelRepository {
         return Result.ok(file.path);
       }
       return Result.error(
-        ErrorMapper.mapHttpStatus(response.statusCode, response.body),
+        ErrorMapper.mapHttpResponse(response),
       );
     } catch (e, st) {
       return Result.error(ErrorMapper.mapException(e, st));

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
+import 'package:pokedex_3d/core/errors/error.dart';
 import 'package:pokedex_3d/ui/providers/model_controller_provider.dart';
 import 'package:pokedex_3d/ui/providers/pokemon_page_viewmodel_provider.dart';
 import 'package:pokedex_3d/ui/view/widgets/pokemon_details_tab.dart';
@@ -46,9 +47,9 @@ class _ModelViewWidgetState extends ConsumerState<ModelViewWidget> {
     ) {
       next.maybeWhen(
         error: (e, st) {
-          ScaffoldMessenger.of(
-            context,
-          ).showSnackBar(SnackBar(content: Text(e.toString())));
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(e.toString())),
+          );
         },
         data: (data) {
           log.t('adding post call back');

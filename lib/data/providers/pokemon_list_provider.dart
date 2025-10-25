@@ -10,6 +10,9 @@ import 'package:pokedex_3d/data/services/remote/api_service.dart';
 final ApiService apiService = ApiService();
 
 final pokemonListProvider = FutureProvider<List<Pokemon3dModel>>((ref) async {
+
+  
+
   List<Pokemon3dModel> pokemonList = ref
       .read(databaseServiceProvider)
       .getPokemonList()

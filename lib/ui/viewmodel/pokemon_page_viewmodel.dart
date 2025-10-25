@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 import 'package:logger/logger.dart';
@@ -9,6 +11,7 @@ import 'package:pokedex_3d/data/models/models/pokemon3d_model/pokemon_3d.dart';
 import 'package:pokedex_3d/data/models/pokemon_model.dart';
 import 'package:pokedex_3d/data/repository/pokemon_details_repository.dart';
 import 'package:pokedex_3d/data/repository/pokemon_evolution_repository.dart';
+import 'package:pokedex_3d/data/repository/pokemon_model_list_repository.dart';
 import 'package:pokedex_3d/ui/controller/model_controller.dart';
 import 'package:pokedex_3d/ui/state/pokemon_state.dart';
 
@@ -16,14 +19,17 @@ class PokemonPageViewmodel extends StateNotifier<PokemonPageState> {
   final PokemonDetailsRepository _pokemonDetailsRepository;
   final PokemonEvolutionRepository _pokemonEvolutionRepository;
   final ModelController _modelController;
+  final PokemonModelListRepository _pokemonModelListRepository;
   final Logger log = Logger();
   PokemonPageViewmodel({
     required PokemonDetailsRepository detailRepo,
     required PokemonEvolutionRepository evolRepo,
     required ModelController modelController,
+    required PokemonModelListRepository pokemonViewedListRepository,
   }) : _pokemonDetailsRepository = detailRepo,
        _pokemonEvolutionRepository = evolRepo,
        _modelController = modelController,
+       _pokemonModelListRepository = pokemonViewedListRepository,
        super(PokemonPageState.initial());
 
   void selectForm(int formIndex) async {
@@ -40,7 +46,10 @@ class PokemonPageViewmodel extends StateNotifier<PokemonPageState> {
 
       case Error<String>():
         state = state.copyWith(
-          modelPath: AsyncValue.error(modelResponse.error, StackTrace.current),
+          modelPath: AsyncValue.error(
+            modelResponse.error.userMessage ?? modelResponse.error.message,
+            StackTrace.current,
+          ),
         );
     }
   }
@@ -71,8 +80,14 @@ class PokemonPageViewmodel extends StateNotifier<PokemonPageState> {
         );
 
       case Error<String>():
+        log.e(
+          " usermessage ${modelResponse.error.userMessage} ${modelResponse.error.message} ",
+        );
         state = state.copyWith(
-          modelPath: AsyncValue.error(modelResponse.error, StackTrace.current),
+          modelPath: AsyncValue.error(
+            modelResponse.error.userMessage ?? modelResponse.error.message,
+            StackTrace.current,
+          ),
         );
     }
 
@@ -91,7 +106,7 @@ class PokemonPageViewmodel extends StateNotifier<PokemonPageState> {
       case Error<PokemonModel>():
         state = state.copyWith(
           pokemonInfo: AsyncValue.error(
-            detailsResponse.error,
+            detailsResponse.error.userMessage ?? detailsResponse.error.message,
             StackTrace.current,
           ),
         );
@@ -111,11 +126,13 @@ class PokemonPageViewmodel extends StateNotifier<PokemonPageState> {
       case Error<Species>():
         state = state.copyWith(
           evolutionData: AsyncValue.error(
-            evolutionResponse.error,
+            evolutionResponse.error.userMessage ??
+                evolutionResponse.error.message,
             StackTrace.current,
           ),
         );
     }
+    unawaited(_pokemonModelListRepository.putViewedPokemon(pokemon));
   }
 }
 

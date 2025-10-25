@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pokedex_3d/core/errors/error.dart';
 import 'package:pokedex_3d/data/models/pokemon_model.dart';
 import 'package:pokedex_3d/ui/providers/pokemon_page_viewmodel_provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -16,13 +17,14 @@ class TypeTagsWidget extends ConsumerWidget {
     final isLoading = detailsState.isLoading;
 
     // Build once to avoid shimmer restarts on rebuilds
-    final content = detailsState.when(
+    Widget content = detailsState.when(
       loading: () => _buildTypeTags(types: [null], isLoading: isLoading),
       data: (pokemonDetails) =>
           _buildTypeTags(types: pokemonDetails.types, isLoading: isLoading),
-      error: (error, stackTrace) => Center(
+      error: (e, st) => Center(
         child: Text(
-          error.toString(),
+          e.toString(),
+
           style: const TextStyle(color: Colors.redAccent),
         ),
       ),
