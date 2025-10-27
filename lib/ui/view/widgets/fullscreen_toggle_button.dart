@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pokedex_3d/ui/viewmodel/model_view_toggle.dart';
+import 'package:pokedex_3d/ui/viewmodel/fullscreen_toggle.dart';
 
-class ToggleModelViewWidget extends ConsumerWidget {
-  const ToggleModelViewWidget({super.key});
+class FullscreenToggleButton extends ConsumerWidget {
+  const FullscreenToggleButton({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final view = ref.watch(toggleModelView);
+    final view = ref.watch(fullscreenToggleProvider);
     return CircleAvatar(
       radius: 20,
       backgroundColor: Colors.white54,
@@ -20,10 +20,10 @@ class ToggleModelViewWidget extends ConsumerWidget {
         ),
         onPressed: () {
           ref
-              .read(toggleModelView.notifier)
-              .state = ref.read(toggleModelView).isFullScreen
-              ? ModelView.fullscreenExit
-              : ModelView.fullscreen;
+              .read(fullscreenToggleProvider.notifier)
+              .state = ref.read(fullscreenToggleProvider).isFullScreen
+              ? FullscreenState.fullscreenExit
+              : FullscreenState.fullscreen;
         },
       ),
     );

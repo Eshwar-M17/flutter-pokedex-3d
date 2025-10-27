@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logger/logger.dart';
 import 'package:pokedex_3d/ui/providers/pokemon_page_viewmodel_provider.dart';
 import 'package:pokedex_3d/ui/view/widgets/type_tags_widget.dart';
 
 class PokemonTitleWidget extends ConsumerWidget {
   const PokemonTitleWidget({super.key});
+  static final log = Logger();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final currentPokemon = ref.watch(pokemonPageViewmodelProvider);
-    
+    log.i('${currentPokemon.pokemon.id}  ${currentPokemon.currentForm}');
 
     return Align(
       alignment: Alignment.topLeft,

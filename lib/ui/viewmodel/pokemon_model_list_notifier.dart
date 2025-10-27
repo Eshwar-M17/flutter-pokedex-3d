@@ -22,7 +22,7 @@ class PokemonModelListNotifier
         state = AsyncValue.data(response.value);
 
       case Error<List<Pokemon3dModel>>():
-        state = AsyncValue.error(response.error, StackTrace.current);
+        state = AsyncValue.error(response.error.userMessage??response.error.message, StackTrace.current);
     }
   }
 
@@ -41,7 +41,7 @@ class PokemonModelListNotifier
       case Error<List<Pokemon3dModel>>():
         log.d("got error on getting viewed model cache");
 
-        state = AsyncValue.error(response.error, StackTrace.current);
+        state = AsyncValue.error(response.error.userMessage??response.error.message, StackTrace.current);
     }
   }
 }

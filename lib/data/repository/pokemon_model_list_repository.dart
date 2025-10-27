@@ -1,6 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:async';
-import 'package:flutter/foundation.dart';
+import 'package:logger/logger.dart';
 import 'package:pokedex_3d/core/errors/error_mapper.dart';
 import 'package:pokedex_3d/core/result.dart';
 import 'package:pokedex_3d/data/mappers/api_mappers/pokemon_3d_mapper.dart';
@@ -38,7 +38,7 @@ class PokemonModelListRepository {
 
       return Result.ok(pokemonList);
     } catch (e) {
-      return Result.error(ErrorMapper.mapException(errorTextConfiguration));
+      return Result.error(ErrorMapper.mapException(e));
     }
   }
 
@@ -48,10 +48,11 @@ class PokemonModelListRepository {
           .getViewedPokemonList()
           .map((e) => e.toDomain())
           .toList();
+      Logger().i("vieweed pokemon  length ${pokemonList.length}");
 
       return Result.ok(pokemonList);
     } catch (e) {
-      return Result.error(ErrorMapper.mapException(errorTextConfiguration));
+      return Result.error(ErrorMapper.mapException(e));
     }
   }
 

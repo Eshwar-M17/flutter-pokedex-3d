@@ -4,12 +4,12 @@ import 'package:pokedex_3d/core/result.dart';
 import 'package:pokedex_3d/data/repository/model_repository.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-class ModelController extends StateNotifier<bool> {
-  final ModelRepository _modelRepository;
-  ModelController({required ModelRepository modelRepository})
-    : _modelRepository = modelRepository, 
+class Model3dController extends StateNotifier<bool> {
+  final Model3dFileRepository _modelRepository;
+  Model3dController({required Model3dFileRepository modelRepository})
+    : _modelRepository = modelRepository,
       super(true);
-  ModelRepository get modelRepository => _modelRepository;
+  Model3dFileRepository get modelRepository => _modelRepository;
   WebViewController? _controller;
   set controller(WebViewController controller) => _controller = controller;
   final log = Logger();

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pokedex_3d/ui/view/widgets/evolution_chain_widget.dart';
-import 'package:pokedex_3d/ui/view/widgets/states_widget.dart';
+import 'package:pokedex_3d/ui/view/widgets/stats_widget.dart';
 
 class PokemonDetailsTab extends ConsumerStatefulWidget {
   const PokemonDetailsTab({super.key});
@@ -33,7 +33,7 @@ class _PokemonDetailsTabState extends ConsumerState<PokemonDetailsTab>
           controller: _tabController,
           indicatorColor: Colors.white,
           indicatorWeight: 2,
-    
+
           dividerHeight: 0,
         ),
         const SizedBox(height: 15),
@@ -41,7 +41,7 @@ class _PokemonDetailsTabState extends ConsumerState<PokemonDetailsTab>
           fit: FlexFit.tight,
           child: TabBarView(
             controller: _tabController,
-            children: const [StatesWidget(), EvolutionChainWidget()],
+            children: const [StatsWidget(), EvolutionChainWidget()],
           ),
         ),
       ],

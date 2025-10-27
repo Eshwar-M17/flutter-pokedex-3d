@@ -7,7 +7,7 @@ class ToggleAnimationButton extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final isPlaying = ref.watch(modelControllerProvider);
+    final isPlaying = ref.watch(model3dControllerProvider);
 
     return CircleAvatar(
       backgroundColor: Colors.white54,
@@ -17,7 +17,7 @@ class ToggleAnimationButton extends ConsumerWidget {
           size: 20,
         ),
         onPressed: () {
-          ref.read(modelControllerProvider.notifier).toggleAnimation();
+          ref.read(model3dControllerProvider.notifier).toggleAnimation();
         },
         splashRadius: 24,
       ),

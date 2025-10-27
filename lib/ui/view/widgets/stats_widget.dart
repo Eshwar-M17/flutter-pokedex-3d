@@ -5,16 +5,16 @@ import 'package:pokedex_3d/ui/providers/pokemon_page_viewmodel_provider.dart';
 import 'package:pokedex_3d/ui/view/widgets/model_view_widget.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-class StatesWidget extends ConsumerStatefulWidget {
-  const StatesWidget({super.key});
+class StatsWidget extends ConsumerStatefulWidget {
+  const StatsWidget({super.key});
 
   @override
-  ConsumerState<StatesWidget> createState() {
-    return _StatesWidgetState();
+  ConsumerState<StatsWidget> createState() {
+    return _StatsWidgetState();
   }
 }
 
-class _StatesWidgetState extends ConsumerState<StatesWidget> {
+class _StatsWidgetState extends ConsumerState<StatsWidget> {
   List<Stat> stats = List.generate(
     6,
     (index) => Stat(baseStat: 0, name: " ", effort: 0),

@@ -8,7 +8,7 @@ import 'package:pokedex_3d/core/error_widget/error_widget.dart';
 import 'package:pokedex_3d/data/services/local/hive_models/evolution_hive_model.dart';
 import 'package:pokedex_3d/data/services/local/hive_models/pokemon_3d_hive_model.dart';
 import 'package:pokedex_3d/data/services/local/hive_models/pokemon_hive_model.dart';
-import 'package:pokedex_3d/ui/view/pages/homepage.dart';
+import 'package:pokedex_3d/ui/app.dart';
 
 void main() {
   runZonedGuarded(() async {
@@ -21,24 +21,14 @@ void main() {
     };
     await initHive();
 
-    return runApp(const ProviderScope(child: MyApp()));
-  }, (error, st) {});
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Homepage(),
-    );
-  }
+    return runApp(const ProviderScope(child: Pokedex3D()));
+  }, (error, st) {
+    
+  });
 }
 
 Future<void> initHive() async {
   await Hive.initFlutter();
-  
 
   Hive.registerAdapter(PokemonHiveAdapter());
   Hive.registerAdapter(StatHiveAdapter());

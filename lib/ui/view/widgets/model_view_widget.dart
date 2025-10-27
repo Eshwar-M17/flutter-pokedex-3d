@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 import 'package:model_viewer_plus/model_viewer_plus.dart';
-import 'package:pokedex_3d/core/errors/error.dart';
 import 'package:pokedex_3d/ui/providers/model_controller_provider.dart';
 import 'package:pokedex_3d/ui/providers/pokemon_page_viewmodel_provider.dart';
 import 'package:pokedex_3d/ui/view/widgets/pokemon_details_tab.dart';
 import 'package:pokedex_3d/ui/view/widgets/pokemon_title_widget.dart';
 import 'package:pokedex_3d/ui/view/widgets/toggle_animation_widget.dart';
-import 'package:pokedex_3d/ui/view/widgets/toggle_model_view_widget.dart';
-import 'package:pokedex_3d/ui/viewmodel/model_view_toggle.dart';
+import 'package:pokedex_3d/ui/view/widgets/fullscreen_toggle_button.dart';
+import 'package:pokedex_3d/ui/viewmodel/fullscreen_toggle.dart';
 
 Map<String, String> statsLables = {
   'hp': 'HP',
@@ -38,7 +37,8 @@ class _ModelViewWidgetState extends ConsumerState<ModelViewWidget> {
     final modelPath = ref.watch(
       pokemonPageViewmodelProvider.select((s) => s.modelPath),
     );
-    final currentView = ref.watch(toggleModelView);
+    log.i(modelPath);
+    final currentView = ref.watch(fullscreenToggleProvider);
     Logger().i('modeliewwidget $modelPath');
 
     ref.listen(pokemonPageViewmodelProvider.select((s) => s.modelPath), (
@@ -47,9 +47,9 @@ class _ModelViewWidgetState extends ConsumerState<ModelViewWidget> {
     ) {
       next.maybeWhen(
         error: (e, st) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text(e.toString())),
-          );
+          ScaffoldMessenger.of(
+            context,
+          ).showSnackBar(SnackBar(content: Text(e.toString())));
         },
         data: (data) {
           log.t('adding post call back');
@@ -96,7 +96,7 @@ class _ModelViewWidgetState extends ConsumerState<ModelViewWidget> {
                     autoPlay: true,
                     onWebViewCreated: (controller) {
                       Logger().i("assigning the controller");
-                      ref.read(modelControllerProvider.notifier).controller =
+                      ref.read(model3dControllerProvider.notifier).controller =
                           controller;
                       Logger().i("controller asigned");
                     },
@@ -108,7 +108,7 @@ class _ModelViewWidgetState extends ConsumerState<ModelViewWidget> {
                       children: [
                         ToggleAnimationButton(),
                         SizedBox(height: 10),
-                        ToggleModelViewWidget(),
+                        FullscreenToggleButton(),
                       ],
                     ),
                   ),

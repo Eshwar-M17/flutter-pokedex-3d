@@ -2,26 +2,25 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-// ignore: unused_import
-import 'package:http/http.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
-import 'package:pokedex_3d/data/providers/pokemon_list_provider.dart';
+import 'package:pokedex_3d/core/error_widget/error_widget.dart';
 import 'package:pokedex_3d/ui/providers/pokemon_model_list_notifier_provider.dart';
+import 'package:pokedex_3d/ui/view/widgets/empty_collection_widget.dart';
 import 'package:pokedex_3d/ui/view/widgets/pokemon_form_tab.dart';
 import 'package:pokedex_3d/ui/view/widgets/gradient_background.dart';
 import 'package:pokedex_3d/ui/view/widgets/model_view_widget.dart';
 import 'package:pokedex_3d/ui/view/widgets/pokemon_list_widget.dart';
-import 'package:pokedex_3d/ui/viewmodel/pokemon_model_list_notifier.dart';
 
-class Homepage extends ConsumerStatefulWidget {
-  const Homepage({super.key});
+class PokemonViewerPage extends ConsumerStatefulWidget {
+  const PokemonViewerPage({super.key});
 
   @override
-  ConsumerState<Homepage> createState() => _HomepageState();
+  ConsumerState<PokemonViewerPage> createState() => _PokemonViewerPage();
 }
 
-class _HomepageState extends ConsumerState<Homepage> {
+class _PokemonViewerPage extends ConsumerState<PokemonViewerPage> {
   late final StreamSubscription subscription;
+
   @override
   void initState() {
     super.initState();
@@ -66,20 +65,20 @@ class _HomepageState extends ConsumerState<Homepage> {
   @override
   void dispose() {
     super.dispose();
+    subscription.cancel();
   }
 
   @override
   Widget build(BuildContext context) {
-    final pokemonModelListNotifier = ref.watch(
-      pokemonModelListNotifierProvider.notifier,
-    );
-
-    final pokeList = ref.watch(pokemonListProvider);
+    final pokeList = ref.watch(pokemonModelListNotifierProvider);
 
     return SafeArea(
       child: Scaffold(
         body: pokeList.when(
           data: (data) {
+            if (data.isEmpty) {
+              return const EmptyCollectionWidget();
+            }
             return const GradientBackground(
               child: Column(
                 children: [
@@ -94,7 +93,7 @@ class _HomepageState extends ConsumerState<Homepage> {
             return const Center(child: CircularProgressIndicator());
           },
           error: (e, st) {
-            return Center(child: Text(e.toString()));
+            return CustomErrorWidget(errorMessage: e.toString());
           },
         ),
       ),

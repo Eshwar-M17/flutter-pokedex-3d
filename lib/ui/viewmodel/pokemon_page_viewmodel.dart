@@ -18,13 +18,13 @@ import 'package:pokedex_3d/ui/state/pokemon_state.dart';
 class PokemonPageViewmodel extends StateNotifier<PokemonPageState> {
   final PokemonDetailsRepository _pokemonDetailsRepository;
   final PokemonEvolutionRepository _pokemonEvolutionRepository;
-  final ModelController _modelController;
+  final Model3dController _modelController;
   final PokemonModelListRepository _pokemonModelListRepository;
   final Logger log = Logger();
   PokemonPageViewmodel({
     required PokemonDetailsRepository detailRepo,
     required PokemonEvolutionRepository evolRepo,
-    required ModelController modelController,
+    required Model3dController modelController,
     required PokemonModelListRepository pokemonViewedListRepository,
   }) : _pokemonDetailsRepository = detailRepo,
        _pokemonEvolutionRepository = evolRepo,
