@@ -2,7 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pokedex_3d/data/models/models/pokemon3d_model/pokemon_3d.dart';
-import 'package:pokedex_3d/ui/providers/pokemon_model_list_notifier_provider.dart';
+import 'package:pokedex_3d/ui/providers/pokemon_3d_model_list_notifier.dart';
 import 'package:pokedex_3d/ui/providers/pokemon_page_viewmodel_provider.dart';
 import 'package:pokedex_3d/ui/viewmodel/pokemon_page_viewmodel.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -34,7 +34,7 @@ class PokemonListWidgetState extends ConsumerState<PokemonListWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final pokemonListState = ref.watch(pokemonModelListNotifierProvider);
+    final pokemonListState = ref.watch(pokemon3dModelListNotifierProider);
     final pokemonState = ref.read(pokemonPageViewmodelProvider.notifier);
 
     final double screenWidth = MediaQuery.of(context).size.width;

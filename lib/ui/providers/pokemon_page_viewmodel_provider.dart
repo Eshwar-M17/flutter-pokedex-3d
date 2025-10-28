@@ -3,13 +3,13 @@ import 'package:flutter_riverpod/legacy.dart';
 import 'package:pokedex_3d/data/providers/pokemon_model_list_provider.dart';
 import 'package:pokedex_3d/data/providers/repository_providers.dart';
 import 'package:pokedex_3d/ui/providers/model_controller_provider.dart';
-import 'package:pokedex_3d/ui/providers/pokemon_model_list_notifier_provider.dart';
+import 'package:pokedex_3d/ui/providers/pokemon_3d_model_list_notifier.dart';
 import 'package:pokedex_3d/ui/state/pokemon_state.dart';
 import 'package:pokedex_3d/ui/viewmodel/pokemon_page_viewmodel.dart';
 
 final pokemonPageViewmodelProvider =
     StateNotifierProvider<PokemonPageViewmodel, PokemonPageState>((ref) {
-      final pokemonListAsync = ref.read(pokemonModelListNotifierProvider);
+      final pokemon3dModelListState = ref.read(pokemon3dModelListNotifierProider);
       final controller = PokemonPageViewmodel(
         detailRepo: ref.read(pokemonDetailsRepositoryProvider),
         evolRepo: ref.read(pokemonEvolutionRepositoryProvider),
@@ -20,7 +20,7 @@ final pokemonPageViewmodelProvider =
       );
 
       // Only select first Pokémon if list is ready
-      pokemonListAsync.whenData((pokemonList) {
+      pokemon3dModelListState.whenData((pokemonList) {
         if (pokemonList.isNotEmpty) {
           controller.selectPokemon(pokemonList.first);
         }
