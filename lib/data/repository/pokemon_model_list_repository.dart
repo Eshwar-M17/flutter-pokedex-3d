@@ -48,9 +48,10 @@ class PokemonModelListRepository {
           .getViewedPokemonList()
           .map((e) => e.toDomain())
           .toList();
-      Logger().i("vieweed pokemon  length ${pokemonList.length}");
+      Logger().i("PokemonModelListRepository getViewedPokemonList vieweed pokemon  length ${pokemonList.length}");
 
       return Result.ok(pokemonList);
+      
     } catch (e) {
       return Result.error(ErrorMapper.mapException(e));
     }

@@ -1,29 +1,41 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pokedex_3d/core/logger.dart';
 import 'package:pokedex_3d/data/models/models/pokemon3d_model/pokemon_3d.dart';
 import 'package:pokedex_3d/ui/providers/pokemon_3d_model_list_notifier.dart';
 import 'package:pokedex_3d/ui/providers/pokemon_page_viewmodel_provider.dart';
 import 'package:pokedex_3d/ui/viewmodel/pokemon_page_viewmodel.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-class PokemonListWidget extends ConsumerStatefulWidget {
-  const PokemonListWidget({super.key});
+class PokemonCarouselWidget extends ConsumerStatefulWidget {
+  const PokemonCarouselWidget({super.key});
 
   @override
-  ConsumerState createState() => PokemonListWidgetState();
+  ConsumerState createState() => _PokemonCarouselWidget();
 }
 
-class PokemonListWidgetState extends ConsumerState<PokemonListWidget> {
+class _PokemonCarouselWidget extends ConsumerState<PokemonCarouselWidget> {
   late final ScrollController _controller;
 
   final double itemWidth = 78; // width + padding
   final double imageSize = 70;
+  double spacerWidth = 0;
+  double screenWidth = 0;
+  int currentPokeIndex = 0;
+  final placeholderList = List.generate(
+    5,
+    (index) => Pokemon3dModel(id: index, forms: []),
+  );
 
   @override
   void initState() {
     super.initState();
     _controller = ScrollController();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _scrollToIndex(index: currentPokeIndex, screenWidth: screenWidth);
+    });
   }
 
   @override
@@ -32,14 +44,33 @@ class PokemonListWidgetState extends ConsumerState<PokemonListWidget> {
     super.dispose();
   }
 
+  void _scrollToIndex({required int index, required double screenWidth}) {
+    final targetOffset =
+        spacerWidth + index * itemWidth - (screenWidth / 2 - itemWidth / 2);
+
+    _controller.animateTo(
+      targetOffset.clamp(
+        _controller.position.minScrollExtent,
+        _controller.position.maxScrollExtent,
+      ),
+      duration: const Duration(milliseconds: 400),
+      curve: Curves.ease,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final pokemonListState = ref.watch(pokemon3dModelListNotifierProider);
-    final pokemonState = ref.read(pokemonPageViewmodelProvider.notifier);
-
-    final double screenWidth = MediaQuery.of(context).size.width;
     final isLoading = pokemonListState.isLoading;
-    final spacerWidth = screenWidth / 2 - itemWidth / 2;
+
+    final pokemonState = ref.read(pokemonPageViewmodelProvider.notifier);
+    screenWidth = MediaQuery.of(context).size.width;
+
+    spacerWidth = screenWidth / 2 - itemWidth / 2;
+    currentPokeIndex = ref.read(
+      pokemonPageViewmodelProvider.select((s) => s.index),
+    );
+
     final content = pokemonListState.when(
       data: (pokemonList) {
         return _buildListWidget(
@@ -52,13 +83,7 @@ class PokemonListWidgetState extends ConsumerState<PokemonListWidget> {
       },
       error: (e, st) => Text(e.toString()),
       loading: () => _buildListWidget(
-        [
-          Pokemon3dModel(id: 0, forms: []),
-          Pokemon3dModel(id: 1, forms: []),
-          Pokemon3dModel(id: 2, forms: []),
-          Pokemon3dModel(id: 3, forms: []),
-          Pokemon3dModel(id: 4, forms: []),
-        ],
+        placeholderList,
         spacerWidth,
         screenWidth,
         pokemonState,
@@ -78,16 +103,7 @@ class PokemonListWidgetState extends ConsumerState<PokemonListWidget> {
     return Stack(
       children: [
         /// center highlight circle
-        Center(
-          child: Container(
-            width: imageSize,
-            height: imageSize,
-            decoration: BoxDecoration(
-              color: Colors.white60,
-              borderRadius: BorderRadius.circular(imageSize / 2),
-            ),
-          ),
-        ),
+        _buildSelectionHighlight(),
 
         /// horizontal scroll list
         ListView.builder(
@@ -106,22 +122,12 @@ class PokemonListWidgetState extends ConsumerState<PokemonListWidget> {
               padding: const EdgeInsets.symmetric(horizontal: 4),
               child: GestureDetector(
                 onTap: () {
-                  final targetOffset =
-                      spacerWidth +
-                      actualIndex * itemWidth -
-                      (screenWidth / 2 - itemWidth / 2);
+                  _scrollToIndex(index: index - 1, screenWidth: screenWidth);
 
-                  _controller.animateTo(
-                    targetOffset.clamp(
-                      _controller.position.minScrollExtent,
-                      _controller.position.maxScrollExtent,
-                    ),
-                    duration: const Duration(milliseconds: 400),
-                    curve: Curves.ease,
+                  pokemonState.selectPokemon(
+                    pokemonList[actualIndex],
+                    actualIndex,
                   );
-                  pokemonState.selectPokemon(pokemonList[actualIndex]);
-
-                  setState(() {});
                 },
                 child: SizedBox(
                   width: imageSize,
@@ -141,6 +147,19 @@ class PokemonListWidgetState extends ConsumerState<PokemonListWidget> {
           },
         ),
       ],
+    );
+  }
+
+  Center _buildSelectionHighlight() {
+    return Center(
+      child: Container(
+        width: imageSize,
+        height: imageSize,
+        decoration: BoxDecoration(
+          color: Colors.white60,
+          borderRadius: BorderRadius.circular(imageSize / 2),
+        ),
+      ),
     );
   }
 }

@@ -4,13 +4,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:pokedex_3d/core/error_widget/error_widget.dart';
+import 'package:pokedex_3d/core/logger.dart';
 import 'package:pokedex_3d/ui/providers/connectivity_notifier.dart';
 import 'package:pokedex_3d/ui/providers/pokemon_3d_model_list_notifier.dart';
 import 'package:pokedex_3d/ui/view/widgets/empty_collection_widget.dart';
 import 'package:pokedex_3d/ui/view/widgets/pokemon_form_tab.dart';
 import 'package:pokedex_3d/ui/view/widgets/gradient_background.dart';
 import 'package:pokedex_3d/ui/view/widgets/model_view_widget.dart';
-import 'package:pokedex_3d/ui/view/widgets/pokemon_list_widget.dart';
+import 'package:pokedex_3d/ui/view/widgets/pokemon_carousel_widget.dart';
 
 class PokemonViewerPage extends StatelessWidget {
   const PokemonViewerPage({super.key});
@@ -26,20 +27,31 @@ class _PokemonViewerBody extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    log.i(
+      "_PokemonViewerBody build  calling pokemon3dModelListNotifierProider ",
+    );
+
     final pokeList = ref.watch(pokemon3dModelListNotifierProider);
+    log.i("_PokemonViewerBody build  pokelist data $pokeList");
 
     return pokeList.when(
       data: (data) {
         if (data.isEmpty) {
+          log.i(
+            "_PokemonViewerBody build  empty list returining EmptyCollectionWidget ",
+          );
+
           return const EmptyCollectionWidget();
         }
+        log.i("_PokemonViewerBody build  pokelist length ${data.length}");
+
         return const GradientBackground(
           child: Column(
             children: [
               OfflineBannerWidget(),
               PokemonFormTab(),
               Expanded(child: ModelViewWidget()),
-              SizedBox(height: 80, child: PokemonListWidget()),
+              SizedBox(height: 80, child: PokemonCarouselWidget()),
             ],
           ),
         );

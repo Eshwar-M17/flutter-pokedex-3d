@@ -58,8 +58,9 @@ class PokemonPageViewmodel extends StateNotifier<PokemonPageState> {
     _modelController.notifyWebView();
   }
 
-  void selectPokemon(Pokemon3dModel pokemon) async {
+  void selectPokemon(Pokemon3dModel pokemon,int index) async {
     state = state.copyWith(
+      index: index,
       pokemon: pokemon,
       currentForm: 0,
       pokemonInfo: const AsyncValue.loading(),

@@ -36,13 +36,13 @@ class Pokemon3dModelListNotifier
     log.d("getting viewed model list cache");
     state = const AsyncValue.loading();
     final response = await _pokemonModelListRepository.getViewedPokemonList();
+
+
     switch (response) {
       case Ok<List<Pokemon3dModel>>():
-        log.d(
-          "viewed pokemon model length ${response.value.length} /n first ${response.value.first.toString()}  ",
-        );
-
+      
         state = AsyncValue.data(response.value);
+        break;
 
       case Error<List<Pokemon3dModel>>():
         log.d("got error on getting viewed model cache");
@@ -51,6 +51,7 @@ class Pokemon3dModelListNotifier
           response.error.userMessage ?? response.error.message,
           StackTrace.current,
         );
+        break;
     }
   }
 }

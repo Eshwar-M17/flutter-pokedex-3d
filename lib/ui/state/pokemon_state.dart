@@ -7,6 +7,7 @@ import 'package:pokedex_3d/data/models/pokemon_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class PokemonPageState {
+  final int index;
   final Pokemon3dModel pokemon;
   final int currentForm;
   final AsyncValue<PokemonModel> pokemonInfo;
@@ -15,6 +16,7 @@ class PokemonPageState {
   final AsyncValue<String> modelPath;
   final String? backgroundImg;
   const PokemonPageState({
+    required this.index,
     required this.pokemon,
     required this.currentForm,
     required this.pokemonInfo,
@@ -27,6 +29,7 @@ class PokemonPageState {
 
   factory PokemonPageState.initial() {
     return PokemonPageState(
+      index: 0,
       pokemon: Pokemon3dModel(id: 0, forms: []),
       currentForm: 0,
       pokemonInfo: const AsyncValue.loading(),
@@ -41,6 +44,7 @@ class PokemonPageState {
   }
 
   PokemonPageState copyWith({
+    int? index,
     Pokemon3dModel? pokemon,
     int? currentForm,
     AsyncValue<PokemonModel>? pokemonInfo,
@@ -50,6 +54,7 @@ class PokemonPageState {
     AsyncValue<String>? modelPath,
   }) {
     return PokemonPageState(
+      index: index??this.index,
       pokemon: pokemon ?? this.pokemon,
       currentForm: currentForm ?? this.currentForm,
       pokemonInfo: pokemonInfo ?? this.pokemonInfo,

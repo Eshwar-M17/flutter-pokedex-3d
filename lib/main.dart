@@ -10,21 +10,26 @@ import 'package:pokedex_3d/data/services/local/hive_models/pokemon_3d_hive_model
 import 'package:pokedex_3d/data/services/local/hive_models/pokemon_hive_model.dart';
 import 'package:pokedex_3d/ui/app.dart';
 
+import 'core/logger.dart';
+
 void main() {
-  runZonedGuarded(() async {
-    WidgetsFlutterBinding.ensureInitialized();
-    ErrorWidget.builder = (FlutterErrorDetails details) =>
-        ErrorWidgetClass(details);
+  runZonedGuarded(
+    () async {
+      WidgetsFlutterBinding.ensureInitialized();
+      ErrorWidget.builder = (FlutterErrorDetails details) =>
+          ErrorWidgetClass(details);
 
-    FlutterError.onError = (FlutterErrorDetails details) {
-      FlutterError.dumpErrorToConsole(details);
-    };
-    await initHive();
+      FlutterError.onError = (FlutterErrorDetails details) {
+        FlutterError.dumpErrorToConsole(details);
+      };
+      await initHive();
 
-    return runApp(const ProviderScope(child: Pokedex3D()));
-  }, (error, st) {
-    
-  });
+      return runApp(const ProviderScope(child: PokeDex3D()));
+    },
+    (error, st) {
+      log.e(error);
+    },
+  );
 }
 
 Future<void> initHive() async {
