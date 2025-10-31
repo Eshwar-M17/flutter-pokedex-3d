@@ -4,13 +4,16 @@ A Flutter-based 3D Pokédex application featuring interactive Pokémon models an
 
 ## Features
 - 🎮 3D Pokémon model viewer
-- 📊 Detailed Pokémon information
-- 🔄 Evolution chain tracking
-- 🎨 Modern UI with smooth animations
+- 📊 Pokémon information
+- 🔄 Evolution chain info
+- 🔍 Simple Pokémon search and filtering
+
+
 
 ## Status
 🚧 **In Development** - Core features implemented, additional functionality being added
-- 🔍 Pokémon search and filtering
+- 🔊 Listening to Pokémon cries
+- ⭐ Favorite Pokémon feature
 
 
 ## Demo
