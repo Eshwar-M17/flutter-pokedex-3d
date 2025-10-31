@@ -23,7 +23,7 @@ class GradientBackground extends ConsumerWidget {
               dominantColorGradient ??
               [
                 PokemonType.grass.color,
-                PokemonTypePalette.grass.withAlpha(150),
+                PokemonTypePalette.grass.withAlpha(200),
               ],
         ),
       ),

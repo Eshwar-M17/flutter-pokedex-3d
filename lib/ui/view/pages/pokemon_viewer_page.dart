@@ -11,7 +11,7 @@ import 'package:pokedex_3d/ui/view/widgets/empty_collection_widget.dart';
 import 'package:pokedex_3d/ui/view/widgets/pokemon_form_tab.dart';
 import 'package:pokedex_3d/ui/view/widgets/gradient_background.dart';
 import 'package:pokedex_3d/ui/view/widgets/model_view_widget.dart';
-import 'package:pokedex_3d/ui/view/widgets/pokemon_carousel_widget.dart';
+import 'package:pokedex_3d/ui/view/widgets/poke_carousel_widget.dart';
 
 class PokemonViewerPage extends StatelessWidget {
   const PokemonViewerPage({super.key});
@@ -51,7 +51,7 @@ class _PokemonViewerBody extends ConsumerWidget {
               OfflineBannerWidget(),
               PokemonFormTab(),
               Expanded(child: ModelViewWidget()),
-              SizedBox(height: 80, child: PokemonCarouselWidget()),
+              SizedBox(height: 80, child: PokeCarouselWidget()),
             ],
           ),
         );

@@ -10,7 +10,7 @@ class PokemonPageState {
   final int index;
   final Pokemon3dModel pokemon;
   final int currentForm;
-  final AsyncValue<PokemonModel> pokemonInfo;
+  final AsyncValue<PokemonDetailsModel> pokemonInfo;
   final AsyncValue<List<List<PokemonChainNode>>> evolutionData;
   final List<Color>? dominantColorGradient;
   final AsyncValue<String> modelPath;
@@ -47,14 +47,14 @@ class PokemonPageState {
     int? index,
     Pokemon3dModel? pokemon,
     int? currentForm,
-    AsyncValue<PokemonModel>? pokemonInfo,
+    AsyncValue<PokemonDetailsModel>? pokemonInfo,
     AsyncValue<List<List<PokemonChainNode>>>? evolutionData,
     List<Color>? dominantColorGradient,
     String? backgroundImg,
     AsyncValue<String>? modelPath,
   }) {
     return PokemonPageState(
-      index: index??this.index,
+      index: index ?? this.index,
       pokemon: pokemon ?? this.pokemon,
       currentForm: currentForm ?? this.currentForm,
       pokemonInfo: pokemonInfo ?? this.pokemonInfo,

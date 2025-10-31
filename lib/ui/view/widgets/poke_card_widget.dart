@@ -9,24 +9,32 @@ import 'package:pokedex_3d/ui/view/pages/pokemon_viewer_page.dart';
 
 import 'package:pokedex_3d/ui/viewmodel/pokemon_details_provider.dart';
 
-class PokeItemWidget extends ConsumerWidget {
-  final int id;
+class PokeCardWidget extends ConsumerWidget {
   final int index;
   final Pokemon3dModel pokemon3d;
 
-  const PokeItemWidget({super.key, required this.id, required this.pokemon3d,required this.index});
+  const PokeCardWidget({
+    super.key,
+
+    required this.pokemon3d,
+    required this.index,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final TextTheme textTheme = Theme.of(context).textTheme;
 
-    final pokemonState = ref.watch(pokemonDetailsProvider(id));
+    final pokemonState = ref.watch(pokemonDetailsProvider(pokemon3d.id));
     return pokemonState.when(
       data: (pokemon) => GestureDetector(
         onTap: () {
           ref
               .read(pokemonPageViewmodelProvider.notifier)
-              .selectPokemon(pokemon3d,index);
+              .selectPokemonFromList(
+                pokemon3d: pokemon3d,
+                index: index,
+                pokemon: pokemon,
+              );
           Navigator.of(context).push(
             MaterialPageRoute(
               builder: (BuildContext context) {
@@ -35,7 +43,7 @@ class PokeItemWidget extends ConsumerWidget {
             ),
           );
         },
-        child: PokemonItemBody(pokemon: pokemon, textTheme: textTheme),
+        child: PokemonCardBody(pokemon: pokemon, textTheme: textTheme),
       ),
       error: (e, st) => const Center(child: Text('')),
       loading: () => const Center(child: CircularProgressIndicator()),
@@ -43,14 +51,14 @@ class PokeItemWidget extends ConsumerWidget {
   }
 }
 
-class PokemonItemBody extends StatelessWidget {
-  const PokemonItemBody({
+class PokemonCardBody extends StatelessWidget {
+  const PokemonCardBody({
     super.key,
     required this.pokemon,
     required this.textTheme,
   });
 
-  final PokemonModel pokemon;
+  final PokemonDetailsModel pokemon;
   final TextTheme textTheme;
 
   @override

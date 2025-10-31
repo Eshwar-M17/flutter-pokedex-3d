@@ -8,11 +8,8 @@ import 'package:pokedex_3d/ui/state/pokemon_state.dart';
 import 'package:pokedex_3d/ui/viewmodel/pokemon_page_viewmodel.dart';
 
 final pokemonPageViewmodelProvider =
-    StateNotifierProvider<PokemonPageViewmodel, PokemonPageState>((ref) {
-      final pokemon3dModelListState = ref.read(
-        pokemon3dModelListNotifierProider,
-      );
-      final controller = PokemonPageViewmodel(
+    StateNotifierProvider<PokemonDetailViewModel, PokemonPageState>((ref) {
+      final controller = PokemonDetailViewModel(
         detailRepo: ref.read(pokemonDetailsRepositoryProvider),
         evolRepo: ref.read(pokemonEvolutionRepositoryProvider),
         modelController: ref.read(model3dControllerProvider.notifier),
@@ -20,13 +17,6 @@ final pokemonPageViewmodelProvider =
           pokemonModelListRepositoryProvider,
         ),
       );
-
-      // Only select first Pokémon if list is ready
-      pokemon3dModelListState.whenData((pokemonList) {
-        if (pokemonList.isNotEmpty) {
-          controller.selectPokemon(pokemonList.first, 0);
-        }
-      });
 
       return controller;
     });

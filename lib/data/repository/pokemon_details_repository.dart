@@ -20,9 +20,9 @@ class PokemonDetailsRepository {
   }) : _apiService = apiService,
        _databaseService = databaseService;
 
-  Future<Result<PokemonModel>> getPokemonDetails(int id) async {
+  Future<Result<PokemonDetailsModel>> getPokemonDetails(int id) async {
     try {
-      PokemonModel? pokemonDetails = _databaseService
+      PokemonDetailsModel? pokemonDetails = _databaseService
           .getPokemonDetails(id)
           ?.toDomain();
       if (pokemonDetails != null) {
@@ -39,9 +39,7 @@ class PokemonDetailsRepository {
         return Result.ok(pokemonDetails);
       }
 
-      return Result.error(
-        ErrorMapper.mapHttpResponse(response),
-      );
+      return Result.error(ErrorMapper.mapHttpResponse(response));
     } catch (error, stackTrace) {
       return Result.error(ErrorMapper.mapException(error, stackTrace));
     }

@@ -12,7 +12,8 @@ part of 'pokemon.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$PokemonModel {
@@ -25,28 +26,30 @@ mixin _$PokemonModel {
   List<String> get types => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $PokemonModelCopyWith<PokemonModel> get copyWith =>
+  $PokemonModelCopyWith<PokemonDetailsModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $PokemonModelCopyWith<$Res> {
   factory $PokemonModelCopyWith(
-          PokemonModel value, $Res Function(PokemonModel) then) =
-      _$PokemonModelCopyWithImpl<$Res, PokemonModel>;
+    PokemonDetailsModel value,
+    $Res Function(PokemonDetailsModel) then,
+  ) = _$PokemonModelCopyWithImpl<$Res, PokemonDetailsModel>;
   @useResult
-  $Res call(
-      {int baseExperience,
-      int height,
-      int weight,
-      int id,
-      String name,
-      List<Stat> stats,
-      List<String> types});
+  $Res call({
+    int baseExperience,
+    int height,
+    int weight,
+    int id,
+    String name,
+    List<Stat> stats,
+    List<String> types,
+  });
 }
 
 /// @nodoc
-class _$PokemonModelCopyWithImpl<$Res, $Val extends PokemonModel>
+class _$PokemonModelCopyWithImpl<$Res, $Val extends PokemonDetailsModel>
     implements $PokemonModelCopyWith<$Res> {
   _$PokemonModelCopyWithImpl(this._value, this._then);
 
@@ -66,36 +69,39 @@ class _$PokemonModelCopyWithImpl<$Res, $Val extends PokemonModel>
     Object? stats = null,
     Object? types = null,
   }) {
-    return _then(_value.copyWith(
-      baseExperience: null == baseExperience
-          ? _value.baseExperience
-          : baseExperience // ignore: cast_nullable_to_non_nullable
-              as int,
-      height: null == height
-          ? _value.height
-          : height // ignore: cast_nullable_to_non_nullable
-              as int,
-      weight: null == weight
-          ? _value.weight
-          : weight // ignore: cast_nullable_to_non_nullable
-              as int,
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      stats: null == stats
-          ? _value.stats
-          : stats // ignore: cast_nullable_to_non_nullable
-              as List<Stat>,
-      types: null == types
-          ? _value.types
-          : types // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            baseExperience: null == baseExperience
+                ? _value.baseExperience
+                : baseExperience // ignore: cast_nullable_to_non_nullable
+                      as int,
+            height: null == height
+                ? _value.height
+                : height // ignore: cast_nullable_to_non_nullable
+                      as int,
+            weight: null == weight
+                ? _value.weight
+                : weight // ignore: cast_nullable_to_non_nullable
+                      as int,
+            id: null == id
+                ? _value.id
+                : id // ignore: cast_nullable_to_non_nullable
+                      as int,
+            name: null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                      as String,
+            stats: null == stats
+                ? _value.stats
+                : stats // ignore: cast_nullable_to_non_nullable
+                      as List<Stat>,
+            types: null == types
+                ? _value.types
+                : types // ignore: cast_nullable_to_non_nullable
+                      as List<String>,
+          )
+          as $Val,
+    );
   }
 }
 
@@ -103,18 +109,20 @@ class _$PokemonModelCopyWithImpl<$Res, $Val extends PokemonModel>
 abstract class _$$PokemonModelImplCopyWith<$Res>
     implements $PokemonModelCopyWith<$Res> {
   factory _$$PokemonModelImplCopyWith(
-          _$PokemonModelImpl value, $Res Function(_$PokemonModelImpl) then) =
-      __$$PokemonModelImplCopyWithImpl<$Res>;
+    _$PokemonModelImpl value,
+    $Res Function(_$PokemonModelImpl) then,
+  ) = __$$PokemonModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {int baseExperience,
-      int height,
-      int weight,
-      int id,
-      String name,
-      List<Stat> stats,
-      List<String> types});
+  $Res call({
+    int baseExperience,
+    int height,
+    int weight,
+    int id,
+    String name,
+    List<Stat> stats,
+    List<String> types,
+  });
 }
 
 /// @nodoc
@@ -122,8 +130,9 @@ class __$$PokemonModelImplCopyWithImpl<$Res>
     extends _$PokemonModelCopyWithImpl<$Res, _$PokemonModelImpl>
     implements _$$PokemonModelImplCopyWith<$Res> {
   __$$PokemonModelImplCopyWithImpl(
-      _$PokemonModelImpl _value, $Res Function(_$PokemonModelImpl) _then)
-      : super(_value, _then);
+    _$PokemonModelImpl _value,
+    $Res Function(_$PokemonModelImpl) _then,
+  ) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -136,52 +145,54 @@ class __$$PokemonModelImplCopyWithImpl<$Res>
     Object? stats = null,
     Object? types = null,
   }) {
-    return _then(_$PokemonModelImpl(
-      baseExperience: null == baseExperience
-          ? _value.baseExperience
-          : baseExperience // ignore: cast_nullable_to_non_nullable
-              as int,
-      height: null == height
-          ? _value.height
-          : height // ignore: cast_nullable_to_non_nullable
-              as int,
-      weight: null == weight
-          ? _value.weight
-          : weight // ignore: cast_nullable_to_non_nullable
-              as int,
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      stats: null == stats
-          ? _value._stats
-          : stats // ignore: cast_nullable_to_non_nullable
-              as List<Stat>,
-      types: null == types
-          ? _value._types
-          : types // ignore: cast_nullable_to_non_nullable
-              as List<String>,
-    ));
+    return _then(
+      _$PokemonModelImpl(
+        baseExperience: null == baseExperience
+            ? _value.baseExperience
+            : baseExperience // ignore: cast_nullable_to_non_nullable
+                  as int,
+        height: null == height
+            ? _value.height
+            : height // ignore: cast_nullable_to_non_nullable
+                  as int,
+        weight: null == weight
+            ? _value.weight
+            : weight // ignore: cast_nullable_to_non_nullable
+                  as int,
+        id: null == id
+            ? _value.id
+            : id // ignore: cast_nullable_to_non_nullable
+                  as int,
+        name: null == name
+            ? _value.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String,
+        stats: null == stats
+            ? _value._stats
+            : stats // ignore: cast_nullable_to_non_nullable
+                  as List<Stat>,
+        types: null == types
+            ? _value._types
+            : types // ignore: cast_nullable_to_non_nullable
+                  as List<String>,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$PokemonModelImpl implements _PokemonModel {
-  _$PokemonModelImpl(
-      {required this.baseExperience,
-      required this.height,
-      required this.weight,
-      required this.id,
-      required this.name,
-      required final List<Stat> stats,
-      required final List<String> types})
-      : _stats = stats,
-        _types = types;
+  _$PokemonModelImpl({
+    required this.baseExperience,
+    required this.height,
+    required this.weight,
+    required this.id,
+    required this.name,
+    required final List<Stat> stats,
+    required final List<String> types,
+  }) : _stats = stats,
+       _types = types;
 
   @override
   final int baseExperience;
@@ -231,14 +242,15 @@ class _$PokemonModelImpl implements _PokemonModel {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType,
-      baseExperience,
-      height,
-      weight,
-      id,
-      name,
-      const DeepCollectionEquality().hash(_stats),
-      const DeepCollectionEquality().hash(_types));
+    runtimeType,
+    baseExperience,
+    height,
+    weight,
+    id,
+    name,
+    const DeepCollectionEquality().hash(_stats),
+    const DeepCollectionEquality().hash(_types),
+  );
 
   @JsonKey(ignore: true)
   @override
@@ -247,15 +259,16 @@ class _$PokemonModelImpl implements _PokemonModel {
       __$$PokemonModelImplCopyWithImpl<_$PokemonModelImpl>(this, _$identity);
 }
 
-abstract class _PokemonModel implements PokemonModel {
-  factory _PokemonModel(
-      {required final int baseExperience,
-      required final int height,
-      required final int weight,
-      required final int id,
-      required final String name,
-      required final List<Stat> stats,
-      required final List<String> types}) = _$PokemonModelImpl;
+abstract class _PokemonModel implements PokemonDetailsModel {
+  factory _PokemonModel({
+    required final int baseExperience,
+    required final int height,
+    required final int weight,
+    required final int id,
+    required final String name,
+    required final List<Stat> stats,
+    required final List<String> types,
+  }) = _$PokemonModelImpl;
 
   @override
   int get baseExperience;
@@ -312,28 +325,32 @@ class _$StatCopyWithImpl<$Res, $Val extends Stat>
     Object? name = null,
     Object? effort = null,
   }) {
-    return _then(_value.copyWith(
-      baseStat: null == baseStat
-          ? _value.baseStat
-          : baseStat // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      effort: null == effort
-          ? _value.effort
-          : effort // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
+    return _then(
+      _value.copyWith(
+            baseStat: null == baseStat
+                ? _value.baseStat
+                : baseStat // ignore: cast_nullable_to_non_nullable
+                      as int,
+            name: null == name
+                ? _value.name
+                : name // ignore: cast_nullable_to_non_nullable
+                      as String,
+            effort: null == effort
+                ? _value.effort
+                : effort // ignore: cast_nullable_to_non_nullable
+                      as int,
+          )
+          as $Val,
+    );
   }
 }
 
 /// @nodoc
 abstract class _$$StatImplCopyWith<$Res> implements $StatCopyWith<$Res> {
   factory _$$StatImplCopyWith(
-          _$StatImpl value, $Res Function(_$StatImpl) then) =
-      __$$StatImplCopyWithImpl<$Res>;
+    _$StatImpl value,
+    $Res Function(_$StatImpl) then,
+  ) = __$$StatImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int baseStat, String name, int effort});
@@ -344,7 +361,7 @@ class __$$StatImplCopyWithImpl<$Res>
     extends _$StatCopyWithImpl<$Res, _$StatImpl>
     implements _$$StatImplCopyWith<$Res> {
   __$$StatImplCopyWithImpl(_$StatImpl _value, $Res Function(_$StatImpl) _then)
-      : super(_value, _then);
+    : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -353,28 +370,33 @@ class __$$StatImplCopyWithImpl<$Res>
     Object? name = null,
     Object? effort = null,
   }) {
-    return _then(_$StatImpl(
-      baseStat: null == baseStat
-          ? _value.baseStat
-          : baseStat // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      effort: null == effort
-          ? _value.effort
-          : effort // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
+    return _then(
+      _$StatImpl(
+        baseStat: null == baseStat
+            ? _value.baseStat
+            : baseStat // ignore: cast_nullable_to_non_nullable
+                  as int,
+        name: null == name
+            ? _value.name
+            : name // ignore: cast_nullable_to_non_nullable
+                  as String,
+        effort: null == effort
+            ? _value.effort
+            : effort // ignore: cast_nullable_to_non_nullable
+                  as int,
+      ),
+    );
   }
 }
 
 /// @nodoc
 
 class _$StatImpl implements _Stat {
-  _$StatImpl(
-      {required this.baseStat, required this.name, required this.effort});
+  _$StatImpl({
+    required this.baseStat,
+    required this.name,
+    required this.effort,
+  });
 
   @override
   final int baseStat;
@@ -410,10 +432,11 @@ class _$StatImpl implements _Stat {
 }
 
 abstract class _Stat implements Stat {
-  factory _Stat(
-      {required final int baseStat,
-      required final String name,
-      required final int effort}) = _$StatImpl;
+  factory _Stat({
+    required final int baseStat,
+    required final String name,
+    required final int effort,
+  }) = _$StatImpl;
 
   @override
   int get baseStat;

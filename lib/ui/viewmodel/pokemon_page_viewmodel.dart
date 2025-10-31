@@ -15,13 +15,13 @@ import 'package:pokedex_3d/data/repository/pokemon_model_list_repository.dart';
 import 'package:pokedex_3d/ui/controller/model_controller.dart';
 import 'package:pokedex_3d/ui/state/pokemon_state.dart';
 
-class PokemonPageViewmodel extends StateNotifier<PokemonPageState> {
+class PokemonDetailViewModel extends StateNotifier<PokemonPageState> {
   final PokemonDetailsRepository _pokemonDetailsRepository;
   final PokemonEvolutionRepository _pokemonEvolutionRepository;
   final Model3dController _modelController;
   final PokemonModelListRepository _pokemonModelListRepository;
   final Logger log = Logger();
-  PokemonPageViewmodel({
+  PokemonDetailViewModel({
     required PokemonDetailsRepository detailRepo,
     required PokemonEvolutionRepository evolRepo,
     required Model3dController modelController,
@@ -31,6 +31,108 @@ class PokemonPageViewmodel extends StateNotifier<PokemonPageState> {
        _modelController = modelController,
        _pokemonModelListRepository = pokemonViewedListRepository,
        super(PokemonPageState.initial());
+
+  Future<void> _loadModelData(String modelUrl) async {
+    final modelResponse = await _modelController.updateModel(modelUrl);
+    switch (modelResponse) {
+      case Ok<String>():
+        state = state.copyWith(
+          modelPath: AsyncValue.data(Uri.file(modelResponse.value).toString()),
+        );
+      case Error<String>():
+        log.e(
+          " usermessage ${modelResponse.error.userMessage} ${modelResponse.error.message} ",
+        );
+        state = state.copyWith(
+          modelPath: AsyncValue.error(
+            modelResponse.error.userMessage ?? modelResponse.error.message,
+            StackTrace.current,
+          ),
+        );
+    }
+  }
+
+  Future<void> _loadPokemonDetails(int id) async {
+    final detailsResponse = await _pokemonDetailsRepository.getPokemonDetails(
+      id,
+    );
+    switch (detailsResponse) {
+      case Ok<PokemonDetailsModel>():
+        final type = PokemonType.parse(detailsResponse.value.types.first);
+        state = state.copyWith(
+          pokemonInfo: AsyncValue.data(detailsResponse.value),
+          dominantColorGradient: [type.color, type.color.withAlpha(200)],
+          backgroundImg: type.icon,
+        );
+        break;
+      case Error<PokemonDetailsModel>():
+        state = state.copyWith(
+          pokemonInfo: AsyncValue.error(
+            detailsResponse.error.userMessage ?? detailsResponse.error.message,
+            StackTrace.current,
+          ),
+        );
+    }
+  }
+
+  Future<void> _loadEvolutionDetails(int id) async {
+    final evolutionResponse = await _pokemonEvolutionRepository
+        .getEvolutionDetails(id);
+    switch (evolutionResponse) {
+      case Ok<Species>():
+        final evolutionOrder = inOrderTraversal(
+          evolutionResponse.value.pokemonSpecies,
+          [[]],
+          0,
+        );
+        state = state.copyWith(evolutionData: AsyncValue.data(evolutionOrder));
+
+      case Error<Species>():
+        state = state.copyWith(
+          evolutionData: AsyncValue.error(
+            evolutionResponse.error.userMessage ??
+                evolutionResponse.error.message,
+            StackTrace.current,
+          ),
+        );
+    }
+  }
+
+  void selectPokemonFromList({
+    required Pokemon3dModel pokemon3d,
+    required PokemonDetailsModel pokemon,
+    required int index,
+  }) async {
+    final type = PokemonType.parse(pokemon.types.first);
+    state = state.copyWith(
+      currentForm: 0,
+      index: index,
+      pokemon: pokemon3d,
+      dominantColorGradient: [type.color, type.color.withAlpha(200)],
+      backgroundImg: type.icon,
+      pokemonInfo: AsyncValue.data(pokemon),
+    );
+    await Future.wait([
+      _loadModelData(pokemon3d.forms.first.model),
+      _loadEvolutionDetails(pokemon.id),
+    ]);
+
+    unawaited(_pokemonModelListRepository.putViewedPokemon(pokemon3d));
+  }
+
+  void selectPokemonFromCarousel({
+    required Pokemon3dModel pokemon3d,
+    required int index,
+  }) async {
+    state = state.copyWith(currentForm: 0, index: index, pokemon: pokemon3d);
+    await Future.wait([
+      _loadModelData(pokemon3d.forms.first.model),
+      _loadPokemonDetails(pokemon3d.id),
+      _loadEvolutionDetails(pokemon3d.id),
+    ]);
+
+    unawaited(_pokemonModelListRepository.putViewedPokemon(pokemon3d));
+  }
 
   void selectForm(int formIndex) async {
     state = state.copyWith(currentForm: formIndex);
@@ -58,19 +160,25 @@ class PokemonPageViewmodel extends StateNotifier<PokemonPageState> {
     _modelController.notifyWebView();
   }
 
-  void selectPokemon(Pokemon3dModel pokemon,int index) async {
+  void selectPokemon({
+    required Pokemon3dModel pokemon3d,
+    required index,
+    PokemonDetailsModel? pokemon,
+  }) async {
     state = state.copyWith(
       index: index,
-      pokemon: pokemon,
+      pokemon: pokemon3d,
       currentForm: 0,
-      pokemonInfo: const AsyncValue.loading(),
+      pokemonInfo: pokemon != null
+          ? AsyncValue.data(pokemon)
+          : const AsyncValue.loading(),
       evolutionData: const AsyncValue.loading(),
       // modelPath: const AsyncValue.loading(),
     );
     final response = await Future.wait([
-      _modelController.updateModel(pokemon.forms[0].model),
-      _pokemonDetailsRepository.getPokemonDetails(pokemon.id),
-      _pokemonEvolutionRepository.getEvolutionDetails(pokemon.id),
+      _modelController.updateModel(pokemon3d.forms[0].model),
+      _pokemonDetailsRepository.getPokemonDetails(pokemon3d.id),
+      _pokemonEvolutionRepository.getEvolutionDetails(pokemon3d.id),
     ]);
     final modelResponse = response[0] as Result<String>;
 
@@ -92,9 +200,9 @@ class PokemonPageViewmodel extends StateNotifier<PokemonPageState> {
         );
     }
 
-    final detailsResponse = response[1] as Result<PokemonModel>;
+    final detailsResponse = response[1] as Result<PokemonDetailsModel>;
     switch (detailsResponse) {
-      case Ok<PokemonModel>():
+      case Ok<PokemonDetailsModel>():
         final type = PokemonType.parse(detailsResponse.value.types.first);
         print('${type.name}  ${type.icon} ${type.color}');
 
@@ -104,7 +212,7 @@ class PokemonPageViewmodel extends StateNotifier<PokemonPageState> {
           backgroundImg: type.icon,
         );
         break;
-      case Error<PokemonModel>():
+      case Error<PokemonDetailsModel>():
         state = state.copyWith(
           pokemonInfo: AsyncValue.error(
             detailsResponse.error.userMessage ?? detailsResponse.error.message,
@@ -133,7 +241,7 @@ class PokemonPageViewmodel extends StateNotifier<PokemonPageState> {
           ),
         );
     }
-    unawaited(_pokemonModelListRepository.putViewedPokemon(pokemon));
+    unawaited(_pokemonModelListRepository.putViewedPokemon(pokemon3d));
   }
 }
 

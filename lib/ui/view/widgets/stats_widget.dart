@@ -29,7 +29,7 @@ class _StatsWidgetState extends ConsumerState<StatsWidget> {
     bool isLoding = pokemoDetailsRes.isLoading;
 
     final Widget content = pokemoDetailsRes.when(
-      data: (PokemonModel data) {
+      data: (PokemonDetailsModel data) {
         stats = data.stats;
         return _buildStatRows(stats, context, isLoding);
       },

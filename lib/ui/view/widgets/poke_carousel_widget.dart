@@ -8,14 +8,14 @@ import 'package:pokedex_3d/ui/providers/pokemon_page_viewmodel_provider.dart';
 import 'package:pokedex_3d/ui/viewmodel/pokemon_page_viewmodel.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 
-class PokemonCarouselWidget extends ConsumerStatefulWidget {
-  const PokemonCarouselWidget({super.key});
+class PokeCarouselWidget extends ConsumerStatefulWidget {
+  const PokeCarouselWidget({super.key});
 
   @override
-  ConsumerState createState() => _PokemonCarouselWidget();
+  ConsumerState createState() => _PokeCarouselWidgetState();
 }
 
-class _PokemonCarouselWidget extends ConsumerState<PokemonCarouselWidget> {
+class _PokeCarouselWidgetState extends ConsumerState<PokeCarouselWidget> {
   late final ScrollController _controller;
 
   final double itemWidth = 78; // width + padding
@@ -97,7 +97,7 @@ class _PokemonCarouselWidget extends ConsumerState<PokemonCarouselWidget> {
     List<Pokemon3dModel> pokemonList,
     double spacerWidth,
     double screenWidth,
-    PokemonPageViewmodel pokemonState,
+    PokemonDetailViewModel pokemonState,
     bool isLoading,
   ) {
     return Stack(
@@ -124,9 +124,9 @@ class _PokemonCarouselWidget extends ConsumerState<PokemonCarouselWidget> {
                 onTap: () {
                   _scrollToIndex(index: index - 1, screenWidth: screenWidth);
 
-                  pokemonState.selectPokemon(
-                    pokemonList[actualIndex],
-                    actualIndex,
+                  pokemonState.selectPokemonFromCarousel(
+                    pokemon3d: pokemonList[actualIndex],
+                    index: actualIndex,
                   );
                 },
                 child: SizedBox(

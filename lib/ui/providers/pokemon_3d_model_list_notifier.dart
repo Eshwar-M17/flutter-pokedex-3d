@@ -4,7 +4,7 @@ import 'package:internet_connection_checker_plus/internet_connection_checker_plu
 import 'package:pokedex_3d/data/models/models/pokemon3d_model/pokemon_3d.dart';
 import 'package:pokedex_3d/data/providers/pokemon_model_list_provider.dart';
 import 'package:pokedex_3d/ui/providers/connectivity_notifier.dart';
-import 'package:pokedex_3d/ui/viewmodel/pokemon_model_list_notifier.dart';
+import 'package:pokedex_3d/ui/viewmodel/pokemon_3d_model_list_notifier.dart';
 
 final pokemon3dModelListNotifierProider =
     StateNotifierProvider<

@@ -3,15 +3,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pokedex_3d/ui/view/widgets/evolution_chain_widget.dart';
 import 'package:pokedex_3d/ui/view/widgets/stats_widget.dart';
 
-class PokemonDetailsTab extends ConsumerStatefulWidget {
-  const PokemonDetailsTab({super.key});
+class PokeDetailsTab extends ConsumerStatefulWidget {
+  const PokeDetailsTab({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() =>
-      _PokemonDetailsTabState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _PokeDetailsTabState();
 }
 
-class _PokemonDetailsTabState extends ConsumerState<PokemonDetailsTab>
+class _PokeDetailsTabState extends ConsumerState<PokeDetailsTab>
     with SingleTickerProviderStateMixin {
   late final TabController _tabController;
   final List<Tab> tabList = const [Tab(text: "Status"), Tab(text: "Evolution")];
@@ -20,6 +19,12 @@ class _PokemonDetailsTabState extends ConsumerState<PokemonDetailsTab>
   void initState() {
     super.initState();
     _tabController = TabController(length: tabList.length, vsync: this);
+  }
+
+  @override
+  void dispose() {
+    _tabController.dispose();
+    super.dispose();
   }
 
   @override

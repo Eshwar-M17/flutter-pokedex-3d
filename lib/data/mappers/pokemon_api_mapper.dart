@@ -2,7 +2,7 @@ import 'package:pokedex_3d/data/models/models/pokemon/pokemon.dart';
 import 'package:pokedex_3d/data/services/remote/api_models/pokemon_api_model/pokemon_api_model.dart';
 
 extension PokemonApiMapper on PokemonModelApi {
-  PokemonModel toDomain() => PokemonModel(
+  PokemonDetailsModel toDomain() => PokemonDetailsModel(
     baseExperience: baseExperience,
     height: height,
     weight: weight,

@@ -9,5 +9,5 @@ enum FullscreenState {
 }
 
 final fullscreenToggleProvider = StateProvider<FullscreenState>((ref) {
-  return FullscreenState.fullscreenExit;
+  return FullscreenState.fullscreen;
 });

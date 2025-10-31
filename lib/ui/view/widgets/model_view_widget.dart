@@ -79,7 +79,7 @@ class _ModelViewWidgetState extends ConsumerState<ModelViewWidget> {
                 child: AnimatedOpacity(
                   opacity: currentView.isFullScreen ? 0 : 1,
                   duration: const Duration(milliseconds: 300),
-                  child: const PokemonDetailsTab(),
+                  child: const PokeDetailsTab(),
                 ),
               ),
             ),
