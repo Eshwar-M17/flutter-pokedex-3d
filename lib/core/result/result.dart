@@ -1,12 +1,9 @@
 import 'package:pokedex_3d/core/errors/error.dart';
-import 'package:pokedex_3d/data/models/models/pokemon/pokemon.dart';
 
 sealed class Result<T> {
   Result();
   factory Result.ok(T value) => Ok(value);
   factory Result.error(AppError e) => Error(e);
-
-  PokemonDetailsModel? toDomain() {}
 }
 
 class Ok<T> extends Result<T> {

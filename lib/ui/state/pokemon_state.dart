@@ -1,9 +1,9 @@
 import 'dart:ui';
+import 'package:pokedex_3d/core/enums.dart';
 import 'package:pokedex_3d/core/icons_set.dart';
 import 'package:pokedex_3d/data/models/evolution_chain_model.dart';
 import 'package:pokedex_3d/data/models/models/pokemon/pokemon.dart';
 import 'package:pokedex_3d/data/models/models/pokemon3d_model/pokemon_3d.dart';
-import 'package:pokedex_3d/data/models/pokemon_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class PokemonPageState {

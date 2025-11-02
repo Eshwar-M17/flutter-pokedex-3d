@@ -2,15 +2,17 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:logger/logger.dart';
-import 'package:pokedex_3d/core/constants.dart';
-import 'package:pokedex_3d/core/result.dart';
-import 'package:pokedex_3d/data/models/models/pokemon3d_model/pokemon_3d.dart';
+import 'package:pokedex_3d/core/constants/hive_constants.dart';
+import 'package:pokedex_3d/core/enums.dart';
+import 'package:pokedex_3d/core/result/result.dart';
+import 'package:pokedex_3d/data/models/models/pokemon3d_model/pokemon_3d.dart'
+    hide PokemonForm;
 import 'package:pokedex_3d/data/repository/pokemon_model_list_repository.dart';
 
 class Pokemon3dModelListNotifier
     extends StateNotifier<AsyncValue<List<Pokemon3dModel>>> {
   final log = Logger();
-  late  List<Pokemon3dModel> _initialList;
+  late List<Pokemon3dModel> _initialList;
   final PokemonModelListRepository _pokemonModelListRepository;
 
   Pokemon3dModelListNotifier({
@@ -60,21 +62,18 @@ class Pokemon3dModelListNotifier
   }
 
   List<Pokemon3dModel> _filterGen({
-    required int gen,
+    required PokemonGen gen,
     required List<Pokemon3dModel> fromList,
   }) {
-    return fromList.sublist(
-      pokemonGenRange[gen]['first'] - 1,
-      pokemonGenRange[gen]['last'],
-    );
+    return fromList.sublist(gen.startId, gen.endId);
   }
 
   List<Pokemon3dModel> _filterForm({
-    required String form,
+    required PokemonForm form,
     required List<Pokemon3dModel> fromList,
   }) {
     return fromList.where((pokemon) {
-      return pokemon.forms.any((value) => value.formName == form);
+      return pokemon.forms.any((value) => value.formName == form.name);
     }).toList();
   }
 
@@ -82,20 +81,20 @@ class Pokemon3dModelListNotifier
     state = AsyncValue.data(_initialList);
   }
 
-  void applyFilter({int? gen, String? form}) {
+  void applyFilter({PokemonGen? gen, PokemonForm? form}) {
     List<Pokemon3dModel> filteredList = _initialList;
     state = const AsyncValue.loading();
 
     log.i(
       "initial filtered list length ${filteredList.length} and filterig for $gen $form",
     );
-    if (gen != null && gen != 0) {
+    if (gen != null && gen != PokemonGen.gen0) {
       log.i("filtering gen");
 
       filteredList = _filterGen(gen: gen, fromList: filteredList);
       log.i("filterd  gen with length ${filteredList.length}");
     }
-    if (form != null && form != "all forms") {
+    if (form != null && form != PokemonForm.allforms) {
       log.i('filtering form');
       filteredList = _filterForm(form: form, fromList: filteredList);
       log.i('filtered  form with length ${filteredList.length}');

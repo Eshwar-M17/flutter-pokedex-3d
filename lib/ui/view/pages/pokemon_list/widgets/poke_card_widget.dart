@@ -1,12 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:pokedex_3d/core/enums.dart';
 import 'package:pokedex_3d/data/models/models/pokemon/pokemon.dart';
 import 'package:pokedex_3d/data/models/models/pokemon3d_model/pokemon_3d.dart';
-import 'package:pokedex_3d/data/models/pokemon_model.dart';
 import 'package:pokedex_3d/ui/providers/pokemon_page_viewmodel_provider.dart';
-import 'package:pokedex_3d/ui/view/pages/pokemon_viewer_page.dart';
-
+import 'package:pokedex_3d/ui/view/pages/pokemon_view/pokemon_viewer_page.dart';
 import 'package:pokedex_3d/ui/viewmodel/pokemon_details_provider.dart';
 
 class PokeCardWidget extends ConsumerWidget {
@@ -77,7 +76,7 @@ class PokemonCardBody extends StatelessWidget {
               bottom: -15,
               right: -3,
               child: Image.asset(
-                pokemonType.icon,
+                pokemonType.iconBg,
                 width: 83,
                 color: Colors.white24,
               ),
@@ -99,31 +98,34 @@ class PokemonCardBody extends StatelessWidget {
             Align(
               alignment: Alignment.topRight,
               child: Padding(
-                padding: const EdgeInsets.only(right: 8, top: 8),
+                padding: const EdgeInsets.only(right: 16, top: 16),
                 child: Text(
                   "#${pokemon.id}",
-                  style: const TextStyle(
-                    fontFamily: "CircularStd-Book",
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
+                  // style: const TextStyle(
+                  //   fontFamily: "CircularStd-Book",
+                  //   fontSize: 14,
+                  //   fontWeight: FontWeight.bold,
+                  //   color: Colors.white,
+                  // ),
+                  style: textTheme.headlineSmall,
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(left: 16),
+              padding: const EdgeInsets.only(left: 16, top: 16),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    pokemon.name,
-                    style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.white,
-                    ),
+                    pokemon.name.substring(0, 1).toUpperCase() +
+                        pokemon.name.substring(1),
+                    // style: const TextStyle(
+                    //   fontSize: 14,
+                    //   fontWeight: FontWeight.bold,
+                    //   color: Colors.white,
+                    // ),
+                    style: textTheme.headlineSmall,
                   ),
                   const SizedBox(height: 10),
                   Column(
@@ -135,20 +137,16 @@ class PokemonCardBody extends StatelessWidget {
                             child: Container(
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(38),
-                                color: Colors.white24,
+                                color: Theme.of(
+                                  context,
+                                ).scaffoldBackgroundColor.withAlpha(60),
                               ),
                               child: Padding(
                                 padding: const EdgeInsets.symmetric(
                                   horizontal: 15,
                                   vertical: 5,
                                 ),
-                                child: Text(
-                                  type,
-                                  style: textTheme.bodyLarge?.copyWith(
-                                    fontSize: 8,
-                                    color: Colors.white,
-                                  ),
-                                ),
+                                child: Text(type, style: textTheme.bodySmall),
                               ),
                             ),
                           ),

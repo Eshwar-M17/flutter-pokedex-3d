@@ -60,7 +60,7 @@ class _PokeCarouselWidgetState extends ConsumerState<PokeCarouselWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final pokemonListState = ref.watch(pokemon3dModelListNotifierProider);
+    final pokemonListState = ref.watch(pokemon3dModelListNotifierProvider);
     final isLoading = pokemonListState.isLoading;
 
     final pokemonState = ref.read(pokemonPageViewmodelProvider.notifier);

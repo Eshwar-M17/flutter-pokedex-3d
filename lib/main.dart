@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:pokedex_3d/core/constants.dart';
+import 'package:pokedex_3d/core/constants/hive_constants.dart';
 import 'package:pokedex_3d/core/error_widget/error_widget.dart';
 import 'package:pokedex_3d/data/services/local/hive_models/evolution_hive_model.dart';
 import 'package:pokedex_3d/data/services/local/hive_models/pokemon_3d_hive_model.dart';
@@ -46,10 +46,10 @@ Future<void> initHive() async {
   Hive.registerAdapter(EvolutionDetailHiveAdapter());
 
   await Future.wait([
-    Hive.openBox<Pokemon3dHive>(AppConstants.pokemonListboxKey),
-    Hive.openBox<PokemonHive>(AppConstants.pokemonDetailBoxKey),
-    Hive.openBox<SpeciesHive>(AppConstants.pokemonEvolutionBoxKey),
-    Hive.openBox<int>(AppConstants.pokemonEvolutionSpeciesBoxKey),
-    Hive.openBox<Pokemon3dHive>(AppConstants.pokemonViewedListboxKey),
+    Hive.openBox<Pokemon3dHive>(HiveConstants.pokemonListboxKey),
+    Hive.openBox<PokemonHive>(HiveConstants.pokemonDetailBoxKey),
+    Hive.openBox<SpeciesHive>(HiveConstants.pokemonEvolutionBoxKey),
+    Hive.openBox<int>(HiveConstants.pokemonEvolutionSpeciesBoxKey),
+    Hive.openBox<Pokemon3dHive>(HiveConstants.pokemonViewedListboxKey),
   ]);
 }

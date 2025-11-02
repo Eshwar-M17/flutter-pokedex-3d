@@ -1,6 +1,6 @@
 class PokemonTypeIcons {
-  static const String basePathIcon = "assets/images/icons/";
-  static const String basePathIconBg = "assets/images/icons_bg/";
+  static const String basePathIcon = "assets/images/type_icons/icons/";
+  static const String basePathIconBg = "assets/images/type_icons/icons_big/";
 
   // Main icons (big colored)
   static const String water = "${basePathIcon}water.png";
@@ -23,22 +23,22 @@ class PokemonTypeIcons {
   static const String flying = "${basePathIcon}flying.png";
 
   // Background/Accent icons (small white or accent)
-  static const String waterBg = "${basePathIconBg}water_bg.png";
-  static const String dragonBg = "${basePathIconBg}dragon_bg.png";
-  static const String electricBg = "${basePathIconBg}electric_bg.png";
-  static const String fairyBg = "${basePathIconBg}fairy_bg.png";
-  static const String ghostBg = "${basePathIconBg}ghost_bg.png";
-  static const String fireBg = "${basePathIconBg}fire_bg.png";
-  static const String iceBg = "${basePathIconBg}ice_bg.png";
-  static const String grassBg = "${basePathIconBg}grass_bg.png";
-  static const String bugBg = "${basePathIconBg}bug_bg.png";
-  static const String fightingBg = "${basePathIconBg}fighting_bg.png";
-  static const String normalBg = "${basePathIconBg}normal_bg.png";
-  static const String darkBg = "${basePathIconBg}dark_bg.png";
-  static const String steelBg = "${basePathIconBg}steel_bg.png";
-  static const String rockBg = "${basePathIconBg}rock_bg.png";
-  static const String psychicBg = "${basePathIconBg}psychic_bg.png";
-  static const String groundBg = "${basePathIconBg}ground_bg.png";
-  static const String poisonBg = "${basePathIconBg}poison_bg.png";
-  static const String flyingBg = "${basePathIconBg}flying_bg.png";
+  static const String waterBg = "${basePathIconBg}water.png";
+  static const String dragonBg = "${basePathIconBg}dragon.png";
+  static const String electricBg = "${basePathIconBg}electric.png";
+  static const String fairyBg = "${basePathIconBg}fairy.png";
+  static const String ghostBg = "${basePathIconBg}ghost.png";
+  static const String fireBg = "${basePathIconBg}fire.png";
+  static const String iceBg = "${basePathIconBg}ice.png";
+  static const String grassBg = "${basePathIconBg}grass.png";
+  static const String bugBg = "${basePathIconBg}bug.png";
+  static const String fightingBg = "${basePathIconBg}fighting.png";
+  static const String normalBg = "${basePathIconBg}normal.png";
+  static const String darkBg = "${basePathIconBg}dark.png";
+  static const String steelBg = "${basePathIconBg}steel.png";
+  static const String rockBg = "${basePathIconBg}rock.png";
+  static const String psychicBg = "${basePathIconBg}psychic.png";
+  static const String groundBg = "${basePathIconBg}ground.png";
+  static const String poisonBg = "${basePathIconBg}poison.png";
+  static const String flyingBg = "${basePathIconBg}flying.png";
 }

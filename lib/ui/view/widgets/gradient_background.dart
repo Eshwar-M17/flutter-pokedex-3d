@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pokedex_3d/data/models/pokemon_model.dart';
+import 'package:pokedex_3d/core/enums.dart';
+import 'package:pokedex_3d/core/theme/app_colors.dart';
 import 'package:pokedex_3d/ui/providers/pokemon_page_viewmodel_provider.dart';
 
 class GradientBackground extends ConsumerWidget {

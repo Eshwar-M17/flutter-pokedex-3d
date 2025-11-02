@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:pokedex_3d/core/errors/error_handler.dart';
 import 'package:pokedex_3d/core/errors/error_mapper.dart';
-import 'package:pokedex_3d/core/result.dart';
+import 'package:pokedex_3d/core/result/result.dart';
 import 'package:pokedex_3d/data/mappers/hive_mappers/pokemon_hive_mapper.dart';
 import 'package:pokedex_3d/data/mappers/pokemon_api_mapper.dart';
 import 'package:pokedex_3d/data/models/models/pokemon/pokemon.dart';

@@ -1,7 +1,7 @@
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:logger/logger.dart';
 import 'package:pokedex_3d/core/errors/error_mapper.dart';
-import 'package:pokedex_3d/core/result.dart';
+import 'package:pokedex_3d/core/result/result.dart';
 import 'package:pokedex_3d/data/services/remote/api_service.dart';
 
 class Model3dFileRepository {

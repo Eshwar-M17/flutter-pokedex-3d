@@ -2,7 +2,7 @@
 import 'dart:async';
 import 'package:logger/logger.dart';
 import 'package:pokedex_3d/core/errors/error_mapper.dart';
-import 'package:pokedex_3d/core/result.dart';
+import 'package:pokedex_3d/core/result/result.dart';
 import 'package:pokedex_3d/data/mappers/api_mappers/pokemon_3d_mapper.dart';
 import 'package:pokedex_3d/data/mappers/hive_mappers/pokemon_3d_hive_mapper.dart';
 import 'package:pokedex_3d/data/models/models/pokemon3d_model/pokemon_3d.dart';

@@ -1,8 +1,6 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pokedex_3d/core/errors/error.dart';
-import 'package:pokedex_3d/data/models/pokemon_model.dart';
+import 'package:pokedex_3d/core/enums.dart';
 import 'package:pokedex_3d/ui/providers/pokemon_page_viewmodel_provider.dart';
 import 'package:skeletonizer/skeletonizer.dart';
 

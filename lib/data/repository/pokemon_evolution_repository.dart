@@ -3,7 +3,7 @@ import 'dart:convert';
 
 import 'package:logger/logger.dart';
 import 'package:pokedex_3d/core/errors/error_mapper.dart';
-import 'package:pokedex_3d/core/result.dart';
+import 'package:pokedex_3d/core/result/result.dart';
 import 'package:pokedex_3d/data/mappers/api_mappers/evolution_chain_mapper.dart';
 import 'package:pokedex_3d/data/mappers/hive_mappers/evolution_hive_mapper.dart';
 import 'package:pokedex_3d/data/models/models/evolution_chain_model/evolution_chain_model.dart';

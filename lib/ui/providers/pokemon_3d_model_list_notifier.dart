@@ -6,7 +6,7 @@ import 'package:pokedex_3d/data/providers/pokemon_model_list_provider.dart';
 import 'package:pokedex_3d/ui/providers/connectivity_notifier.dart';
 import 'package:pokedex_3d/ui/viewmodel/pokemon_3d_model_list_notifier.dart';
 
-final pokemon3dModelListNotifierProider =
+final pokemon3dModelListNotifierProvider =
     StateNotifierProvider<
       Pokemon3dModelListNotifier,
       AsyncValue<List<Pokemon3dModel>>

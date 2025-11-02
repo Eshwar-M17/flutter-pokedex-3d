@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/legacy.dart';
 import 'package:logger/logger.dart';
-import 'package:pokedex_3d/core/result.dart';
+import 'package:pokedex_3d/core/result/result.dart';
 import 'package:pokedex_3d/data/repository/model_repository.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 

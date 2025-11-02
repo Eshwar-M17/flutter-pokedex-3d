@@ -1,6 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pokedex_3d/core/errors/error.dart';
-import 'package:pokedex_3d/core/result.dart';
+import 'package:pokedex_3d/core/result/result.dart';
 import 'package:pokedex_3d/data/models/models/pokemon/pokemon.dart';
 import 'package:pokedex_3d/data/providers/repository_providers.dart';
 

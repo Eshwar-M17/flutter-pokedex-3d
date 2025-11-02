@@ -1,9 +1,7 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 import 'package:pokedex_3d/data/providers/pokemon_model_list_provider.dart';
 import 'package:pokedex_3d/data/providers/repository_providers.dart';
 import 'package:pokedex_3d/ui/providers/model_controller_provider.dart';
-import 'package:pokedex_3d/ui/providers/pokemon_3d_model_list_notifier.dart';
 import 'package:pokedex_3d/ui/state/pokemon_state.dart';
 import 'package:pokedex_3d/ui/viewmodel/pokemon_page_viewmodel.dart';
 

@@ -12,13 +12,6 @@ class EmptyCollectionWidget extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const Align(
-                alignment: Alignment.topLeft,
-                child: Text(
-                  'PokeDex 3D',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                ),
-              ),
               const SizedBox(height: 100),
               Image.asset('assets/images/pokeball_icon.png', width: 200),
               const Text(
