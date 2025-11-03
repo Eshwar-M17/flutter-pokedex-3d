@@ -109,7 +109,7 @@ class PokemonDetailViewModel extends StateNotifier<PokemonPageState> {
       index: index,
       pokemon: pokemon3d,
       dominantColorGradient: [type.color, type.color.withAlpha(200)],
-      backgroundImg: type.icon,
+      backgroundImg: type.iconBg,
       pokemonInfo: AsyncValue.data(pokemon),
     );
     await Future.wait([

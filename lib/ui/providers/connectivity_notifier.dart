@@ -25,3 +25,4 @@ final connectivityStatusProvider = StreamProvider<InternetStatus>((ref) {
 
   return controller.stream;
 });
+

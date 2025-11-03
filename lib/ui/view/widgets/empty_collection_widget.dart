@@ -25,23 +25,6 @@ class EmptyCollectionWidget extends StatelessWidget {
                 textAlign: TextAlign.center,
                 style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15),
               ),
-              const SizedBox(height: 20),
-              FilledButton(
-                style: const ButtonStyle(
-                  shadowColor: WidgetStatePropertyAll(Colors.black),
-                  backgroundColor: WidgetStatePropertyAll(Colors.white),
-                ),
-                onPressed: () {},
-
-                child: const Text(
-                  'Connect',
-
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
             ],
           ),
         ),
