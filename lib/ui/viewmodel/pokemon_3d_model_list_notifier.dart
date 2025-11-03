@@ -14,6 +14,7 @@ class Pokemon3dModelListNotifier
   final log = Logger();
   late List<Pokemon3dModel> _initialList;
   final PokemonModelListRepository _pokemonModelListRepository;
+  bool _fromCache = false;
 
   Pokemon3dModelListNotifier({
     required PokemonModelListRepository pokemonModelListRepository,
@@ -26,6 +27,8 @@ class Pokemon3dModelListNotifier
     final response = await _pokemonModelListRepository.getMainPokemonList();
     switch (response) {
       case Ok<List<Pokemon3dModel>>():
+        _fromCache = false;
+
         state = AsyncValue.data(response.value);
         _initialList = response.value;
 
@@ -102,6 +105,8 @@ class Pokemon3dModelListNotifier
     state = AsyncValue.data(filteredList);
   }
 
+  bool get fromCache => _fromCache;
+
   void getViewedPokemonList() async {
     log.d("getting viewed model list cache");
     state = const AsyncValue.loading();
@@ -109,6 +114,7 @@ class Pokemon3dModelListNotifier
 
     switch (response) {
       case Ok<List<Pokemon3dModel>>():
+        _fromCache = true;
         state = AsyncValue.data(response.value);
         _initialList = response.value;
         break;

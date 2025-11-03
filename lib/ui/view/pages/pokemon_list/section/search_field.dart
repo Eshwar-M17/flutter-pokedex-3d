@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pokedex_3d/ui/providers/pokemon_3d_model_list_notifier.dart';
+import 'package:pokedex_3d/ui/viewmodel/pokemon_list_page_viewmodel.dart';
 
 class SearchField extends ConsumerStatefulWidget {
   const SearchField({super.key});
@@ -38,7 +39,7 @@ class _SearchFieldState extends ConsumerState<SearchField> {
         leading: const Icon(Icons.search_rounded, size: 22),
         onSubmitted: (value) {
           ref
-              .read(pokemon3dModelListNotifierProvider.notifier)
+              .read(pokemonListPageViewmodelProvider.notifier)
               .searchPokemon(value);
         },
         onTapOutside: (_) => _focusNode.unfocus(),

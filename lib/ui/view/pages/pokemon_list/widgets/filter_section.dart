@@ -5,6 +5,7 @@ import 'package:pokedex_3d/core/logger.dart';
 import 'package:pokedex_3d/ui/providers/filter_sheet_provider.dart';
 import 'package:pokedex_3d/ui/providers/pokemon_3d_model_list_notifier.dart';
 import 'package:pokedex_3d/ui/view/pages/pokemon_list/widgets/custom_dropdown_menu.dart';
+import 'package:pokedex_3d/ui/viewmodel/pokemon_list_page_viewmodel.dart';
 
 class FilterSection extends ConsumerStatefulWidget {
   const FilterSection({super.key});
@@ -69,7 +70,9 @@ class _FilterSectionState extends ConsumerState {
           color: Colors.black54,
           style: IconButton.styleFrom(backgroundColor: Colors.grey[300]),
           onPressed: () {
-            ref.read(isFilterVisible.notifier).state = false;
+            ref
+                .read(pokemonListPageViewmodelProvider.notifier)
+                .setFilterVisible(false);
             Navigator.of(context).pop();
           },
           icon: Icon(Icons.close),
@@ -81,7 +84,7 @@ class _FilterSectionState extends ConsumerState {
   void _onFormSelected(PokemonForm? form) {
     selectedForm = form;
     ref
-        .read(pokemon3dModelListNotifierProvider.notifier)
+        .read(pokemonListPageViewmodelProvider.notifier)
         .applyFilter(gen: selectedGen, form: selectedForm!);
   }
 
@@ -91,7 +94,7 @@ class _FilterSectionState extends ConsumerState {
     if (value != null) {
       log.i(value.toString());
       ref
-          .read(pokemon3dModelListNotifierProvider.notifier)
+          .read(pokemonListPageViewmodelProvider.notifier)
           .applyFilter(gen: value, form: selectedForm!);
     }
   }
@@ -101,7 +104,7 @@ class _FilterSectionState extends ConsumerState {
     _formController.text = 'All Forms';
     selectedForm = PokemonForm.allforms;
     selectedGen = PokemonGen.gen0;
-    ref.read(pokemon3dModelListNotifierProvider.notifier).clearFilter();
+    ref.read(pokemonListPageViewmodelProvider.notifier).clearFilter();
   }
 
   List<DropdownMenuEntry<PokemonGen>> _createGenEntries() {
