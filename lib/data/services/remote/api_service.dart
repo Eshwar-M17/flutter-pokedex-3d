@@ -1,52 +1,53 @@
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 import 'package:logger/logger.dart';
-import 'package:pokedex_3d/data/services/remote/api_models/pokemon3d_model/pokemon_3d_api_model.dart';
+import 'package:pokedex_3d/core/constants/api_constants.dart';
+import 'package:pokedex_3d/core/network/network_client.dart';
+import 'package:pokedex_3d/core/network/network_response.dart';
 
+/// Handles all remote API communication related to Pokémon data.
 class ApiService {
-  /// Fetch list of Pokémon
-  ///
+  final NetworkClient client;
   final log = Logger();
-  Future<List<Pokemon3dApiModel>> getPokemonList() async {
-    final url = Uri.parse('https://pokemon-3d-api.onrender.com/v1/pokemon');
-    final response = await http.get(url);
 
-    if (response.statusCode != 200) {
-      throw Exception('Failed to load pokemon list: ${response.reasonPhrase}');
+  ApiService({required this.client});
+
+  /// Fetch list of Pokémon (3D version)
+  Future<NetworkResponse> getPokemonList({String? eTag}) async {
+    final uri = Uri.parse(ApiConstants.pokemonList);
+
+    final headers = <String, String>{};
+    if (eTag != null) {
+      headers.addAll({"If-None-Match": eTag, "Cache-Control": "max-age=0"});
     }
 
-    final decoded = jsonDecode(response.body) as List;
-    return decoded
-        .map((e) => Pokemon3dApiModel.fromJson(e as Map<String, dynamic>))
-        .toList();
+    log.i('Fetching Pokémon list → $uri');
+    return client.get(uri: uri, headers: headers.isNotEmpty ? headers : null);
   }
 
-  /// Fetch details of a single Pokémon
-  Future<http.Response> getPokemonDetails(int id) async {
-    final uri = Uri.parse(
-      'https://pokeapi-proxy.freecodecamp.rocks/api/pokemon/$id',
-    );
-    return await http.get(uri);
+  /// Fetch details of a single Pokémon (standard PokéAPI)
+  Future<NetworkResponse> getPokemonDetails(int id) async {
+    final uri = Uri.parse(ApiConstants.pokemonDetails(id));
+    log.i('Fetching Pokémon details → $uri');
+    return client.get(uri: uri);
   }
 
-  Future<http.Response> getSpeciesDetails(int id) async {
-    final speciesUri = Uri.parse(
-      'https://pokeapi.co/api/v2/pokemon-species/$id',
-    );
-    log.i('getting species apiservice  detail for $id ');
-
-    return await http.get(speciesUri);
+  /// Fetch species details for a Pokémon
+  Future<NetworkResponse> getSpeciesDetails(int id) async {
+    final uri = Uri.parse(ApiConstants.speciesDetails(id));
+    log.i('Fetching species details → $uri');
+    return client.get(uri: uri);
   }
 
-  /// Fetch Pokémon evolution chain
-  Future<http.Response> getEvolutionDetails(String url) async {
-    log.i('getting evolution apiservice  detail for ${url} ');
-
-    return await http.get(Uri.parse(url));
+  /// Fetch Pokémon evolution chain details
+  Future<NetworkResponse> getEvolutionDetails(String url) async {
+    final uri = Uri.parse(ApiConstants.evolutionChain(url));
+    log.i('Fetching evolution chain → $uri');
+    return client.get(uri: uri);
   }
 
-  /// Download 3D model file
-  Future<http.Response> getModelFile(String modelUrl) async {
-    return await http.get(Uri.parse(modelUrl));
+  /// Fetch 3D model file (used for rendering Pokémon)
+  Future<NetworkResponse> getModelFile(String modelUrl) async {
+    final uri = Uri.parse(ApiConstants.modelFile(modelUrl));
+    log.i('Fetching 3D model → $uri');
+    return client.get(uri: uri);
   }
 }

@@ -4,8 +4,8 @@ part 'pokemon_api_model.freezed.dart';
 part 'pokemon_api_model.g.dart';
 
 @freezed
-class PokemonModelApi with _$PokemonModelApi {
-  factory PokemonModelApi({
+class PokemonDetailApiModel with _$PokemonDetailApiModel {
+  factory PokemonDetailApiModel({
     @JsonKey(name: "base_experience") required int baseExperience,
     required int height,
     required int id,
@@ -17,8 +17,8 @@ class PokemonModelApi with _$PokemonModelApi {
     required int weight,
   }) = _PokemonApiModel;
 
-  factory PokemonModelApi.fromJson(Map<String, dynamic> json) =>
-      _$PokemonModelApiFromJson(json);
+  factory PokemonDetailApiModel.fromJson(Map<String, dynamic> json) =>
+      _$PokemonDetailApiModelFromJson(json);
 }
 
 @freezed
@@ -51,11 +51,9 @@ class TypeDetailApiModel with _$TypeDetailApiModel {
 
 @freezed
 class TypeApiModel with _$TypeApiModel {
-  
   factory TypeApiModel({required String name, required String url}) =
       _TypeApiModel;
 
   factory TypeApiModel.fromJson(Map<String, dynamic> json) =>
       _$TypeApiModelFromJson(json);
 }
-

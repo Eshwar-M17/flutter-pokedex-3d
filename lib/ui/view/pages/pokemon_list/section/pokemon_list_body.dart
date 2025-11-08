@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pokedex_3d/core/logger.dart';
-import 'package:pokedex_3d/data/models/models/pokemon3d_model/pokemon_3d.dart';
 import 'package:pokedex_3d/ui/view/pages/pokemon_list/widgets/pokemon_grid.dart';
 import 'package:pokedex_3d/ui/view/widgets/empty_collection_widget.dart';
 import 'package:pokedex_3d/ui/viewmodel/pokemon_list_page_viewmodel.dart';
@@ -17,18 +15,22 @@ class PokemonListBody extends ConsumerWidget {
       data: (pokeList) {
         if (pokeList.isEmpty) {
           if (pokemonListState.isFilteredResult) {
-            log.e("filtered 0");
             return SliverFillRemaining(
               child: Center(
                 child: Text(
                   "No Pokemon for the selected Filter",
-                  style: Theme.of(context).textTheme.titleLarge,
+                  style: Theme.of(context).textTheme.labelLarge,
                 ),
               ),
             );
           } else if (pokemonListState.isSearchResult) {
             return SliverFillRemaining(
-              child: Center(child: Text("No Pokemon avaiable for the Search")),
+              child: Center(
+                child: Text(
+                  "No Pokemon avaiable for the Search",
+                  style: Theme.of(context).textTheme.labelLarge,
+                ),
+              ),
             );
           } else if (pokemonListState.isOffline) {
             return SliverFillRemaining(child: EmptyCollectionWidget());
@@ -39,10 +41,13 @@ class PokemonListBody extends ConsumerWidget {
       error: (e, st) =>
           SliverFillRemaining(child: Center(child: Text(e.toString()))),
       loading: () => SliverFillRemaining(
-        child: PokemonGrid(
-          pokeList: List.generate(
-            10,
-            (index) => Pokemon3dModel(id: 0, forms: []),
+        child: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("Loading Pokemons..."),
+              Image.asset('assets/images/pikachu_running.gif', width: 50),
+            ],
           ),
         ),
       ),

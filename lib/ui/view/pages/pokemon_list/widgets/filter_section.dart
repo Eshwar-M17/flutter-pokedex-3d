@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:pokedex_3d/core/enums.dart';
-import 'package:pokedex_3d/core/logger.dart';
-import 'package:pokedex_3d/ui/providers/filter_sheet_provider.dart';
-import 'package:pokedex_3d/ui/providers/pokemon_3d_model_list_notifier.dart';
+import 'package:pokedex_3d/core/utils/enums.dart';
+import 'package:pokedex_3d/core/utils/logger.dart';
 import 'package:pokedex_3d/ui/view/pages/pokemon_list/widgets/custom_dropdown_menu.dart';
 import 'package:pokedex_3d/ui/viewmodel/pokemon_list_page_viewmodel.dart';
 
@@ -61,14 +59,18 @@ class _FilterSectionState extends ConsumerState {
         IconButton.filled(
           onPressed: _clearFilter,
           iconSize: 20,
-          color: Colors.black54,
-          style: IconButton.styleFrom(backgroundColor: Colors.grey[300]),
+          color: Theme.of(context).colorScheme.onSurface.withAlpha(200),
+          style: IconButton.styleFrom(
+            backgroundColor: Theme.of(context).canvasColor.withAlpha(200),
+          ),
           icon: const Icon(Icons.filter_alt_off_rounded),
         ),
         IconButton.filled(
           iconSize: 20,
-          color: Colors.black54,
-          style: IconButton.styleFrom(backgroundColor: Colors.grey[300]),
+          color: Theme.of(context).colorScheme.onSurface.withAlpha(200),
+          style: IconButton.styleFrom(
+            backgroundColor: Theme.of(context).canvasColor.withAlpha(200),
+          ),
           onPressed: () {
             ref
                 .read(pokemonListPageViewmodelProvider.notifier)

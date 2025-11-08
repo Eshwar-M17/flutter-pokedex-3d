@@ -1,21 +1,24 @@
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:logger/logger.dart';
-import 'package:pokedex_3d/data/services/local/hive_models/evolution_hive_model.dart';
+import 'package:pokedex_3d/data/services/local/hive_models/evolution_detail_hive_model.dart';
 import 'package:pokedex_3d/data/services/local/hive_models/pokemon_3d_hive_model.dart';
-import 'package:pokedex_3d/data/services/local/hive_models/pokemon_hive_model.dart';
+import 'package:pokedex_3d/data/services/local/hive_models/pokemon_detail_hive_model.dart';
 
 class DatabaseService {
-  late final Box<Pokemon3dHive> _pokemonListBox;
-  late final Box<PokemonHive> _pokemondetailsBox;
-  late final Box<SpeciesHive> _pokemonEvolutionBox;
-  late final Box<Pokemon3dHive> _pokemonViewedBox;
+  final Box<Pokemon3dHive> _pokemonListBox;
+  final Box<PokemonDetailHive> _pokemondetailsBox;
+  final Box<EvolutionDetailHive> _pokemonEvolutionBox;
+  final Box<Pokemon3dHive> _pokemonViewedBox;
+  final Box<String?> _pokemonListEntityIdBox;
+
   final log = Logger();
 
   late final Box<int> _speciesIdBox;
   DatabaseService({
+    required Box<String?> pokemonListEntityIdBox,
     required Box<Pokemon3dHive> pokemonListBox,
-    required Box<PokemonHive> pokemondetailsBox,
-    required Box<SpeciesHive> pokemonEvolutionBox,
+    required Box<PokemonDetailHive> pokemondetailsBox,
+    required Box<EvolutionDetailHive> pokemonEvolutionBox,
     required Box<Pokemon3dHive> pokemonViewedBox,
 
     required Box<int> speciesIdBox,
@@ -23,17 +26,27 @@ class DatabaseService {
        _pokemondetailsBox = pokemondetailsBox,
        _pokemonEvolutionBox = pokemonEvolutionBox,
        _pokemonViewedBox = pokemonViewedBox,
-       _speciesIdBox = speciesIdBox;
+       _speciesIdBox = speciesIdBox,
+       _pokemonListEntityIdBox = pokemonListEntityIdBox;
   Future<void> putPokemonList(List<Pokemon3dHive> list) async {
     await _pokemonListBox.addAll(list);
   }
 
   Future<void> putViewedPokemon(Pokemon3dHive pokemon) async {
-    await _pokemonViewedBox.put(pokemon.id,pokemon);
+    await _pokemonViewedBox.put(pokemon.id, pokemon);
   }
 
   List<Pokemon3dHive> getPokemonList() {
     return _pokemonListBox.values.toList();
+  }
+
+  Future<void> putPokemonListEtag(String? etag) async {
+    log.i(etag);
+    await _pokemonListEntityIdBox.put('listEtag', etag);
+  }
+
+  String? getPokemonListEtag() {
+    return _pokemonListEntityIdBox.get('listEtag');
   }
 
   List<Pokemon3dHive> getViewedPokemonList() {
@@ -41,12 +54,12 @@ class DatabaseService {
     return _pokemonViewedBox.values.toList();
   }
 
-  Future<void> putPokemonDetails(PokemonHive data) async {
+  Future<void> putPokemonDetails(PokemonDetailHive data) async {
     _pokemondetailsBox.put(data.id, data);
   }
 
   Future<void> putEvolutionDetails({
-    required SpeciesHive data,
+    required EvolutionDetailHive data,
     required int pokemonId,
   }) async {
     log.i(
@@ -57,11 +70,11 @@ class DatabaseService {
     _pokemonEvolutionBox.put(data.speciesId, data);
   }
 
-  PokemonHive? getPokemonDetails(int id) {
+  PokemonDetailHive? getPokemonDetails(int id) {
     return _pokemondetailsBox.get(id);
   }
 
-  SpeciesHive? getEvolutionDetails(int id) {
+  EvolutionDetailHive? getEvolutionDetails(int id) {
     final speciesId = _speciesIdBox.get(id);
 
     if (speciesId == null) {

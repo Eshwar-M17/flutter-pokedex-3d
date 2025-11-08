@@ -10,7 +10,7 @@ class FilterModalSheet extends StatelessWidget {
       height: 80,
       padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 10),
       decoration: BoxDecoration(
-        color: Theme.of(context).scaffoldBackgroundColor,
+        color: Theme.of(context).colorScheme.surfaceContainerHighest,
         borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(16),
           topRight: Radius.circular(16),

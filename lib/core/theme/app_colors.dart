@@ -2,9 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
-class AppColors {
-  static const Color scaffoldBackground = Color.fromRGBO(254, 254, 254, 1);
-}
 
 class PokemonTypePalette {
   static const Color all = Color(0xFF333333); // Todos os tipos
@@ -19,7 +16,8 @@ class PokemonTypePalette {
   static const Color bug = Color(0xFF91C12F); // Inseto
   static const Color fighting = Color(0xFFCE416B); // Lutador
   static const Color normal = Color(0xFF919AA2); // Normal
-  static const Color dark = Color(0xFF303943); // Noturno
+  static const Color dark = Color.fromRGBO(90, 84, 101, 1); // Noturno
+  // static const Color dark = Color.fromRGBO(48, 57, 67, 1); // Noturno
   static const Color steel = Color(0xFF5A8EA2); // Metal
   static const Color rock = Color(0xFFC5B78C); // Pedra
   static const Color psychic = Color(0xFFFA7179); // Psíquico

@@ -2,12 +2,12 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_riverpod/legacy.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 import 'package:logger/logger.dart';
-import 'package:pokedex_3d/core/constants/hive_constants.dart';
-import 'package:pokedex_3d/core/enums.dart';
+import 'package:pokedex_3d/core/utils/enums.dart';
 import 'package:pokedex_3d/core/result/result.dart';
-import 'package:pokedex_3d/data/models/models/pokemon3d_model/pokemon_3d.dart'
+import 'package:pokedex_3d/data/models/pokemon3d_model/pokemon_3d.dart'
     hide PokemonForm;
 import 'package:pokedex_3d/data/repository/pokemon_model_list_repository.dart';
+import 'package:pokedex_3d/ui/errors/error_localizer.dart';
 
 class Pokemon3dModelListNotifier
     extends StateNotifier<AsyncValue<List<Pokemon3dModel>>> {
@@ -22,9 +22,11 @@ class Pokemon3dModelListNotifier
   }) : _pokemonModelListRepository = pokemonModelListRepository,
        super(const AsyncValue.loading());
 
-  void getMainPokemonList() async {
+  void getMainPokemonList({required bool forceRefresh}) async {
     state = const AsyncValue.loading();
-    final response = await _pokemonModelListRepository.getMainPokemonList();
+    final response = await _pokemonModelListRepository.getMainPokemonList(
+      forceRefresh: forceRefresh,
+    );
     switch (response) {
       case Ok<List<Pokemon3dModel>>():
         _fromCache = false;
@@ -34,9 +36,32 @@ class Pokemon3dModelListNotifier
 
       case Error<List<Pokemon3dModel>>():
         state = AsyncValue.error(
-          response.error.userMessage ?? response.error.message,
+          ErrorLocalizer.fromAppError(response.error),
           StackTrace.current,
         );
+    }
+  }
+
+  void getViewedPokemonList() async {
+    log.d("getting viewed model list cache");
+    state = const AsyncValue.loading();
+    final response = await _pokemonModelListRepository.getViewedPokemonList();
+
+    switch (response) {
+      case Ok<List<Pokemon3dModel>>():
+        _fromCache = true;
+        state = AsyncValue.data(response.value);
+        _initialList = response.value;
+        break;
+
+      case Error<List<Pokemon3dModel>>():
+        log.d("got error on getting viewed model cache");
+
+        state = AsyncValue.error(
+          ErrorLocalizer.fromAppError(response.error),
+          StackTrace.current,
+        );
+        break;
     }
   }
 
@@ -64,11 +89,20 @@ class Pokemon3dModelListNotifier
     }
   }
 
+  List<Pokemon3dModel> _filterGenCachedList({
+    required PokemonGen gen,
+    required List<Pokemon3dModel> fromList,
+  }) {
+    return fromList.where((pokemon) {
+      return pokemon.id >= gen.startId && pokemon.id <= gen.endId;
+    }).toList();
+  }
+
   List<Pokemon3dModel> _filterGen({
     required PokemonGen gen,
     required List<Pokemon3dModel> fromList,
   }) {
-    return fromList.sublist(gen.startId, gen.endId);
+    return fromList.sublist(gen.startId - 1, gen.endId);
   }
 
   List<Pokemon3dModel> _filterForm({
@@ -93,9 +127,12 @@ class Pokemon3dModelListNotifier
     );
     if (gen != null && gen != PokemonGen.gen0) {
       log.i("filtering gen");
-
-      filteredList = _filterGen(gen: gen, fromList: filteredList);
-      log.i("filterd  gen with length ${filteredList.length}");
+      if (fromCache) {
+        filteredList = _filterGenCachedList(gen: gen, fromList: filteredList);
+      } else {
+        filteredList = _filterGen(gen: gen, fromList: filteredList);
+        log.i("filterd  gen with length ${filteredList.length}");
+      }
     }
     if (form != null && form != PokemonForm.allforms) {
       log.i('filtering form');
@@ -106,27 +143,4 @@ class Pokemon3dModelListNotifier
   }
 
   bool get fromCache => _fromCache;
-
-  void getViewedPokemonList() async {
-    log.d("getting viewed model list cache");
-    state = const AsyncValue.loading();
-    final response = await _pokemonModelListRepository.getViewedPokemonList();
-
-    switch (response) {
-      case Ok<List<Pokemon3dModel>>():
-        _fromCache = true;
-        state = AsyncValue.data(response.value);
-        _initialList = response.value;
-        break;
-
-      case Error<List<Pokemon3dModel>>():
-        log.d("got error on getting viewed model cache");
-
-        state = AsyncValue.error(
-          response.error.userMessage ?? response.error.message,
-          StackTrace.current,
-        );
-        break;
-    }
-  }
 }

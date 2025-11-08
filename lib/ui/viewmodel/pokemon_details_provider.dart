@@ -1,6 +1,6 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:pokedex_3d/core/result/result.dart';
-import 'package:pokedex_3d/data/models/models/pokemon/pokemon.dart';
+import 'package:pokedex_3d/data/models/pokemon_detail/pokemon_detail.dart';
 import 'package:pokedex_3d/data/providers/repository_providers.dart';
 
 final pokemonDetailsProvider = FutureProvider.family<PokemonDetailsModel, int>((

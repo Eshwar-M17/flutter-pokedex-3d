@@ -1,6 +1,6 @@
 # Pokédex 3D
 
-A Flutter-based 3D Pokédex application featuring interactive Pokémon models and detailed information.
+A Flutter-based 3D Pokédex application featuring interactive Pokémon models and related information.
 
 ## Features
 - 🎮 3D Pokémon model viewer
@@ -8,20 +8,12 @@ A Flutter-based 3D Pokédex application featuring interactive Pokémon models an
 - 🔄 Evolution chain info
 - 🔍 Simple Pokémon search and filtering
 
-
-
-## Status
-🚧 **In Development** - Core features implemented, additional functionality being added
-- 🔊 Listening to Pokémon cries
-- ⭐ Favorite Pokémon feature
-
-
 ## Demo
 <p align="center">
-  <img src="demo/Screenshot_1761207453.png" alt="Screenshot 1" width="30%" />
-  <img src="demo/Screenshot_1761207473.png" alt="Screenshot 2" width="30%" />
-  <img src="demo/demo_gif.gif" alt="Charizard 3D demo" width="30%" />
-  
+  <img src="demo/Screenshot_1762631130.png" alt="Pokemon List Page" width="24%" />
+  <img src="demo/Screenshot_1761207453.png" alt="Screenshot 1" width="24%" />
+  <img src="demo/Screenshot_1761207473.png" alt="Screenshot 2" width="24%" />
+  <img src="demo/demo_gif.gif" alt="Charizard 3D demo" width="24%" />
 </p>
 
 

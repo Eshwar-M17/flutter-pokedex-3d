@@ -1,12 +1,12 @@
 import 'dart:ui';
-import 'package:pokedex_3d/core/enums.dart';
-import 'package:pokedex_3d/core/icons_set.dart';
+import 'package:pokedex_3d/core/utils/enums.dart';
+import 'package:pokedex_3d/core/utils/icons_set.dart';
 import 'package:pokedex_3d/data/models/evolution_chain_model.dart';
-import 'package:pokedex_3d/data/models/models/pokemon/pokemon.dart';
-import 'package:pokedex_3d/data/models/models/pokemon3d_model/pokemon_3d.dart';
+import 'package:pokedex_3d/data/models/pokemon_detail/pokemon_detail.dart';
+import 'package:pokedex_3d/data/models/pokemon3d_model/pokemon_3d.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class PokemonPageState {
+class PokemonDetailPageState {
   final int index;
   final Pokemon3dModel pokemon;
   final int currentForm;
@@ -15,7 +15,7 @@ class PokemonPageState {
   final List<Color>? dominantColorGradient;
   final AsyncValue<String> modelPath;
   final String? backgroundImg;
-  const PokemonPageState({
+  const PokemonDetailPageState({
     required this.index,
     required this.pokemon,
     required this.currentForm,
@@ -27,8 +27,8 @@ class PokemonPageState {
     this.backgroundImg,
   });
 
-  factory PokemonPageState.initial() {
-    return PokemonPageState(
+  factory PokemonDetailPageState.initial() {
+    return PokemonDetailPageState(
       index: 0,
       pokemon: Pokemon3dModel(id: 0, forms: []),
       currentForm: 0,
@@ -43,7 +43,7 @@ class PokemonPageState {
     );
   }
 
-  PokemonPageState copyWith({
+  PokemonDetailPageState copyWith({
     int? index,
     Pokemon3dModel? pokemon,
     int? currentForm,
@@ -53,7 +53,7 @@ class PokemonPageState {
     String? backgroundImg,
     AsyncValue<String>? modelPath,
   }) {
-    return PokemonPageState(
+    return PokemonDetailPageState(
       index: index ?? this.index,
       pokemon: pokemon ?? this.pokemon,
       currentForm: currentForm ?? this.currentForm,

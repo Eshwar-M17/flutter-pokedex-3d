@@ -1,13 +1,14 @@
 import 'dart:async';
 import 'dart:convert';
-
 import 'package:logger/logger.dart';
-import 'package:pokedex_3d/core/errors/error_mapper.dart';
 import 'package:pokedex_3d/core/result/result.dart';
+import 'package:pokedex_3d/core/utils/safe_network_call.dart';
+import 'package:pokedex_3d/core/utils/try_cache_operation.dart';
 import 'package:pokedex_3d/data/mappers/api_mappers/evolution_chain_mapper.dart';
 import 'package:pokedex_3d/data/mappers/hive_mappers/evolution_hive_mapper.dart';
-import 'package:pokedex_3d/data/models/models/evolution_chain_model/evolution_chain_model.dart';
+import 'package:pokedex_3d/data/models/evolution_chain_model/evolution_chain_model.dart';
 import 'package:pokedex_3d/data/services/local/database_service.dart';
+import 'package:pokedex_3d/data/services/local/hive_models/evolution_detail_hive_model.dart';
 import 'package:pokedex_3d/data/services/remote/api_models/evolution_chain_model/evolution_chain_model.dart';
 import 'package:pokedex_3d/data/services/remote/api_models/pokemon_species_api_model/pokemon_species_api_model.dart';
 import 'package:pokedex_3d/data/services/remote/api_service.dart';
@@ -22,56 +23,66 @@ class PokemonEvolutionRepository {
   }) : _apiService = apiService,
        _databaseService = databaseService;
 
-  Future<Result<Species>> getEvolutionDetails(int id) async {
-    log.i("inside PokemonEvolutionRepository ");
-    try {
-      Species? evolutionModel = _databaseService
-          .getEvolutionDetails(id)
-          ?.toDomain();
-      if (evolutionModel != null) {
+  Future<Result<EvolutionDetail>> getEvolutionDetails(int id) async {
+    final cacheResponse = await tryCacheOperation<EvolutionDetail>(() async {
+      EvolutionDetailHive? evolutionDetailHive = _databaseService
+          .getEvolutionDetails(id);
+
+      if (evolutionDetailHive != null) {
         log.i("inside PokemonEvolutionRepository  in cache hit $id");
 
-        return Result.ok(evolutionModel);
+        return Result.ok(evolutionDetailHive.toDomain());
       }
-      log.i("inside PokemonEvolutionRepository cache miss >> api fetch $id");
+      return null; //cache miss;
+    });
+    if (cacheResponse != null) {
+      return cacheResponse;
+    }
 
-      final speciesResponse = await _apiService.getSpeciesDetails(id);
+    // first we fetch species details of pokemon
+    return safeNetworkCall(
+      networkCall: () => _apiService.getSpeciesDetails(id),
+      mapResponse: (speciesResponse) async {
+        if (speciesResponse.statusCode == 200) {
+          final species = PokemonSpeciesApiModel.fromJson(
+            jsonDecode(speciesResponse.body!),
+          );
+          // fetching evolution chain details using  species.evolutionChain.url
+          return await _getEvolutionDetailsForSpecies(
+            species.evolutionChain.url,
+            id, // for caching mapping pokemon id mapped to  species id for later retrival
+          );
+        }
+        return null;
+      },
+    );
+  }
 
-      final PokemonSpeciesApiModel species;
-      if (speciesResponse.statusCode == 200) {
-        species = PokemonSpeciesApiModel.fromJson(
-          jsonDecode(speciesResponse.body),
-        );
-
-        final evolutionResponse = await _apiService.getEvolutionDetails(
-          species.evolutionChain.url,
-        );
+  Future<Result<EvolutionDetail>> _getEvolutionDetailsForSpecies(
+    String url,
+    int id,
+  ) {
+    return safeNetworkCall<EvolutionDetail>(
+      networkCall: () => _apiService.getEvolutionDetails(url),
+      mapResponse: (evolutionResponse) async {
         if (evolutionResponse.statusCode == 200) {
           final evolutionModelApi = EvolutionChainApiModel.fromJson(
-            jsonDecode(evolutionResponse.body),
+            jsonDecode(evolutionResponse.body!),
           );
 
-          evolutionModel = evolutionModelApi.toDomain();
+          final evolutionModel = evolutionModelApi.toDomain();
           unawaited(
-            _databaseService
-                .putEvolutionDetails(
-                  data: evolutionModel.toHive(),
-                  pokemonId: id,
-                )
-                .then((e) {
-                  log.i("inside PokemonEvolutionRepository cache sucess");
-                })
-                .onError((e, st) {
-                  log.i("inside PokemonEvolutionRepository $e");
-                }),
+            _databaseService.putEvolutionDetails(
+              data: evolutionModel.toHive(),
+              pokemonId: id,
+            ),
           );
-          return Result<Species>.ok(evolutionModel);
+          return Result<EvolutionDetail>.ok(evolutionModel);
         }
-        return Result.error(ErrorMapper.mapHttpResponse(evolutionResponse));
-      }
-      return Result.error(ErrorMapper.mapHttpResponse(speciesResponse));
-    } catch (e, st) {
-      return Result<Species>.error(ErrorMapper.mapException(e, st));
-    }
+
+        return null;
+      },
+    );
   }
+
 }

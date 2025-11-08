@@ -1,9 +1,9 @@
-import 'package:pokedex_3d/data/models/models/evolution_chain_model/evolution_chain_model.dart';
-import 'package:pokedex_3d/data/services/local/hive_models/evolution_hive_model.dart';
+import 'package:pokedex_3d/data/models/evolution_chain_model/evolution_chain_model.dart';
+import 'package:pokedex_3d/data/services/local/hive_models/evolution_detail_hive_model.dart';
 
-extension SpeciesHiveMapper on Species {
-  SpeciesHive toHive() => SpeciesHive(
-    speciesId: speciesId,
+extension EvolutionDetailHiveMapper on EvolutionDetail {
+  EvolutionDetailHive toHive() => EvolutionDetailHive(
+    speciesId: specieId,
     pokemonSpeciesHive: pokemonSpecies.toHive(),
   );
 }
@@ -14,19 +14,19 @@ extension PokemonSpeciesHiveMapper on PokemonSpecies {
     id: id,
     name: name,
     isBaby: isBaby,
-    evolutionDetails: evolutionDetails.map((e) => e.toHive()).toList(),
+    triggerDetails: triggerDetails.map((e) => e.toHive()).toList(),
     evolvesTo: evolvesTo.map((e) => e.toHive()).toList(),
   );
 }
 
-extension EvolutionDetailHiveMapper on EvolutionDetail {
-  EvolutionDetailHive toHive() =>
-      EvolutionDetailHive(gender: gender, trigger: trigger, minLevel: minLevel);
+extension TriggerDetailHiveMapper on TriggerDetail {
+  TriggerDetailHive toHive() =>
+      TriggerDetailHive(gender: gender, trigger: trigger, minLevel: minLevel);
 }
 
-extension SpeciesHiveToDomain on SpeciesHive {
-  Species toDomain() => Species(
-    speciesId: speciesId,
+extension EvolutionDetailHiveToDomain on EvolutionDetailHive {
+  EvolutionDetail toDomain() => EvolutionDetail(
+    specieId: speciesId,
     pokemonSpecies: pokemonSpeciesHive.toDomain(),
   );
 }
@@ -37,12 +37,12 @@ extension PokemonSpeciesHiveToDomain on PokemonSpeciesHive {
     id: id,
     name: name,
     isBaby: isBaby,
-    evolutionDetails: evolutionDetails.map((e) => e.toDomain()).toList(),
     evolvesTo: evolvesTo.map((e) => e.toDomain()).toList(),
+    triggerDetails: triggerDetails.map((e) => e.toDomain()).toList(),
   );
 }
 
-extension EvolutionDetailHiveToDomain on EvolutionDetailHive {
-  EvolutionDetail toDomain() =>
-      EvolutionDetail(gender: gender, trigger: trigger, minLevel: minLevel);
+extension TriggerDetailHiveToDomain on TriggerDetailHive {
+  TriggerDetail toDomain() =>
+      TriggerDetail(gender: gender, trigger: trigger, minLevel: minLevel);
 }

@@ -1,4 +1,4 @@
-import 'package:pokedex_3d/data/models/models/pokemon3d_model/pokemon_3d.dart';
+import 'package:pokedex_3d/data/models/pokemon3d_model/pokemon_3d.dart';
 import 'package:pokedex_3d/data/services/local/hive_models/pokemon_3d_hive_model.dart';
 
 // Domain → Hive

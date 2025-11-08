@@ -16,10 +16,3 @@ final pokemonDetailsRepositoryProvider = Provider((ref) {
     databaseService: ref.read(databaseServiceProvider),
   );
 });
-
-// final pokemonListRepositoryProvider = Provider((ref) {
-//   return PokemonListRepository(
-//     apiService: ref.read(apiServiceProvider),
-//     databaseService: ref.read(databaseServiceProvider),
-//   );
-// });

@@ -79,9 +79,10 @@ flutter:
   assets:
     - assets/images/type_icons/icons/
     - assets/images/type_icons/icons_big/
-    - assets/images/pokeball_icon.png
-    - assets/images/pokeball_icon.png
+  
+   
     - assets/fonts/roboto-regular.ttf
+    - assets/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

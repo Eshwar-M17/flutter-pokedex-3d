@@ -4,13 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:pokedex_3d/core/constants/hive_constants.dart';
-import 'package:pokedex_3d/core/error_widget/error_widget.dart';
-import 'package:pokedex_3d/data/services/local/hive_models/evolution_hive_model.dart';
+import 'package:pokedex_3d/ui/errors/error_widget.dart';
+import 'package:pokedex_3d/data/services/local/hive_models/evolution_detail_hive_model.dart';
 import 'package:pokedex_3d/data/services/local/hive_models/pokemon_3d_hive_model.dart';
-import 'package:pokedex_3d/data/services/local/hive_models/pokemon_hive_model.dart';
+import 'package:pokedex_3d/data/services/local/hive_models/pokemon_detail_hive_model.dart';
 import 'package:pokedex_3d/ui/app.dart';
-
-import 'core/logger.dart';
+import 'core/utils/logger.dart';
 
 void main() {
   runZonedGuarded(
@@ -34,21 +33,21 @@ void main() {
 
 Future<void> initHive() async {
   await Hive.initFlutter();
-
-  Hive.registerAdapter(PokemonHiveAdapter());
+  Hive.registerAdapter(PokemonDetailHiveAdapter());
   Hive.registerAdapter(StatHiveAdapter());
 
   Hive.registerAdapter(Pokemon3dHiveAdapter());
   Hive.registerAdapter(PokemonFormHiveAdapter());
 
-  Hive.registerAdapter(SpeciesHiveAdapter());
-  Hive.registerAdapter(PokemonSpeciesHiveAdapter());
   Hive.registerAdapter(EvolutionDetailHiveAdapter());
+  Hive.registerAdapter(PokemonSpeciesHiveAdapter());
+  Hive.registerAdapter(TriggerDetailHiveAdapter());
 
   await Future.wait([
+    Hive.openBox<String?>(HiveConstants.pokemonListEntityIdBox),
     Hive.openBox<Pokemon3dHive>(HiveConstants.pokemonListboxKey),
-    Hive.openBox<PokemonHive>(HiveConstants.pokemonDetailBoxKey),
-    Hive.openBox<SpeciesHive>(HiveConstants.pokemonEvolutionBoxKey),
+    Hive.openBox<PokemonDetailHive>(HiveConstants.pokemonDetailBoxKey),
+    Hive.openBox<EvolutionDetailHive>(HiveConstants.pokemonEvolutionBoxKey),
     Hive.openBox<int>(HiveConstants.pokemonEvolutionSpeciesBoxKey),
     Hive.openBox<Pokemon3dHive>(HiveConstants.pokemonViewedListboxKey),
   ]);

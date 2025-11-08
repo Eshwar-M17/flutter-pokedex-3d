@@ -1,9 +1,9 @@
-import 'package:pokedex_3d/data/models/models/pokemon/pokemon.dart';
-import 'package:pokedex_3d/data/services/local/hive_models/pokemon_hive_model.dart';
+import 'package:pokedex_3d/data/models/pokemon_detail/pokemon_detail.dart';
+import 'package:pokedex_3d/data/services/local/hive_models/pokemon_detail_hive_model.dart';
 
 // Domain → Hive
 extension PokemonHiveMapper on PokemonDetailsModel {
-  PokemonHive toHive() => PokemonHive(
+  PokemonDetailHive toHive() => PokemonDetailHive(
     baseExperience: baseExperience,
     height: height,
     weight: weight,
@@ -19,7 +19,7 @@ extension StatHiveMapper on Stat {
 }
 
 // Hive → Domain
-extension PokemonHiveToDomain on PokemonHive {
+extension PokemonHiveToDomain on PokemonDetailHive {
   PokemonDetailsModel toDomain() => PokemonDetailsModel(
     baseExperience: baseExperience,
     height: height,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex_3d/data/models/models/pokemon3d_model/pokemon_3d.dart';
+import 'package:pokedex_3d/data/models/pokemon3d_model/pokemon_3d.dart';
 import 'package:pokedex_3d/ui/view/pages/pokemon_list/widgets/poke_card_widget.dart';
 
 class PokemonGrid extends StatelessWidget {
@@ -9,6 +9,7 @@ class PokemonGrid extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverGrid(
+      
       gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
         maxCrossAxisExtent: 200,
         mainAxisSpacing: 10.0,

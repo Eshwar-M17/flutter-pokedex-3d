@@ -14,12 +14,13 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
-PokemonModelApi _$PokemonModelApiFromJson(Map<String, dynamic> json) {
+PokemonDetailApiModel _$PokemonDetailApiModelFromJson(
+    Map<String, dynamic> json) {
   return _PokemonApiModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$PokemonModelApi {
+mixin _$PokemonDetailApiModel {
   @JsonKey(name: "base_experience")
   int get baseExperience => throw _privateConstructorUsedError;
   int get height => throw _privateConstructorUsedError;
@@ -33,15 +34,15 @@ mixin _$PokemonModelApi {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PokemonModelApiCopyWith<PokemonModelApi> get copyWith =>
+  $PokemonDetailApiModelCopyWith<PokemonDetailApiModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PokemonModelApiCopyWith<$Res> {
-  factory $PokemonModelApiCopyWith(
-          PokemonModelApi value, $Res Function(PokemonModelApi) then) =
-      _$PokemonModelApiCopyWithImpl<$Res, PokemonModelApi>;
+abstract class $PokemonDetailApiModelCopyWith<$Res> {
+  factory $PokemonDetailApiModelCopyWith(PokemonDetailApiModel value,
+          $Res Function(PokemonDetailApiModel) then) =
+      _$PokemonDetailApiModelCopyWithImpl<$Res, PokemonDetailApiModel>;
   @useResult
   $Res call(
       {@JsonKey(name: "base_experience") int baseExperience,
@@ -56,9 +57,10 @@ abstract class $PokemonModelApiCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PokemonModelApiCopyWithImpl<$Res, $Val extends PokemonModelApi>
-    implements $PokemonModelApiCopyWith<$Res> {
-  _$PokemonModelApiCopyWithImpl(this._value, this._then);
+class _$PokemonDetailApiModelCopyWithImpl<$Res,
+        $Val extends PokemonDetailApiModel>
+    implements $PokemonDetailApiModelCopyWith<$Res> {
+  _$PokemonDetailApiModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -121,7 +123,7 @@ class _$PokemonModelApiCopyWithImpl<$Res, $Val extends PokemonModelApi>
 
 /// @nodoc
 abstract class _$$PokemonApiModelImplCopyWith<$Res>
-    implements $PokemonModelApiCopyWith<$Res> {
+    implements $PokemonDetailApiModelCopyWith<$Res> {
   factory _$$PokemonApiModelImplCopyWith(_$PokemonApiModelImpl value,
           $Res Function(_$PokemonApiModelImpl) then) =
       __$$PokemonApiModelImplCopyWithImpl<$Res>;
@@ -141,7 +143,7 @@ abstract class _$$PokemonApiModelImplCopyWith<$Res>
 
 /// @nodoc
 class __$$PokemonApiModelImplCopyWithImpl<$Res>
-    extends _$PokemonModelApiCopyWithImpl<$Res, _$PokemonApiModelImpl>
+    extends _$PokemonDetailApiModelCopyWithImpl<$Res, _$PokemonApiModelImpl>
     implements _$$PokemonApiModelImplCopyWith<$Res> {
   __$$PokemonApiModelImplCopyWithImpl(
       _$PokemonApiModelImpl _value, $Res Function(_$PokemonApiModelImpl) _then)
@@ -261,7 +263,7 @@ class _$PokemonApiModelImpl implements _PokemonApiModel {
 
   @override
   String toString() {
-    return 'PokemonModelApi(baseExperience: $baseExperience, height: $height, id: $id, name: $name, order: $order, sprites: $sprites, stats: $stats, types: $types, weight: $weight)';
+    return 'PokemonDetailApiModel(baseExperience: $baseExperience, height: $height, id: $id, name: $name, order: $order, sprites: $sprites, stats: $stats, types: $types, weight: $weight)';
   }
 
   @override
@@ -310,7 +312,7 @@ class _$PokemonApiModelImpl implements _PokemonApiModel {
   }
 }
 
-abstract class _PokemonApiModel implements PokemonModelApi {
+abstract class _PokemonApiModel implements PokemonDetailApiModel {
   factory _PokemonApiModel(
       {@JsonKey(name: "base_experience") required final int baseExperience,
       required final int height,

@@ -5,6 +5,8 @@ class EmptyCollectionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    
     return Center(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
@@ -14,16 +16,18 @@ class EmptyCollectionWidget extends StatelessWidget {
             children: [
               const SizedBox(height: 100),
               Image.asset('assets/images/pokeball_icon.png', width: 200),
-              const Text(
+              Text(
                 "No Models Yet",
                 textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+                style: Theme.of(context).textTheme.titleLarge!.copyWith(fontWeight:FontWeight.bold ),
+                // style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
               ),
               const SizedBox(height: 10),
-              const Text(
+              Text(
                 "Connect to the internet to download \n Pokémon models",
                 textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15),
+                style: Theme.of(context).textTheme.labelLarge,
+                // style: TextStyle(fontWeight: FontWeight.w400, fontSize: 15),
               ),
             ],
           ),

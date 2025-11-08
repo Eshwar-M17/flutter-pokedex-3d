@@ -1,25 +1,22 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
-import 'package:pokedex_3d/core/error_widget/error_widget.dart';
-import 'package:pokedex_3d/core/logger.dart';
-import 'package:pokedex_3d/ui/providers/connectivity_notifier.dart';
+import 'package:pokedex_3d/ui/errors/error_widget.dart';
+import 'package:pokedex_3d/core/utils/logger.dart';
 import 'package:pokedex_3d/ui/providers/pokemon_3d_model_list_notifier.dart';
+import 'package:pokedex_3d/ui/view/pages/pokemon_list/pokemon_list_page.dart';
 import 'package:pokedex_3d/ui/view/widgets/empty_collection_widget.dart';
 import 'package:pokedex_3d/ui/view/widgets/offline_banner_widget.dart';
-import 'package:pokedex_3d/ui/view/widgets/pokemon_form_tab.dart';
-import 'package:pokedex_3d/ui/view/widgets/gradient_background.dart';
-import 'package:pokedex_3d/ui/view/widgets/model_view_widget.dart';
-import 'package:pokedex_3d/ui/view/widgets/poke_carousel_widget.dart';
+import 'package:pokedex_3d/ui/view/pages/pokemon_view/section/pokemon_form_tab.dart';
+import 'package:pokedex_3d/ui/view/pages/pokemon_view/section/gradient_background.dart';
+import 'package:pokedex_3d/ui/view/pages/pokemon_view/section/model_view_widget.dart';
+import 'package:pokedex_3d/ui/view/pages/pokemon_view/section/poke_carousel_widget.dart';
 
 class PokemonViewerPage extends StatelessWidget {
   const PokemonViewerPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const SafeArea(child: Scaffold(body: _PokemonViewerBody()));
+    return SafeArea(child: Scaffold(body: _PokemonViewerBody()));
   }
 }
 
@@ -46,11 +43,31 @@ class _PokemonViewerBody extends ConsumerWidget {
         }
         log.i("_PokemonViewerBody build  pokelist length ${data.length}");
 
-        return const GradientBackground(
+        return GradientBackground(
           child: Column(
             children: [
-              OfflineBannerWidget(),
-              PokemonFormTab(),
+              ConnectionHandler(
+                onDisconnected: OfflineBannerWidget(),
+                onConnected: SizedBox.shrink(),
+              ),
+              Stack(
+                children: [
+                  Align(
+                    alignment: Alignment.centerLeft,
+                    child: Padding(
+                      padding: const EdgeInsets.all(10),
+                      child: IconButton(
+                        onPressed: () => Navigator.of(context).pop(),
+                        icon: Icon(
+                          Icons.arrow_back_ios_new_rounded,
+                          color: Theme.of(context).colorScheme.onInverseSurface,
+                        ),
+                      ),
+                    ),
+                  ),
+                  Align(alignment: Alignment.center, child: PokemonFormTab()),
+                ],
+              ),
               Expanded(child: ModelViewWidget()),
               SizedBox(height: 80, child: PokeCarouselWidget()),
             ],

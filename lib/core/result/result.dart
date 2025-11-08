@@ -1,4 +1,4 @@
-import 'package:pokedex_3d/core/errors/error.dart';
+import 'package:pokedex_3d/core/errors/app_error.dart';
 
 sealed class Result<T> {
   Result();

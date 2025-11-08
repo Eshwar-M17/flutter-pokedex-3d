@@ -13,7 +13,7 @@ class CustomDropdownMenu<T> extends StatelessWidget {
     required this.dropdownMenuEntries,
     required this.onSelected,
     required this.controller,
-    required this.width
+    required this.width,
   });
 
   @override
@@ -23,6 +23,10 @@ class CustomDropdownMenu<T> extends StatelessWidget {
       onSelected: onSelected,
       controller: controller,
       dropdownMenuEntries: dropdownMenuEntries,
+      inputDecorationTheme: Theme.of(context)
+          .dropdownMenuTheme
+          .inputDecorationTheme!
+          .copyWith(fillColor: Theme.of(context).canvasColor.withAlpha(200)),
 
       label: Text(label),
 
@@ -32,12 +36,12 @@ class CustomDropdownMenu<T> extends StatelessWidget {
       trailingIcon: Icon(
         Icons.arrow_drop_down,
         size: 20, // change this to resize icon
-        color: Colors.grey[700],
+        // color: Colors.grey[700],
       ),
       selectedTrailingIcon: Icon(
         Icons.arrow_drop_up,
         size: 20, // change this to resize icon
-        color: Colors.grey[700],
+        // color: Colors.grey[700],
       ),
     );
   }
