@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:logger/logger.dart';
 import 'package:pokedex_3d/core/utils/extenshion.dart';
 import 'package:pokedex_3d/ui/providers/pokemon_page_viewmodel_provider.dart';
-import 'package:pokedex_3d/ui/state/pokemon_state.dart';
 import 'package:pokedex_3d/ui/view/pages/pokemon_view/widgets/type_tags_widget.dart';
 
 class PokemonTitleWidget extends ConsumerWidget {
@@ -24,7 +23,7 @@ class PokemonTitleWidget extends ConsumerWidget {
           children: [
             Text(
               currentPokemon.pokemon.forms[currentPokemon.currentForm].name,
-              style: Theme.of(context).textTheme.headlineLarge!.copyWith(
+              style: Theme.of(context).textTheme.headlineMedium!.copyWith(
                 color: Theme.of(context).colorScheme.onInverseSurface,
                 fontWeight: FontWeight.bold,
               ),

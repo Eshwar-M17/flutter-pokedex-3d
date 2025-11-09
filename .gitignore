@@ -46,3 +46,6 @@ app.*.map.json
 
 # Project planning files
 plan.md
+
+# FVM Version Cache
+.fvm/

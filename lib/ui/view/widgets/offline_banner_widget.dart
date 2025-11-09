@@ -12,9 +12,9 @@ class OfflineBannerWidget extends ConsumerStatefulWidget {
 }
 
 class _OfflineBannerWidgetState extends ConsumerState<OfflineBannerWidget> {
-  bool isLoading = false;
+  bool isLoading = true;
   bool isConnected = false;
-  double animatedWidth = 26;
+  double animatedHight = 26;
   @override
   Widget build(BuildContext context) {
     final statusState = ref.watch(connectivityStatusProvider);
@@ -23,15 +23,17 @@ class _OfflineBannerWidgetState extends ConsumerState<OfflineBannerWidget> {
       data: (InternetStatus status) {
         switch (status) {
           case InternetStatus.connected:
+            isLoading = false;
             isConnected = true;
             Future.delayed(Duration(seconds: 4)).then(
               (_) => setState(() {
-                animatedWidth = 0;
+                animatedHight = 0;
               }),
             );
             break;
           case InternetStatus.disconnected:
-            animatedWidth = 26;
+            isLoading = false;
+            animatedHight = 26;
             isConnected = false;
             break;
         }
@@ -51,13 +53,21 @@ class _OfflineBannerWidgetState extends ConsumerState<OfflineBannerWidget> {
     return AnimatedContainer(
       duration: Duration(milliseconds: 400),
       width: double.infinity,
-      height: animatedWidth,
+      height: animatedHight,
 
       decoration: BoxDecoration(
         color: isConnected ? Colors.lightGreen : Colors.redAccent,
       ),
       padding: const EdgeInsets.all(4),
-      child: isLoading ? CircularProgressIndicator() : lable,
+      child: isLoading
+          ? Center(
+              child: SizedBox(
+                width: 16,
+                height: 16,
+                child: CircularProgressIndicator(strokeWidth: 2),
+              ),
+            )
+          : lable,
     );
   }
 }
