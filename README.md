@@ -8,13 +8,23 @@ Pokédex 3D is a Flutter app for exploring Pokémon in 3D. Browse a grid of Pok�
 - 🔄 Evolution chain info
 - 🔍 Simple Pokémon search and filtering
 
-## Demo
+## App Preview
 <p align="center">
   <img src="demo/Screenshot_1762631130.png" alt="Pokemon List Page" width="24%" />
   <img src="demo/Screenshot_1761207453.png" alt="Screenshot 1" width="24%" />
   <img src="demo/Screenshot_1761207473.png" alt="Screenshot 2" width="24%" />
   <img src="demo/demo_gif.gif" alt="Charizard 3D demo" width="24%" />
 </p>
+
+## 🎥 Demo Video
+
+<div align="center">
+  <a href="demo/demovid.mp4">
+    <img src="demo/Screenshot_1762631130.png" alt="Demo Video" width="24%">
+  </a>
+  <p><em>👆 Click to watch the demo video</em></p>
+</div>
+
 
 
 ## Getting Started
