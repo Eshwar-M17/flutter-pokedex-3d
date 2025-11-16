@@ -71,3 +71,5 @@ class _OfflineBannerWidgetState extends ConsumerState<OfflineBannerWidget> {
     );
   }
 }
+
+
