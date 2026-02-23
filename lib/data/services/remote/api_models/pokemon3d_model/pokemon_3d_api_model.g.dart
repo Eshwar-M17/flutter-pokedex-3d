@@ -6,30 +6,25 @@ part of 'pokemon_3d_api_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$Pokemon3dApiModelImpl _$$Pokemon3dApiModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$Pokemon3dApiModelImpl(
+_Pokemon3dApiModel _$Pokemon3dApiModelFromJson(Map<String, dynamic> json) =>
+    _Pokemon3dApiModel(
       id: (json['id'] as num).toInt(),
       forms: (json['forms'] as List<dynamic>)
           .map((e) => FormApiModel.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
 
-Map<String, dynamic> _$$Pokemon3dApiModelImplToJson(
-        _$Pokemon3dApiModelImpl instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'forms': instance.forms,
-    };
+Map<String, dynamic> _$Pokemon3dApiModelToJson(_Pokemon3dApiModel instance) =>
+    <String, dynamic>{'id': instance.id, 'forms': instance.forms};
 
-_$FormApiModelImpl _$$FormApiModelImplFromJson(Map<String, dynamic> json) =>
-    _$FormApiModelImpl(
+_FormApiModel _$FormApiModelFromJson(Map<String, dynamic> json) =>
+    _FormApiModel(
       name: json['name'] as String,
       model: json['model'] as String,
       formName: json['formName'] as String,
     );
 
-Map<String, dynamic> _$$FormApiModelImplToJson(_$FormApiModelImpl instance) =>
+Map<String, dynamic> _$FormApiModelToJson(_FormApiModel instance) =>
     <String, dynamic>{
       'name': instance.name,
       'model': instance.model,

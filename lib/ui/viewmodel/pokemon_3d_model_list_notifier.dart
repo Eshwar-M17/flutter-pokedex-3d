@@ -22,11 +22,9 @@ class Pokemon3dModelListNotifier
   }) : _pokemonModelListRepository = pokemonModelListRepository,
        super(const AsyncValue.loading());
 
-  void getMainPokemonList({required bool forceRefresh}) async {
+  void getMainPokemonList() async {
     state = const AsyncValue.loading();
-    final response = await _pokemonModelListRepository.getMainPokemonList(
-      forceRefresh: forceRefresh,
-    );
+    final response = await _pokemonModelListRepository.getMainPokemonList();
     switch (response) {
       case Ok<List<Pokemon3dModel>>():
         _fromCache = false;

@@ -8,7 +8,7 @@ part of 'evolution_detail_hive_model.dart';
 
 class EvolutionDetailHiveAdapter extends TypeAdapter<EvolutionDetailHive> {
   @override
-  final int typeId = 4;
+  final typeId = 4;
 
   @override
   EvolutionDetailHive read(BinaryReader reader) {
@@ -17,7 +17,7 @@ class EvolutionDetailHiveAdapter extends TypeAdapter<EvolutionDetailHive> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return EvolutionDetailHive(
-      speciesId: fields[0] as int,
+      speciesId: (fields[0] as num).toInt(),
       pokemonSpeciesHive: fields[1] as PokemonSpeciesHive,
     );
   }
@@ -45,7 +45,7 @@ class EvolutionDetailHiveAdapter extends TypeAdapter<EvolutionDetailHive> {
 
 class PokemonSpeciesHiveAdapter extends TypeAdapter<PokemonSpeciesHive> {
   @override
-  final int typeId = 5;
+  final typeId = 5;
 
   @override
   PokemonSpeciesHive read(BinaryReader reader) {
@@ -54,7 +54,7 @@ class PokemonSpeciesHiveAdapter extends TypeAdapter<PokemonSpeciesHive> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return PokemonSpeciesHive(
-      id: fields[0] as int,
+      id: (fields[0] as num).toInt(),
       name: fields[1] as String,
       isBaby: fields[2] as bool,
       triggerDetails: (fields[3] as List).cast<TriggerDetailHive>(),
@@ -91,7 +91,7 @@ class PokemonSpeciesHiveAdapter extends TypeAdapter<PokemonSpeciesHive> {
 
 class TriggerDetailHiveAdapter extends TypeAdapter<TriggerDetailHive> {
   @override
-  final int typeId = 6;
+  final typeId = 6;
 
   @override
   TriggerDetailHive read(BinaryReader reader) {
@@ -100,9 +100,9 @@ class TriggerDetailHiveAdapter extends TypeAdapter<TriggerDetailHive> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return TriggerDetailHive(
-      gender: fields[0] as int?,
+      gender: (fields[0] as num?)?.toInt(),
       trigger: fields[1] as String,
-      minLevel: fields[2] as int,
+      minLevel: (fields[2] as num).toInt(),
     );
   }
 

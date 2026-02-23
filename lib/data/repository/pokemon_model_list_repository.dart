@@ -21,9 +21,7 @@ class PokemonModelListRepository {
   }) : _databaseService = databaseService,
        _apiService = apiService;
 
-  Future<Result<List<Pokemon3dModel>>> getMainPokemonList({
-    required bool forceRefresh,
-  }) async {
+  Future<Result<List<Pokemon3dModel>>> getMainPokemonList() async {
     // try {
     log.i('fetching etag from cache');
 

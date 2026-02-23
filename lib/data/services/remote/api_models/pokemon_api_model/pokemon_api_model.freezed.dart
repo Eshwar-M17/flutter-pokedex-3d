@@ -1,5 +1,5 @@
-// coverage:ignore-file
 // GENERATED CODE - DO NOT MODIFY BY HAND
+// coverage:ignore-file
 // ignore_for_file: type=lint
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides, invalid_annotation_target, unnecessary_question_mark
 
@@ -9,1019 +9,1421 @@ part of 'pokemon_api_model.dart';
 // FreezedGenerator
 // **************************************************************************
 
+// dart format off
 T _$identity<T>(T value) => value;
-
-final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
-
 PokemonDetailApiModel _$PokemonDetailApiModelFromJson(
-    Map<String, dynamic> json) {
-  return _PokemonApiModel.fromJson(json);
+  Map<String, dynamic> json
+) {
+    return _PokemonApiModel.fromJson(
+      json
+    );
 }
 
 /// @nodoc
 mixin _$PokemonDetailApiModel {
-  @JsonKey(name: "base_experience")
-  int get baseExperience => throw _privateConstructorUsedError;
-  int get height => throw _privateConstructorUsedError;
-  int get id => throw _privateConstructorUsedError;
-  String get name => throw _privateConstructorUsedError;
-  int get order => throw _privateConstructorUsedError;
-  Map<String, String> get sprites => throw _privateConstructorUsedError;
-  List<StatsDetailApiModel> get stats => throw _privateConstructorUsedError;
-  List<TypeDetailApiModel> get types => throw _privateConstructorUsedError;
-  int get weight => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $PokemonDetailApiModelCopyWith<PokemonDetailApiModel> get copyWith =>
-      throw _privateConstructorUsedError;
+@JsonKey(name: "base_experience") int get baseExperience; int get height; int get id; String get name; int get order; Map<String, String> get sprites; List<StatsDetailApiModel> get stats; List<TypeDetailApiModel> get types; int get weight;
+/// Create a copy of PokemonDetailApiModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$PokemonDetailApiModelCopyWith<PokemonDetailApiModel> get copyWith => _$PokemonDetailApiModelCopyWithImpl<PokemonDetailApiModel>(this as PokemonDetailApiModel, _$identity);
+
+  /// Serializes this PokemonDetailApiModel to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is PokemonDetailApiModel&&(identical(other.baseExperience, baseExperience) || other.baseExperience == baseExperience)&&(identical(other.height, height) || other.height == height)&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.order, order) || other.order == order)&&const DeepCollectionEquality().equals(other.sprites, sprites)&&const DeepCollectionEquality().equals(other.stats, stats)&&const DeepCollectionEquality().equals(other.types, types)&&(identical(other.weight, weight) || other.weight == weight));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,baseExperience,height,id,name,order,const DeepCollectionEquality().hash(sprites),const DeepCollectionEquality().hash(stats),const DeepCollectionEquality().hash(types),weight);
+
+@override
+String toString() {
+  return 'PokemonDetailApiModel(baseExperience: $baseExperience, height: $height, id: $id, name: $name, order: $order, sprites: $sprites, stats: $stats, types: $types, weight: $weight)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $PokemonDetailApiModelCopyWith<$Res> {
-  factory $PokemonDetailApiModelCopyWith(PokemonDetailApiModel value,
-          $Res Function(PokemonDetailApiModel) then) =
-      _$PokemonDetailApiModelCopyWithImpl<$Res, PokemonDetailApiModel>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: "base_experience") int baseExperience,
-      int height,
-      int id,
-      String name,
-      int order,
-      Map<String, String> sprites,
-      List<StatsDetailApiModel> stats,
-      List<TypeDetailApiModel> types,
-      int weight});
-}
+abstract mixin class $PokemonDetailApiModelCopyWith<$Res>  {
+  factory $PokemonDetailApiModelCopyWith(PokemonDetailApiModel value, $Res Function(PokemonDetailApiModel) _then) = _$PokemonDetailApiModelCopyWithImpl;
+@useResult
+$Res call({
+@JsonKey(name: "base_experience") int baseExperience, int height, int id, String name, int order, Map<String, String> sprites, List<StatsDetailApiModel> stats, List<TypeDetailApiModel> types, int weight
+});
 
+
+
+
+}
 /// @nodoc
-class _$PokemonDetailApiModelCopyWithImpl<$Res,
-        $Val extends PokemonDetailApiModel>
+class _$PokemonDetailApiModelCopyWithImpl<$Res>
     implements $PokemonDetailApiModelCopyWith<$Res> {
-  _$PokemonDetailApiModelCopyWithImpl(this._value, this._then);
+  _$PokemonDetailApiModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final PokemonDetailApiModel _self;
+  final $Res Function(PokemonDetailApiModel) _then;
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? baseExperience = null,
-    Object? height = null,
-    Object? id = null,
-    Object? name = null,
-    Object? order = null,
-    Object? sprites = null,
-    Object? stats = null,
-    Object? types = null,
-    Object? weight = null,
-  }) {
-    return _then(_value.copyWith(
-      baseExperience: null == baseExperience
-          ? _value.baseExperience
-          : baseExperience // ignore: cast_nullable_to_non_nullable
-              as int,
-      height: null == height
-          ? _value.height
-          : height // ignore: cast_nullable_to_non_nullable
-              as int,
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      order: null == order
-          ? _value.order
-          : order // ignore: cast_nullable_to_non_nullable
-              as int,
-      sprites: null == sprites
-          ? _value.sprites
-          : sprites // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
-      stats: null == stats
-          ? _value.stats
-          : stats // ignore: cast_nullable_to_non_nullable
-              as List<StatsDetailApiModel>,
-      types: null == types
-          ? _value.types
-          : types // ignore: cast_nullable_to_non_nullable
-              as List<TypeDetailApiModel>,
-      weight: null == weight
-          ? _value.weight
-          : weight // ignore: cast_nullable_to_non_nullable
-              as int,
-    ) as $Val);
-  }
+/// Create a copy of PokemonDetailApiModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? baseExperience = null,Object? height = null,Object? id = null,Object? name = null,Object? order = null,Object? sprites = null,Object? stats = null,Object? types = null,Object? weight = null,}) {
+  return _then(_self.copyWith(
+baseExperience: null == baseExperience ? _self.baseExperience : baseExperience // ignore: cast_nullable_to_non_nullable
+as int,height: null == height ? _self.height : height // ignore: cast_nullable_to_non_nullable
+as int,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,order: null == order ? _self.order : order // ignore: cast_nullable_to_non_nullable
+as int,sprites: null == sprites ? _self.sprites : sprites // ignore: cast_nullable_to_non_nullable
+as Map<String, String>,stats: null == stats ? _self.stats : stats // ignore: cast_nullable_to_non_nullable
+as List<StatsDetailApiModel>,types: null == types ? _self.types : types // ignore: cast_nullable_to_non_nullable
+as List<TypeDetailApiModel>,weight: null == weight ? _self.weight : weight // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
 }
 
-/// @nodoc
-abstract class _$$PokemonApiModelImplCopyWith<$Res>
-    implements $PokemonDetailApiModelCopyWith<$Res> {
-  factory _$$PokemonApiModelImplCopyWith(_$PokemonApiModelImpl value,
-          $Res Function(_$PokemonApiModelImpl) then) =
-      __$$PokemonApiModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {@JsonKey(name: "base_experience") int baseExperience,
-      int height,
-      int id,
-      String name,
-      int order,
-      Map<String, String> sprites,
-      List<StatsDetailApiModel> stats,
-      List<TypeDetailApiModel> types,
-      int weight});
 }
 
-/// @nodoc
-class __$$PokemonApiModelImplCopyWithImpl<$Res>
-    extends _$PokemonDetailApiModelCopyWithImpl<$Res, _$PokemonApiModelImpl>
-    implements _$$PokemonApiModelImplCopyWith<$Res> {
-  __$$PokemonApiModelImplCopyWithImpl(
-      _$PokemonApiModelImpl _value, $Res Function(_$PokemonApiModelImpl) _then)
-      : super(_value, _then);
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? baseExperience = null,
-    Object? height = null,
-    Object? id = null,
-    Object? name = null,
-    Object? order = null,
-    Object? sprites = null,
-    Object? stats = null,
-    Object? types = null,
-    Object? weight = null,
-  }) {
-    return _then(_$PokemonApiModelImpl(
-      baseExperience: null == baseExperience
-          ? _value.baseExperience
-          : baseExperience // ignore: cast_nullable_to_non_nullable
-              as int,
-      height: null == height
-          ? _value.height
-          : height // ignore: cast_nullable_to_non_nullable
-              as int,
-      id: null == id
-          ? _value.id
-          : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      order: null == order
-          ? _value.order
-          : order // ignore: cast_nullable_to_non_nullable
-              as int,
-      sprites: null == sprites
-          ? _value._sprites
-          : sprites // ignore: cast_nullable_to_non_nullable
-              as Map<String, String>,
-      stats: null == stats
-          ? _value._stats
-          : stats // ignore: cast_nullable_to_non_nullable
-              as List<StatsDetailApiModel>,
-      types: null == types
-          ? _value._types
-          : types // ignore: cast_nullable_to_non_nullable
-              as List<TypeDetailApiModel>,
-      weight: null == weight
-          ? _value.weight
-          : weight // ignore: cast_nullable_to_non_nullable
-              as int,
-    ));
-  }
+/// Adds pattern-matching-related methods to [PokemonDetailApiModel].
+extension PokemonDetailApiModelPatterns on PokemonDetailApiModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _PokemonApiModel value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _PokemonApiModel() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _PokemonApiModel value)  $default,){
+final _that = this;
+switch (_that) {
+case _PokemonApiModel():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _PokemonApiModel value)?  $default,){
+final _that = this;
+switch (_that) {
+case _PokemonApiModel() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: "base_experience")  int baseExperience,  int height,  int id,  String name,  int order,  Map<String, String> sprites,  List<StatsDetailApiModel> stats,  List<TypeDetailApiModel> types,  int weight)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _PokemonApiModel() when $default != null:
+return $default(_that.baseExperience,_that.height,_that.id,_that.name,_that.order,_that.sprites,_that.stats,_that.types,_that.weight);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: "base_experience")  int baseExperience,  int height,  int id,  String name,  int order,  Map<String, String> sprites,  List<StatsDetailApiModel> stats,  List<TypeDetailApiModel> types,  int weight)  $default,) {final _that = this;
+switch (_that) {
+case _PokemonApiModel():
+return $default(_that.baseExperience,_that.height,_that.id,_that.name,_that.order,_that.sprites,_that.stats,_that.types,_that.weight);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: "base_experience")  int baseExperience,  int height,  int id,  String name,  int order,  Map<String, String> sprites,  List<StatsDetailApiModel> stats,  List<TypeDetailApiModel> types,  int weight)?  $default,) {final _that = this;
+switch (_that) {
+case _PokemonApiModel() when $default != null:
+return $default(_that.baseExperience,_that.height,_that.id,_that.name,_that.order,_that.sprites,_that.stats,_that.types,_that.weight);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$PokemonApiModelImpl implements _PokemonApiModel {
-  _$PokemonApiModelImpl(
-      {@JsonKey(name: "base_experience") required this.baseExperience,
-      required this.height,
-      required this.id,
-      required this.name,
-      required this.order,
-      required final Map<String, String> sprites,
-      required final List<StatsDetailApiModel> stats,
-      required final List<TypeDetailApiModel> types,
-      required this.weight})
-      : _sprites = sprites,
-        _stats = stats,
-        _types = types;
 
-  factory _$PokemonApiModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PokemonApiModelImplFromJson(json);
+class _PokemonApiModel implements PokemonDetailApiModel {
+   _PokemonApiModel({@JsonKey(name: "base_experience") required this.baseExperience, required this.height, required this.id, required this.name, required this.order, required final  Map<String, String> sprites, required final  List<StatsDetailApiModel> stats, required final  List<TypeDetailApiModel> types, required this.weight}): _sprites = sprites,_stats = stats,_types = types;
+  factory _PokemonApiModel.fromJson(Map<String, dynamic> json) => _$PokemonApiModelFromJson(json);
 
-  @override
-  @JsonKey(name: "base_experience")
-  final int baseExperience;
-  @override
-  final int height;
-  @override
-  final int id;
-  @override
-  final String name;
-  @override
-  final int order;
-  final Map<String, String> _sprites;
-  @override
-  Map<String, String> get sprites {
-    if (_sprites is EqualUnmodifiableMapView) return _sprites;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableMapView(_sprites);
-  }
-
-  final List<StatsDetailApiModel> _stats;
-  @override
-  List<StatsDetailApiModel> get stats {
-    if (_stats is EqualUnmodifiableListView) return _stats;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_stats);
-  }
-
-  final List<TypeDetailApiModel> _types;
-  @override
-  List<TypeDetailApiModel> get types {
-    if (_types is EqualUnmodifiableListView) return _types;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_types);
-  }
-
-  @override
-  final int weight;
-
-  @override
-  String toString() {
-    return 'PokemonDetailApiModel(baseExperience: $baseExperience, height: $height, id: $id, name: $name, order: $order, sprites: $sprites, stats: $stats, types: $types, weight: $weight)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PokemonApiModelImpl &&
-            (identical(other.baseExperience, baseExperience) ||
-                other.baseExperience == baseExperience) &&
-            (identical(other.height, height) || other.height == height) &&
-            (identical(other.id, id) || other.id == id) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.order, order) || other.order == order) &&
-            const DeepCollectionEquality().equals(other._sprites, _sprites) &&
-            const DeepCollectionEquality().equals(other._stats, _stats) &&
-            const DeepCollectionEquality().equals(other._types, _types) &&
-            (identical(other.weight, weight) || other.weight == weight));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      baseExperience,
-      height,
-      id,
-      name,
-      order,
-      const DeepCollectionEquality().hash(_sprites),
-      const DeepCollectionEquality().hash(_stats),
-      const DeepCollectionEquality().hash(_types),
-      weight);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PokemonApiModelImplCopyWith<_$PokemonApiModelImpl> get copyWith =>
-      __$$PokemonApiModelImplCopyWithImpl<_$PokemonApiModelImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PokemonApiModelImplToJson(
-      this,
-    );
-  }
+@override@JsonKey(name: "base_experience") final  int baseExperience;
+@override final  int height;
+@override final  int id;
+@override final  String name;
+@override final  int order;
+ final  Map<String, String> _sprites;
+@override Map<String, String> get sprites {
+  if (_sprites is EqualUnmodifiableMapView) return _sprites;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableMapView(_sprites);
 }
 
-abstract class _PokemonApiModel implements PokemonDetailApiModel {
-  factory _PokemonApiModel(
-      {@JsonKey(name: "base_experience") required final int baseExperience,
-      required final int height,
-      required final int id,
-      required final String name,
-      required final int order,
-      required final Map<String, String> sprites,
-      required final List<StatsDetailApiModel> stats,
-      required final List<TypeDetailApiModel> types,
-      required final int weight}) = _$PokemonApiModelImpl;
-
-  factory _PokemonApiModel.fromJson(Map<String, dynamic> json) =
-      _$PokemonApiModelImpl.fromJson;
-
-  @override
-  @JsonKey(name: "base_experience")
-  int get baseExperience;
-  @override
-  int get height;
-  @override
-  int get id;
-  @override
-  String get name;
-  @override
-  int get order;
-  @override
-  Map<String, String> get sprites;
-  @override
-  List<StatsDetailApiModel> get stats;
-  @override
-  List<TypeDetailApiModel> get types;
-  @override
-  int get weight;
-  @override
-  @JsonKey(ignore: true)
-  _$$PokemonApiModelImplCopyWith<_$PokemonApiModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+ final  List<StatsDetailApiModel> _stats;
+@override List<StatsDetailApiModel> get stats {
+  if (_stats is EqualUnmodifiableListView) return _stats;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_stats);
 }
 
-StatsDetailApiModel _$StatsDetailApiModelFromJson(Map<String, dynamic> json) {
-  return _StatsDetailApiModel.fromJson(json);
+ final  List<TypeDetailApiModel> _types;
+@override List<TypeDetailApiModel> get types {
+  if (_types is EqualUnmodifiableListView) return _types;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_types);
 }
+
+@override final  int weight;
+
+/// Create a copy of PokemonDetailApiModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$PokemonApiModelCopyWith<_PokemonApiModel> get copyWith => __$PokemonApiModelCopyWithImpl<_PokemonApiModel>(this, _$identity);
+
+@override
+Map<String, dynamic> toJson() {
+  return _$PokemonApiModelToJson(this, );
+}
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _PokemonApiModel&&(identical(other.baseExperience, baseExperience) || other.baseExperience == baseExperience)&&(identical(other.height, height) || other.height == height)&&(identical(other.id, id) || other.id == id)&&(identical(other.name, name) || other.name == name)&&(identical(other.order, order) || other.order == order)&&const DeepCollectionEquality().equals(other._sprites, _sprites)&&const DeepCollectionEquality().equals(other._stats, _stats)&&const DeepCollectionEquality().equals(other._types, _types)&&(identical(other.weight, weight) || other.weight == weight));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,baseExperience,height,id,name,order,const DeepCollectionEquality().hash(_sprites),const DeepCollectionEquality().hash(_stats),const DeepCollectionEquality().hash(_types),weight);
+
+@override
+String toString() {
+  return 'PokemonDetailApiModel(baseExperience: $baseExperience, height: $height, id: $id, name: $name, order: $order, sprites: $sprites, stats: $stats, types: $types, weight: $weight)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$PokemonApiModelCopyWith<$Res> implements $PokemonDetailApiModelCopyWith<$Res> {
+  factory _$PokemonApiModelCopyWith(_PokemonApiModel value, $Res Function(_PokemonApiModel) _then) = __$PokemonApiModelCopyWithImpl;
+@override @useResult
+$Res call({
+@JsonKey(name: "base_experience") int baseExperience, int height, int id, String name, int order, Map<String, String> sprites, List<StatsDetailApiModel> stats, List<TypeDetailApiModel> types, int weight
+});
+
+
+
+
+}
+/// @nodoc
+class __$PokemonApiModelCopyWithImpl<$Res>
+    implements _$PokemonApiModelCopyWith<$Res> {
+  __$PokemonApiModelCopyWithImpl(this._self, this._then);
+
+  final _PokemonApiModel _self;
+  final $Res Function(_PokemonApiModel) _then;
+
+/// Create a copy of PokemonDetailApiModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? baseExperience = null,Object? height = null,Object? id = null,Object? name = null,Object? order = null,Object? sprites = null,Object? stats = null,Object? types = null,Object? weight = null,}) {
+  return _then(_PokemonApiModel(
+baseExperience: null == baseExperience ? _self.baseExperience : baseExperience // ignore: cast_nullable_to_non_nullable
+as int,height: null == height ? _self.height : height // ignore: cast_nullable_to_non_nullable
+as int,id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,order: null == order ? _self.order : order // ignore: cast_nullable_to_non_nullable
+as int,sprites: null == sprites ? _self._sprites : sprites // ignore: cast_nullable_to_non_nullable
+as Map<String, String>,stats: null == stats ? _self._stats : stats // ignore: cast_nullable_to_non_nullable
+as List<StatsDetailApiModel>,types: null == types ? _self._types : types // ignore: cast_nullable_to_non_nullable
+as List<TypeDetailApiModel>,weight: null == weight ? _self.weight : weight // ignore: cast_nullable_to_non_nullable
+as int,
+  ));
+}
+
+
+}
+
 
 /// @nodoc
 mixin _$StatsDetailApiModel {
-  @JsonKey(name: 'base_stat')
-  int get baseStat => throw _privateConstructorUsedError;
-  int get effort => throw _privateConstructorUsedError;
-  StatApiModel get stat => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $StatsDetailApiModelCopyWith<StatsDetailApiModel> get copyWith =>
-      throw _privateConstructorUsedError;
+@JsonKey(name: 'base_stat') int get baseStat; int get effort; StatApiModel get stat;
+/// Create a copy of StatsDetailApiModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$StatsDetailApiModelCopyWith<StatsDetailApiModel> get copyWith => _$StatsDetailApiModelCopyWithImpl<StatsDetailApiModel>(this as StatsDetailApiModel, _$identity);
+
+  /// Serializes this StatsDetailApiModel to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is StatsDetailApiModel&&(identical(other.baseStat, baseStat) || other.baseStat == baseStat)&&(identical(other.effort, effort) || other.effort == effort)&&(identical(other.stat, stat) || other.stat == stat));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,baseStat,effort,stat);
+
+@override
+String toString() {
+  return 'StatsDetailApiModel(baseStat: $baseStat, effort: $effort, stat: $stat)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $StatsDetailApiModelCopyWith<$Res> {
-  factory $StatsDetailApiModelCopyWith(
-          StatsDetailApiModel value, $Res Function(StatsDetailApiModel) then) =
-      _$StatsDetailApiModelCopyWithImpl<$Res, StatsDetailApiModel>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'base_stat') int baseStat,
-      int effort,
-      StatApiModel stat});
+abstract mixin class $StatsDetailApiModelCopyWith<$Res>  {
+  factory $StatsDetailApiModelCopyWith(StatsDetailApiModel value, $Res Function(StatsDetailApiModel) _then) = _$StatsDetailApiModelCopyWithImpl;
+@useResult
+$Res call({
+@JsonKey(name: 'base_stat') int baseStat, int effort, StatApiModel stat
+});
 
-  $StatApiModelCopyWith<$Res> get stat;
+
+$StatApiModelCopyWith<$Res> get stat;
+
 }
-
 /// @nodoc
-class _$StatsDetailApiModelCopyWithImpl<$Res, $Val extends StatsDetailApiModel>
+class _$StatsDetailApiModelCopyWithImpl<$Res>
     implements $StatsDetailApiModelCopyWith<$Res> {
-  _$StatsDetailApiModelCopyWithImpl(this._value, this._then);
+  _$StatsDetailApiModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final StatsDetailApiModel _self;
+  final $Res Function(StatsDetailApiModel) _then;
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? baseStat = null,
-    Object? effort = null,
-    Object? stat = null,
-  }) {
-    return _then(_value.copyWith(
-      baseStat: null == baseStat
-          ? _value.baseStat
-          : baseStat // ignore: cast_nullable_to_non_nullable
-              as int,
-      effort: null == effort
-          ? _value.effort
-          : effort // ignore: cast_nullable_to_non_nullable
-              as int,
-      stat: null == stat
-          ? _value.stat
-          : stat // ignore: cast_nullable_to_non_nullable
-              as StatApiModel,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $StatApiModelCopyWith<$Res> get stat {
-    return $StatApiModelCopyWith<$Res>(_value.stat, (value) {
-      return _then(_value.copyWith(stat: value) as $Val);
-    });
-  }
+/// Create a copy of StatsDetailApiModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? baseStat = null,Object? effort = null,Object? stat = null,}) {
+  return _then(_self.copyWith(
+baseStat: null == baseStat ? _self.baseStat : baseStat // ignore: cast_nullable_to_non_nullable
+as int,effort: null == effort ? _self.effort : effort // ignore: cast_nullable_to_non_nullable
+as int,stat: null == stat ? _self.stat : stat // ignore: cast_nullable_to_non_nullable
+as StatApiModel,
+  ));
+}
+/// Create a copy of StatsDetailApiModel
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$StatApiModelCopyWith<$Res> get stat {
+  
+  return $StatApiModelCopyWith<$Res>(_self.stat, (value) {
+    return _then(_self.copyWith(stat: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$StatsDetailApiModelImplCopyWith<$Res>
-    implements $StatsDetailApiModelCopyWith<$Res> {
-  factory _$$StatsDetailApiModelImplCopyWith(_$StatsDetailApiModelImpl value,
-          $Res Function(_$StatsDetailApiModelImpl) then) =
-      __$$StatsDetailApiModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'base_stat') int baseStat,
-      int effort,
-      StatApiModel stat});
 
-  @override
-  $StatApiModelCopyWith<$Res> get stat;
+/// Adds pattern-matching-related methods to [StatsDetailApiModel].
+extension StatsDetailApiModelPatterns on StatsDetailApiModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _StatsDetailApiModel value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _StatsDetailApiModel() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _StatsDetailApiModel value)  $default,){
+final _that = this;
+switch (_that) {
+case _StatsDetailApiModel():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _StatsDetailApiModel value)?  $default,){
+final _that = this;
+switch (_that) {
+case _StatsDetailApiModel() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function(@JsonKey(name: 'base_stat')  int baseStat,  int effort,  StatApiModel stat)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _StatsDetailApiModel() when $default != null:
+return $default(_that.baseStat,_that.effort,_that.stat);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function(@JsonKey(name: 'base_stat')  int baseStat,  int effort,  StatApiModel stat)  $default,) {final _that = this;
+switch (_that) {
+case _StatsDetailApiModel():
+return $default(_that.baseStat,_that.effort,_that.stat);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function(@JsonKey(name: 'base_stat')  int baseStat,  int effort,  StatApiModel stat)?  $default,) {final _that = this;
+switch (_that) {
+case _StatsDetailApiModel() when $default != null:
+return $default(_that.baseStat,_that.effort,_that.stat);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$StatsDetailApiModelImplCopyWithImpl<$Res>
-    extends _$StatsDetailApiModelCopyWithImpl<$Res, _$StatsDetailApiModelImpl>
-    implements _$$StatsDetailApiModelImplCopyWith<$Res> {
-  __$$StatsDetailApiModelImplCopyWithImpl(_$StatsDetailApiModelImpl _value,
-      $Res Function(_$StatsDetailApiModelImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? baseStat = null,
-    Object? effort = null,
-    Object? stat = null,
-  }) {
-    return _then(_$StatsDetailApiModelImpl(
-      baseStat: null == baseStat
-          ? _value.baseStat
-          : baseStat // ignore: cast_nullable_to_non_nullable
-              as int,
-      effort: null == effort
-          ? _value.effort
-          : effort // ignore: cast_nullable_to_non_nullable
-              as int,
-      stat: null == stat
-          ? _value.stat
-          : stat // ignore: cast_nullable_to_non_nullable
-              as StatApiModel,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$StatsDetailApiModelImpl implements _StatsDetailApiModel {
-  _$StatsDetailApiModelImpl(
-      {@JsonKey(name: 'base_stat') required this.baseStat,
-      required this.effort,
-      required this.stat});
 
-  factory _$StatsDetailApiModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$StatsDetailApiModelImplFromJson(json);
+class _StatsDetailApiModel implements StatsDetailApiModel {
+   _StatsDetailApiModel({@JsonKey(name: 'base_stat') required this.baseStat, required this.effort, required this.stat});
+  factory _StatsDetailApiModel.fromJson(Map<String, dynamic> json) => _$StatsDetailApiModelFromJson(json);
 
-  @override
-  @JsonKey(name: 'base_stat')
-  final int baseStat;
-  @override
-  final int effort;
-  @override
-  final StatApiModel stat;
+@override@JsonKey(name: 'base_stat') final  int baseStat;
+@override final  int effort;
+@override final  StatApiModel stat;
 
-  @override
-  String toString() {
-    return 'StatsDetailApiModel(baseStat: $baseStat, effort: $effort, stat: $stat)';
-  }
+/// Create a copy of StatsDetailApiModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$StatsDetailApiModelCopyWith<_StatsDetailApiModel> get copyWith => __$StatsDetailApiModelCopyWithImpl<_StatsDetailApiModel>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$StatsDetailApiModelImpl &&
-            (identical(other.baseStat, baseStat) ||
-                other.baseStat == baseStat) &&
-            (identical(other.effort, effort) || other.effort == effort) &&
-            (identical(other.stat, stat) || other.stat == stat));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, baseStat, effort, stat);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$StatsDetailApiModelImplCopyWith<_$StatsDetailApiModelImpl> get copyWith =>
-      __$$StatsDetailApiModelImplCopyWithImpl<_$StatsDetailApiModelImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$StatsDetailApiModelImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$StatsDetailApiModelToJson(this, );
 }
 
-abstract class _StatsDetailApiModel implements StatsDetailApiModel {
-  factory _StatsDetailApiModel(
-      {@JsonKey(name: 'base_stat') required final int baseStat,
-      required final int effort,
-      required final StatApiModel stat}) = _$StatsDetailApiModelImpl;
-
-  factory _StatsDetailApiModel.fromJson(Map<String, dynamic> json) =
-      _$StatsDetailApiModelImpl.fromJson;
-
-  @override
-  @JsonKey(name: 'base_stat')
-  int get baseStat;
-  @override
-  int get effort;
-  @override
-  StatApiModel get stat;
-  @override
-  @JsonKey(ignore: true)
-  _$$StatsDetailApiModelImplCopyWith<_$StatsDetailApiModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _StatsDetailApiModel&&(identical(other.baseStat, baseStat) || other.baseStat == baseStat)&&(identical(other.effort, effort) || other.effort == effort)&&(identical(other.stat, stat) || other.stat == stat));
 }
 
-StatApiModel _$StatApiModelFromJson(Map<String, dynamic> json) {
-  return _StatApiModel.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,baseStat,effort,stat);
+
+@override
+String toString() {
+  return 'StatsDetailApiModel(baseStat: $baseStat, effort: $effort, stat: $stat)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$StatsDetailApiModelCopyWith<$Res> implements $StatsDetailApiModelCopyWith<$Res> {
+  factory _$StatsDetailApiModelCopyWith(_StatsDetailApiModel value, $Res Function(_StatsDetailApiModel) _then) = __$StatsDetailApiModelCopyWithImpl;
+@override @useResult
+$Res call({
+@JsonKey(name: 'base_stat') int baseStat, int effort, StatApiModel stat
+});
+
+
+@override $StatApiModelCopyWith<$Res> get stat;
+
+}
+/// @nodoc
+class __$StatsDetailApiModelCopyWithImpl<$Res>
+    implements _$StatsDetailApiModelCopyWith<$Res> {
+  __$StatsDetailApiModelCopyWithImpl(this._self, this._then);
+
+  final _StatsDetailApiModel _self;
+  final $Res Function(_StatsDetailApiModel) _then;
+
+/// Create a copy of StatsDetailApiModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? baseStat = null,Object? effort = null,Object? stat = null,}) {
+  return _then(_StatsDetailApiModel(
+baseStat: null == baseStat ? _self.baseStat : baseStat // ignore: cast_nullable_to_non_nullable
+as int,effort: null == effort ? _self.effort : effort // ignore: cast_nullable_to_non_nullable
+as int,stat: null == stat ? _self.stat : stat // ignore: cast_nullable_to_non_nullable
+as StatApiModel,
+  ));
+}
+
+/// Create a copy of StatsDetailApiModel
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$StatApiModelCopyWith<$Res> get stat {
+  
+  return $StatApiModelCopyWith<$Res>(_self.stat, (value) {
+    return _then(_self.copyWith(stat: value));
+  });
+}
+}
+
 
 /// @nodoc
 mixin _$StatApiModel {
-  String get name => throw _privateConstructorUsedError;
-  String get url => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $StatApiModelCopyWith<StatApiModel> get copyWith =>
-      throw _privateConstructorUsedError;
+ String get name; String get url;
+/// Create a copy of StatApiModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$StatApiModelCopyWith<StatApiModel> get copyWith => _$StatApiModelCopyWithImpl<StatApiModel>(this as StatApiModel, _$identity);
+
+  /// Serializes this StatApiModel to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is StatApiModel&&(identical(other.name, name) || other.name == name)&&(identical(other.url, url) || other.url == url));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,name,url);
+
+@override
+String toString() {
+  return 'StatApiModel(name: $name, url: $url)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $StatApiModelCopyWith<$Res> {
-  factory $StatApiModelCopyWith(
-          StatApiModel value, $Res Function(StatApiModel) then) =
-      _$StatApiModelCopyWithImpl<$Res, StatApiModel>;
-  @useResult
-  $Res call({String name, String url});
-}
+abstract mixin class $StatApiModelCopyWith<$Res>  {
+  factory $StatApiModelCopyWith(StatApiModel value, $Res Function(StatApiModel) _then) = _$StatApiModelCopyWithImpl;
+@useResult
+$Res call({
+ String name, String url
+});
 
+
+
+
+}
 /// @nodoc
-class _$StatApiModelCopyWithImpl<$Res, $Val extends StatApiModel>
+class _$StatApiModelCopyWithImpl<$Res>
     implements $StatApiModelCopyWith<$Res> {
-  _$StatApiModelCopyWithImpl(this._value, this._then);
+  _$StatApiModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final StatApiModel _self;
+  final $Res Function(StatApiModel) _then;
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-    Object? url = null,
-  }) {
-    return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      url: null == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
+/// Create a copy of StatApiModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? url = null,}) {
+  return _then(_self.copyWith(
+name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-abstract class _$$StatApiModelImplCopyWith<$Res>
-    implements $StatApiModelCopyWith<$Res> {
-  factory _$$StatApiModelImplCopyWith(
-          _$StatApiModelImpl value, $Res Function(_$StatApiModelImpl) then) =
-      __$$StatApiModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String name, String url});
 }
 
-/// @nodoc
-class __$$StatApiModelImplCopyWithImpl<$Res>
-    extends _$StatApiModelCopyWithImpl<$Res, _$StatApiModelImpl>
-    implements _$$StatApiModelImplCopyWith<$Res> {
-  __$$StatApiModelImplCopyWithImpl(
-      _$StatApiModelImpl _value, $Res Function(_$StatApiModelImpl) _then)
-      : super(_value, _then);
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-    Object? url = null,
-  }) {
-    return _then(_$StatApiModelImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      url: null == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
+/// Adds pattern-matching-related methods to [StatApiModel].
+extension StatApiModelPatterns on StatApiModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _StatApiModel value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _StatApiModel() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _StatApiModel value)  $default,){
+final _that = this;
+switch (_that) {
+case _StatApiModel():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _StatApiModel value)?  $default,){
+final _that = this;
+switch (_that) {
+case _StatApiModel() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  String url)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _StatApiModel() when $default != null:
+return $default(_that.name,_that.url);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  String url)  $default,) {final _that = this;
+switch (_that) {
+case _StatApiModel():
+return $default(_that.name,_that.url);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  String url)?  $default,) {final _that = this;
+switch (_that) {
+case _StatApiModel() when $default != null:
+return $default(_that.name,_that.url);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$StatApiModelImpl implements _StatApiModel {
-  _$StatApiModelImpl({required this.name, required this.url});
 
-  factory _$StatApiModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$StatApiModelImplFromJson(json);
+class _StatApiModel implements StatApiModel {
+   _StatApiModel({required this.name, required this.url});
+  factory _StatApiModel.fromJson(Map<String, dynamic> json) => _$StatApiModelFromJson(json);
 
-  @override
-  final String name;
-  @override
-  final String url;
+@override final  String name;
+@override final  String url;
 
-  @override
-  String toString() {
-    return 'StatApiModel(name: $name, url: $url)';
-  }
+/// Create a copy of StatApiModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$StatApiModelCopyWith<_StatApiModel> get copyWith => __$StatApiModelCopyWithImpl<_StatApiModel>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$StatApiModelImpl &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.url, url) || other.url == url));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, name, url);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$StatApiModelImplCopyWith<_$StatApiModelImpl> get copyWith =>
-      __$$StatApiModelImplCopyWithImpl<_$StatApiModelImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$StatApiModelImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$StatApiModelToJson(this, );
 }
 
-abstract class _StatApiModel implements StatApiModel {
-  factory _StatApiModel(
-      {required final String name,
-      required final String url}) = _$StatApiModelImpl;
-
-  factory _StatApiModel.fromJson(Map<String, dynamic> json) =
-      _$StatApiModelImpl.fromJson;
-
-  @override
-  String get name;
-  @override
-  String get url;
-  @override
-  @JsonKey(ignore: true)
-  _$$StatApiModelImplCopyWith<_$StatApiModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _StatApiModel&&(identical(other.name, name) || other.name == name)&&(identical(other.url, url) || other.url == url));
 }
 
-TypeDetailApiModel _$TypeDetailApiModelFromJson(Map<String, dynamic> json) {
-  return _TypeDetailApiModel.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,name,url);
+
+@override
+String toString() {
+  return 'StatApiModel(name: $name, url: $url)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$StatApiModelCopyWith<$Res> implements $StatApiModelCopyWith<$Res> {
+  factory _$StatApiModelCopyWith(_StatApiModel value, $Res Function(_StatApiModel) _then) = __$StatApiModelCopyWithImpl;
+@override @useResult
+$Res call({
+ String name, String url
+});
+
+
+
+
+}
+/// @nodoc
+class __$StatApiModelCopyWithImpl<$Res>
+    implements _$StatApiModelCopyWith<$Res> {
+  __$StatApiModelCopyWithImpl(this._self, this._then);
+
+  final _StatApiModel _self;
+  final $Res Function(_StatApiModel) _then;
+
+/// Create a copy of StatApiModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? url = null,}) {
+  return _then(_StatApiModel(
+name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
 
 /// @nodoc
 mixin _$TypeDetailApiModel {
-  int get slot => throw _privateConstructorUsedError;
-  TypeApiModel get type => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $TypeDetailApiModelCopyWith<TypeDetailApiModel> get copyWith =>
-      throw _privateConstructorUsedError;
+ int get slot; TypeApiModel get type;
+/// Create a copy of TypeDetailApiModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$TypeDetailApiModelCopyWith<TypeDetailApiModel> get copyWith => _$TypeDetailApiModelCopyWithImpl<TypeDetailApiModel>(this as TypeDetailApiModel, _$identity);
+
+  /// Serializes this TypeDetailApiModel to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TypeDetailApiModel&&(identical(other.slot, slot) || other.slot == slot)&&(identical(other.type, type) || other.type == type));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,slot,type);
+
+@override
+String toString() {
+  return 'TypeDetailApiModel(slot: $slot, type: $type)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $TypeDetailApiModelCopyWith<$Res> {
-  factory $TypeDetailApiModelCopyWith(
-          TypeDetailApiModel value, $Res Function(TypeDetailApiModel) then) =
-      _$TypeDetailApiModelCopyWithImpl<$Res, TypeDetailApiModel>;
-  @useResult
-  $Res call({int slot, TypeApiModel type});
+abstract mixin class $TypeDetailApiModelCopyWith<$Res>  {
+  factory $TypeDetailApiModelCopyWith(TypeDetailApiModel value, $Res Function(TypeDetailApiModel) _then) = _$TypeDetailApiModelCopyWithImpl;
+@useResult
+$Res call({
+ int slot, TypeApiModel type
+});
 
-  $TypeApiModelCopyWith<$Res> get type;
+
+$TypeApiModelCopyWith<$Res> get type;
+
 }
-
 /// @nodoc
-class _$TypeDetailApiModelCopyWithImpl<$Res, $Val extends TypeDetailApiModel>
+class _$TypeDetailApiModelCopyWithImpl<$Res>
     implements $TypeDetailApiModelCopyWith<$Res> {
-  _$TypeDetailApiModelCopyWithImpl(this._value, this._then);
+  _$TypeDetailApiModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final TypeDetailApiModel _self;
+  final $Res Function(TypeDetailApiModel) _then;
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? slot = null,
-    Object? type = null,
-  }) {
-    return _then(_value.copyWith(
-      slot: null == slot
-          ? _value.slot
-          : slot // ignore: cast_nullable_to_non_nullable
-              as int,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as TypeApiModel,
-    ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $TypeApiModelCopyWith<$Res> get type {
-    return $TypeApiModelCopyWith<$Res>(_value.type, (value) {
-      return _then(_value.copyWith(type: value) as $Val);
-    });
-  }
+/// Create a copy of TypeDetailApiModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? slot = null,Object? type = null,}) {
+  return _then(_self.copyWith(
+slot: null == slot ? _self.slot : slot // ignore: cast_nullable_to_non_nullable
+as int,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+as TypeApiModel,
+  ));
+}
+/// Create a copy of TypeDetailApiModel
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$TypeApiModelCopyWith<$Res> get type {
+  
+  return $TypeApiModelCopyWith<$Res>(_self.type, (value) {
+    return _then(_self.copyWith(type: value));
+  });
+}
 }
 
-/// @nodoc
-abstract class _$$TypeDetailApiModelImplCopyWith<$Res>
-    implements $TypeDetailApiModelCopyWith<$Res> {
-  factory _$$TypeDetailApiModelImplCopyWith(_$TypeDetailApiModelImpl value,
-          $Res Function(_$TypeDetailApiModelImpl) then) =
-      __$$TypeDetailApiModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({int slot, TypeApiModel type});
 
-  @override
-  $TypeApiModelCopyWith<$Res> get type;
+/// Adds pattern-matching-related methods to [TypeDetailApiModel].
+extension TypeDetailApiModelPatterns on TypeDetailApiModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _TypeDetailApiModel value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _TypeDetailApiModel() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _TypeDetailApiModel value)  $default,){
+final _that = this;
+switch (_that) {
+case _TypeDetailApiModel():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _TypeDetailApiModel value)?  $default,){
+final _that = this;
+switch (_that) {
+case _TypeDetailApiModel() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int slot,  TypeApiModel type)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _TypeDetailApiModel() when $default != null:
+return $default(_that.slot,_that.type);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int slot,  TypeApiModel type)  $default,) {final _that = this;
+switch (_that) {
+case _TypeDetailApiModel():
+return $default(_that.slot,_that.type);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int slot,  TypeApiModel type)?  $default,) {final _that = this;
+switch (_that) {
+case _TypeDetailApiModel() when $default != null:
+return $default(_that.slot,_that.type);case _:
+  return null;
+
+}
 }
 
-/// @nodoc
-class __$$TypeDetailApiModelImplCopyWithImpl<$Res>
-    extends _$TypeDetailApiModelCopyWithImpl<$Res, _$TypeDetailApiModelImpl>
-    implements _$$TypeDetailApiModelImplCopyWith<$Res> {
-  __$$TypeDetailApiModelImplCopyWithImpl(_$TypeDetailApiModelImpl _value,
-      $Res Function(_$TypeDetailApiModelImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? slot = null,
-    Object? type = null,
-  }) {
-    return _then(_$TypeDetailApiModelImpl(
-      slot: null == slot
-          ? _value.slot
-          : slot // ignore: cast_nullable_to_non_nullable
-              as int,
-      type: null == type
-          ? _value.type
-          : type // ignore: cast_nullable_to_non_nullable
-              as TypeApiModel,
-    ));
-  }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$TypeDetailApiModelImpl implements _TypeDetailApiModel {
-  _$TypeDetailApiModelImpl({required this.slot, required this.type});
 
-  factory _$TypeDetailApiModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TypeDetailApiModelImplFromJson(json);
+class _TypeDetailApiModel implements TypeDetailApiModel {
+   _TypeDetailApiModel({required this.slot, required this.type});
+  factory _TypeDetailApiModel.fromJson(Map<String, dynamic> json) => _$TypeDetailApiModelFromJson(json);
 
-  @override
-  final int slot;
-  @override
-  final TypeApiModel type;
+@override final  int slot;
+@override final  TypeApiModel type;
 
-  @override
-  String toString() {
-    return 'TypeDetailApiModel(slot: $slot, type: $type)';
-  }
+/// Create a copy of TypeDetailApiModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$TypeDetailApiModelCopyWith<_TypeDetailApiModel> get copyWith => __$TypeDetailApiModelCopyWithImpl<_TypeDetailApiModel>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$TypeDetailApiModelImpl &&
-            (identical(other.slot, slot) || other.slot == slot) &&
-            (identical(other.type, type) || other.type == type));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, slot, type);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$TypeDetailApiModelImplCopyWith<_$TypeDetailApiModelImpl> get copyWith =>
-      __$$TypeDetailApiModelImplCopyWithImpl<_$TypeDetailApiModelImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$TypeDetailApiModelImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$TypeDetailApiModelToJson(this, );
 }
 
-abstract class _TypeDetailApiModel implements TypeDetailApiModel {
-  factory _TypeDetailApiModel(
-      {required final int slot,
-      required final TypeApiModel type}) = _$TypeDetailApiModelImpl;
-
-  factory _TypeDetailApiModel.fromJson(Map<String, dynamic> json) =
-      _$TypeDetailApiModelImpl.fromJson;
-
-  @override
-  int get slot;
-  @override
-  TypeApiModel get type;
-  @override
-  @JsonKey(ignore: true)
-  _$$TypeDetailApiModelImplCopyWith<_$TypeDetailApiModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TypeDetailApiModel&&(identical(other.slot, slot) || other.slot == slot)&&(identical(other.type, type) || other.type == type));
 }
 
-TypeApiModel _$TypeApiModelFromJson(Map<String, dynamic> json) {
-  return _TypeApiModel.fromJson(json);
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,slot,type);
+
+@override
+String toString() {
+  return 'TypeDetailApiModel(slot: $slot, type: $type)';
 }
+
+
+}
+
+/// @nodoc
+abstract mixin class _$TypeDetailApiModelCopyWith<$Res> implements $TypeDetailApiModelCopyWith<$Res> {
+  factory _$TypeDetailApiModelCopyWith(_TypeDetailApiModel value, $Res Function(_TypeDetailApiModel) _then) = __$TypeDetailApiModelCopyWithImpl;
+@override @useResult
+$Res call({
+ int slot, TypeApiModel type
+});
+
+
+@override $TypeApiModelCopyWith<$Res> get type;
+
+}
+/// @nodoc
+class __$TypeDetailApiModelCopyWithImpl<$Res>
+    implements _$TypeDetailApiModelCopyWith<$Res> {
+  __$TypeDetailApiModelCopyWithImpl(this._self, this._then);
+
+  final _TypeDetailApiModel _self;
+  final $Res Function(_TypeDetailApiModel) _then;
+
+/// Create a copy of TypeDetailApiModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? slot = null,Object? type = null,}) {
+  return _then(_TypeDetailApiModel(
+slot: null == slot ? _self.slot : slot // ignore: cast_nullable_to_non_nullable
+as int,type: null == type ? _self.type : type // ignore: cast_nullable_to_non_nullable
+as TypeApiModel,
+  ));
+}
+
+/// Create a copy of TypeDetailApiModel
+/// with the given fields replaced by the non-null parameter values.
+@override
+@pragma('vm:prefer-inline')
+$TypeApiModelCopyWith<$Res> get type {
+  
+  return $TypeApiModelCopyWith<$Res>(_self.type, (value) {
+    return _then(_self.copyWith(type: value));
+  });
+}
+}
+
 
 /// @nodoc
 mixin _$TypeApiModel {
-  String get name => throw _privateConstructorUsedError;
-  String get url => throw _privateConstructorUsedError;
 
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $TypeApiModelCopyWith<TypeApiModel> get copyWith =>
-      throw _privateConstructorUsedError;
+ String get name; String get url;
+/// Create a copy of TypeApiModel
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$TypeApiModelCopyWith<TypeApiModel> get copyWith => _$TypeApiModelCopyWithImpl<TypeApiModel>(this as TypeApiModel, _$identity);
+
+  /// Serializes this TypeApiModel to a JSON map.
+  Map<String, dynamic> toJson();
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is TypeApiModel&&(identical(other.name, name) || other.name == name)&&(identical(other.url, url) || other.url == url));
+}
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,name,url);
+
+@override
+String toString() {
+  return 'TypeApiModel(name: $name, url: $url)';
+}
+
+
 }
 
 /// @nodoc
-abstract class $TypeApiModelCopyWith<$Res> {
-  factory $TypeApiModelCopyWith(
-          TypeApiModel value, $Res Function(TypeApiModel) then) =
-      _$TypeApiModelCopyWithImpl<$Res, TypeApiModel>;
-  @useResult
-  $Res call({String name, String url});
-}
+abstract mixin class $TypeApiModelCopyWith<$Res>  {
+  factory $TypeApiModelCopyWith(TypeApiModel value, $Res Function(TypeApiModel) _then) = _$TypeApiModelCopyWithImpl;
+@useResult
+$Res call({
+ String name, String url
+});
 
+
+
+
+}
 /// @nodoc
-class _$TypeApiModelCopyWithImpl<$Res, $Val extends TypeApiModel>
+class _$TypeApiModelCopyWithImpl<$Res>
     implements $TypeApiModelCopyWith<$Res> {
-  _$TypeApiModelCopyWithImpl(this._value, this._then);
+  _$TypeApiModelCopyWithImpl(this._self, this._then);
 
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
+  final TypeApiModel _self;
+  final $Res Function(TypeApiModel) _then;
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-    Object? url = null,
-  }) {
-    return _then(_value.copyWith(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      url: null == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as String,
-    ) as $Val);
-  }
+/// Create a copy of TypeApiModel
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? name = null,Object? url = null,}) {
+  return _then(_self.copyWith(
+name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
 }
 
-/// @nodoc
-abstract class _$$TypeApiModelImplCopyWith<$Res>
-    implements $TypeApiModelCopyWith<$Res> {
-  factory _$$TypeApiModelImplCopyWith(
-          _$TypeApiModelImpl value, $Res Function(_$TypeApiModelImpl) then) =
-      __$$TypeApiModelImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call({String name, String url});
 }
 
-/// @nodoc
-class __$$TypeApiModelImplCopyWithImpl<$Res>
-    extends _$TypeApiModelCopyWithImpl<$Res, _$TypeApiModelImpl>
-    implements _$$TypeApiModelImplCopyWith<$Res> {
-  __$$TypeApiModelImplCopyWithImpl(
-      _$TypeApiModelImpl _value, $Res Function(_$TypeApiModelImpl) _then)
-      : super(_value, _then);
 
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? name = null,
-    Object? url = null,
-  }) {
-    return _then(_$TypeApiModelImpl(
-      name: null == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String,
-      url: null == url
-          ? _value.url
-          : url // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
-  }
+/// Adds pattern-matching-related methods to [TypeApiModel].
+extension TypeApiModelPatterns on TypeApiModel {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _TypeApiModel value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _TypeApiModel() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _TypeApiModel value)  $default,){
+final _that = this;
+switch (_that) {
+case _TypeApiModel():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _TypeApiModel value)?  $default,){
+final _that = this;
+switch (_that) {
+case _TypeApiModel() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( String name,  String url)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _TypeApiModel() when $default != null:
+return $default(_that.name,_that.url);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( String name,  String url)  $default,) {final _that = this;
+switch (_that) {
+case _TypeApiModel():
+return $default(_that.name,_that.url);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( String name,  String url)?  $default,) {final _that = this;
+switch (_that) {
+case _TypeApiModel() when $default != null:
+return $default(_that.name,_that.url);case _:
+  return null;
+
+}
+}
+
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$TypeApiModelImpl implements _TypeApiModel {
-  _$TypeApiModelImpl({required this.name, required this.url});
 
-  factory _$TypeApiModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$TypeApiModelImplFromJson(json);
+class _TypeApiModel implements TypeApiModel {
+   _TypeApiModel({required this.name, required this.url});
+  factory _TypeApiModel.fromJson(Map<String, dynamic> json) => _$TypeApiModelFromJson(json);
 
-  @override
-  final String name;
-  @override
-  final String url;
+@override final  String name;
+@override final  String url;
 
-  @override
-  String toString() {
-    return 'TypeApiModel(name: $name, url: $url)';
-  }
+/// Create a copy of TypeApiModel
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$TypeApiModelCopyWith<_TypeApiModel> get copyWith => __$TypeApiModelCopyWithImpl<_TypeApiModel>(this, _$identity);
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$TypeApiModelImpl &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.url, url) || other.url == url));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, name, url);
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$TypeApiModelImplCopyWith<_$TypeApiModelImpl> get copyWith =>
-      __$$TypeApiModelImplCopyWithImpl<_$TypeApiModelImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$TypeApiModelImplToJson(
-      this,
-    );
-  }
+@override
+Map<String, dynamic> toJson() {
+  return _$TypeApiModelToJson(this, );
 }
 
-abstract class _TypeApiModel implements TypeApiModel {
-  factory _TypeApiModel(
-      {required final String name,
-      required final String url}) = _$TypeApiModelImpl;
-
-  factory _TypeApiModel.fromJson(Map<String, dynamic> json) =
-      _$TypeApiModelImpl.fromJson;
-
-  @override
-  String get name;
-  @override
-  String get url;
-  @override
-  @JsonKey(ignore: true)
-  _$$TypeApiModelImplCopyWith<_$TypeApiModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is _TypeApiModel&&(identical(other.name, name) || other.name == name)&&(identical(other.url, url) || other.url == url));
 }
+
+@JsonKey(includeFromJson: false, includeToJson: false)
+@override
+int get hashCode => Object.hash(runtimeType,name,url);
+
+@override
+String toString() {
+  return 'TypeApiModel(name: $name, url: $url)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$TypeApiModelCopyWith<$Res> implements $TypeApiModelCopyWith<$Res> {
+  factory _$TypeApiModelCopyWith(_TypeApiModel value, $Res Function(_TypeApiModel) _then) = __$TypeApiModelCopyWithImpl;
+@override @useResult
+$Res call({
+ String name, String url
+});
+
+
+
+
+}
+/// @nodoc
+class __$TypeApiModelCopyWithImpl<$Res>
+    implements _$TypeApiModelCopyWith<$Res> {
+  __$TypeApiModelCopyWithImpl(this._self, this._then);
+
+  final _TypeApiModel _self;
+  final $Res Function(_TypeApiModel) _then;
+
+/// Create a copy of TypeApiModel
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? name = null,Object? url = null,}) {
+  return _then(_TypeApiModel(
+name: null == name ? _self.name : name // ignore: cast_nullable_to_non_nullable
+as String,url: null == url ? _self.url : url // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+// dart format on

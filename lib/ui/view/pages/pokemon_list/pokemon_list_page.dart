@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
-import 'package:pokedex_3d/core/utils/logger.dart';
-import 'package:pokedex_3d/ui/providers/connectivity_notifier.dart';
+import 'package:pokedex_3d/ui/providers/connectivity_status_provider/connectivity_notifier.dart';
 
 import 'package:pokedex_3d/ui/view/pages/pokemon_list/section/filter_modal_sheet.dart';
 import 'package:pokedex_3d/ui/view/pages/pokemon_list/section/pokemon_list_body.dart';

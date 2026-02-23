@@ -13,18 +13,19 @@ class Model3dController extends StateNotifier<bool> {
   WebViewController? _controller;
   set controller(WebViewController controller) => _controller = controller;
   final log = Logger();
+
+
+
+
   Future<Result<String>> updateModel(String modelUrl) async {
     state = true;
-
     final cacheResponse = await _modelRepository.getModelFile(modelUrl);
     switch (cacheResponse) {
       case Ok<String>():
-        log.i("inside switch result ok 'file://${cacheResponse.value}'");
 
         return Result.ok(cacheResponse.value);
 
       case Error<String>():
-        log.i("inside switch result error");
 
         return Result.error(cacheResponse.error);
     }
@@ -34,7 +35,6 @@ class Model3dController extends StateNotifier<bool> {
     try {
       if (_controller != null) {
         final timestamp = DateTime.now().millisecondsSinceEpoch;
-        log.i('running controller');
 
         _controller?.runJavaScript(
           "document.querySelector('model-viewer').setAttribute('src', '/model?v=$timestamp');",

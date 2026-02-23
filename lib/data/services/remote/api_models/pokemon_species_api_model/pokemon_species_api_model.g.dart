@@ -6,27 +6,22 @@ part of 'pokemon_species_api_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$EvolutionChainRefApiModelImpl _$$EvolutionChainRefApiModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$EvolutionChainRefApiModelImpl(
-      url: json['url'] as String,
-    );
+_EvolutionChainRefApiModel _$EvolutionChainRefApiModelFromJson(
+  Map<String, dynamic> json,
+) => _EvolutionChainRefApiModel(url: json['url'] as String);
 
-Map<String, dynamic> _$$EvolutionChainRefApiModelImplToJson(
-        _$EvolutionChainRefApiModelImpl instance) =>
-    <String, dynamic>{
-      'url': instance.url,
-    };
+Map<String, dynamic> _$EvolutionChainRefApiModelToJson(
+  _EvolutionChainRefApiModel instance,
+) => <String, dynamic>{'url': instance.url};
 
-_$PokemonSpeciesApiModelImpl _$$PokemonSpeciesApiModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$PokemonSpeciesApiModelImpl(
-      evolutionChain: EvolutionChainRefApiModel.fromJson(
-          json['evolution_chain'] as Map<String, dynamic>),
-    );
+_PokemonSpeciesApiModel _$PokemonSpeciesApiModelFromJson(
+  Map<String, dynamic> json,
+) => _PokemonSpeciesApiModel(
+  evolutionChain: EvolutionChainRefApiModel.fromJson(
+    json['evolution_chain'] as Map<String, dynamic>,
+  ),
+);
 
-Map<String, dynamic> _$$PokemonSpeciesApiModelImplToJson(
-        _$PokemonSpeciesApiModelImpl instance) =>
-    <String, dynamic>{
-      'evolution_chain': instance.evolutionChain,
-    };
+Map<String, dynamic> _$PokemonSpeciesApiModelToJson(
+  _PokemonSpeciesApiModel instance,
+) => <String, dynamic>{'evolution_chain': instance.evolutionChain};

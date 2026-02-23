@@ -1,6 +1,6 @@
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:hive/hive.dart';
+import 'package:hive_ce_flutter/hive_flutter.dart';
 import 'package:pokedex_3d/core/constants/hive_constants.dart';
 import 'package:pokedex_3d/core/network/network_client.dart';
 import 'package:pokedex_3d/data/services/local/database_service.dart';

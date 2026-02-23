@@ -3,18 +3,15 @@ import 'package:pokedex_3d/core/result/result.dart';
 import 'package:pokedex_3d/data/models/pokemon_detail/pokemon_detail.dart';
 import 'package:pokedex_3d/data/providers/repository_providers.dart';
 
-final pokemonDetailsProvider = FutureProvider.autoDispose.family<PokemonDetailsModel, int>((
-  
-  ref,
-  id,
-) async {
-  final repo = ref.read(pokemonDetailsRepositoryProvider);
-  final pokemonDetailsState = await repo.getPokemonDetails(id);
-  switch (pokemonDetailsState) {
-    case Ok<PokemonDetailsModel>():
-      return pokemonDetailsState.value;
+final pokemonDetailsProvider = FutureProvider.autoDispose
+    .family<PokemonDetailsModel, int>((ref, id) async {
+      final repo = ref.read(pokemonDetailsRepositoryProvider);
+      final pokemonDetailsState = await repo.getPokemonDetails(id);
+      switch (pokemonDetailsState) {
+        case Ok<PokemonDetailsModel>():
+          return pokemonDetailsState.value;
 
-    case Error<PokemonDetailsModel>():
-      throw pokemonDetailsState.error;
-  }
-},);
+        case Error<PokemonDetailsModel>():
+          throw pokemonDetailsState.error;
+      }
+    });

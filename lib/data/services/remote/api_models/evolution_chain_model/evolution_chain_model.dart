@@ -4,7 +4,7 @@ part 'evolution_chain_model.freezed.dart';
 part 'evolution_chain_model.g.dart';
 
 @freezed
-class EvolutionChainApiModel with _$EvolutionChainApiModel {
+abstract class EvolutionChainApiModel with _$EvolutionChainApiModel {
   const factory EvolutionChainApiModel({
     @JsonKey(name: 'baby_trigger_item') dynamic babyTriggerItem,
     required ChainApiModel chain,
@@ -16,7 +16,7 @@ class EvolutionChainApiModel with _$EvolutionChainApiModel {
 }
 
 @freezed
-class ChainApiModel with _$ChainApiModel {
+abstract class ChainApiModel with _$ChainApiModel {
   const factory ChainApiModel({
     @JsonKey(name: 'evolution_details')
     required List<EvolutionDetailApi> evolutionDetails,
@@ -29,7 +29,7 @@ class ChainApiModel with _$ChainApiModel {
 }
 
 @freezed
-class EvolutionDetailApi with _$EvolutionDetailApi {
+abstract class EvolutionDetailApi with _$EvolutionDetailApi {
   const factory EvolutionDetailApi({
     int? gender,
     dynamic heldItem,
@@ -56,7 +56,7 @@ class EvolutionDetailApi with _$EvolutionDetailApi {
 }
 
 @freezed
-class SpeciesApiModel with _$SpeciesApiModel {
+abstract class SpeciesApiModel with _$SpeciesApiModel {
   const factory SpeciesApiModel({required String name, required String url}) =
       _SpeciesApiModel;
 
@@ -65,7 +65,7 @@ class SpeciesApiModel with _$SpeciesApiModel {
 }
 
 @freezed
-class TriggerApiModel with _$TriggerApiModel {
+abstract class TriggerApiModel with _$TriggerApiModel {
   const factory TriggerApiModel({required String name, required String url}) =
       _TriggerApiModel;
 

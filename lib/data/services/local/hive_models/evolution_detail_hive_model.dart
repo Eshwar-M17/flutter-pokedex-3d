@@ -1,4 +1,5 @@
-import 'package:hive/hive.dart';
+
+import 'package:hive_ce_flutter/hive_flutter.dart' ;
 
 part 'evolution_detail_hive_model.g.dart';
 

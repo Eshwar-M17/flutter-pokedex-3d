@@ -8,7 +8,7 @@ part of 'pokemon_detail_hive_model.dart';
 
 class PokemonDetailHiveAdapter extends TypeAdapter<PokemonDetailHive> {
   @override
-  final int typeId = 0;
+  final typeId = 0;
 
   @override
   PokemonDetailHive read(BinaryReader reader) {
@@ -17,10 +17,10 @@ class PokemonDetailHiveAdapter extends TypeAdapter<PokemonDetailHive> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return PokemonDetailHive(
-      baseExperience: fields[0] as int,
-      height: fields[1] as int,
-      weight: fields[2] as int,
-      id: fields[3] as int,
+      baseExperience: (fields[0] as num).toInt(),
+      height: (fields[1] as num).toInt(),
+      weight: (fields[2] as num).toInt(),
+      id: (fields[3] as num).toInt(),
       name: fields[4] as String,
       stats: (fields[5] as List).cast<StatHive>(),
       types: (fields[6] as List).cast<String>(),
@@ -60,7 +60,7 @@ class PokemonDetailHiveAdapter extends TypeAdapter<PokemonDetailHive> {
 
 class StatHiveAdapter extends TypeAdapter<StatHive> {
   @override
-  final int typeId = 1;
+  final typeId = 1;
 
   @override
   StatHive read(BinaryReader reader) {
@@ -69,9 +69,9 @@ class StatHiveAdapter extends TypeAdapter<StatHive> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return StatHive(
-      baseStat: fields[0] as int,
+      baseStat: (fields[0] as num).toInt(),
       name: fields[1] as String,
-      effort: fields[2] as int,
+      effort: (fields[2] as num).toInt(),
     );
   }
 

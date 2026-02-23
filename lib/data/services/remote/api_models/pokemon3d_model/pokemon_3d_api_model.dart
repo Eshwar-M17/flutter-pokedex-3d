@@ -4,7 +4,7 @@ part 'pokemon_3d_api_model.freezed.dart';
 part 'pokemon_3d_api_model.g.dart';
 
 @freezed
-class Pokemon3dApiModel with _$Pokemon3dApiModel {
+abstract class Pokemon3dApiModel with _$Pokemon3dApiModel {
   factory Pokemon3dApiModel({
     required int id,
     required List<FormApiModel> forms, // Use FormApiModel here
@@ -15,7 +15,7 @@ class Pokemon3dApiModel with _$Pokemon3dApiModel {
 }
 
 @freezed
-class FormApiModel with _$FormApiModel {
+abstract class FormApiModel with _$FormApiModel {
   factory FormApiModel({
     required String name,
     required String model,

@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'pokemon_detail.freezed.dart';
 
 @freezed
-class PokemonDetailsModel with _$PokemonDetailsModel {
+abstract class PokemonDetailsModel with _$PokemonDetailsModel {
   factory PokemonDetailsModel({
     required int baseExperience,
     required int height,
@@ -16,7 +16,7 @@ class PokemonDetailsModel with _$PokemonDetailsModel {
 }
 
 @freezed
-class Stat with _$Stat {
+abstract class Stat with _$Stat {
   factory Stat({
     required int baseStat,
     required String name,

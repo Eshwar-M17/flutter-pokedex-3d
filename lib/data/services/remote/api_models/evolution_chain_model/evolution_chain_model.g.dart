@@ -6,23 +6,22 @@ part of 'evolution_chain_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$EvolutionChainImpl _$$EvolutionChainImplFromJson(Map<String, dynamic> json) =>
-    _$EvolutionChainImpl(
+_EvolutionChain _$EvolutionChainFromJson(Map<String, dynamic> json) =>
+    _EvolutionChain(
       babyTriggerItem: json['baby_trigger_item'],
       chain: ChainApiModel.fromJson(json['chain'] as Map<String, dynamic>),
       id: (json['id'] as num).toInt(),
     );
 
-Map<String, dynamic> _$$EvolutionChainImplToJson(
-        _$EvolutionChainImpl instance) =>
+Map<String, dynamic> _$EvolutionChainToJson(_EvolutionChain instance) =>
     <String, dynamic>{
       'baby_trigger_item': instance.babyTriggerItem,
       'chain': instance.chain,
       'id': instance.id,
     };
 
-_$ChainApiModelImpl _$$ChainApiModelImplFromJson(Map<String, dynamic> json) =>
-    _$ChainApiModelImpl(
+_ChainApiModel _$ChainApiModelFromJson(Map<String, dynamic> json) =>
+    _ChainApiModel(
       evolutionDetails: (json['evolution_details'] as List<dynamic>)
           .map((e) => EvolutionDetailApi.fromJson(e as Map<String, dynamic>))
           .toList(),
@@ -30,11 +29,12 @@ _$ChainApiModelImpl _$$ChainApiModelImplFromJson(Map<String, dynamic> json) =>
           .map((e) => ChainApiModel.fromJson(e as Map<String, dynamic>))
           .toList(),
       isBaby: json['is_baby'] as bool,
-      species:
-          SpeciesApiModel.fromJson(json['species'] as Map<String, dynamic>),
+      species: SpeciesApiModel.fromJson(
+        json['species'] as Map<String, dynamic>,
+      ),
     );
 
-Map<String, dynamic> _$$ChainApiModelImplToJson(_$ChainApiModelImpl instance) =>
+Map<String, dynamic> _$ChainApiModelToJson(_ChainApiModel instance) =>
     <String, dynamic>{
       'evolution_details': instance.evolutionDetails,
       'evolves_to': instance.evolvesTo,
@@ -42,9 +42,8 @@ Map<String, dynamic> _$$ChainApiModelImplToJson(_$ChainApiModelImpl instance) =>
       'species': instance.species,
     };
 
-_$EvolutionDetailApiImpl _$$EvolutionDetailApiImplFromJson(
-        Map<String, dynamic> json) =>
-    _$EvolutionDetailApiImpl(
+_EvolutionDetailApi _$EvolutionDetailApiFromJson(Map<String, dynamic> json) =>
+    _EvolutionDetailApi(
       gender: (json['gender'] as num?)?.toInt(),
       heldItem: json['heldItem'],
       item: json['item'],
@@ -61,13 +60,13 @@ _$EvolutionDetailApiImpl _$$EvolutionDetailApiImplFromJson(
       relativePhysicalStats: json['relative_physical_stats'],
       timeOfDay: json['time_of_day'] as String,
       tradeSpecies: json['tradeSpecies'],
-      trigger:
-          TriggerApiModel.fromJson(json['trigger'] as Map<String, dynamic>),
+      trigger: TriggerApiModel.fromJson(
+        json['trigger'] as Map<String, dynamic>,
+      ),
       turnUpsideDown: json['turn_upside_down'] as bool,
     );
 
-Map<String, dynamic> _$$EvolutionDetailApiImplToJson(
-        _$EvolutionDetailApiImpl instance) =>
+Map<String, dynamic> _$EvolutionDetailApiToJson(_EvolutionDetailApi instance) =>
     <String, dynamic>{
       'gender': instance.gender,
       'heldItem': instance.heldItem,
@@ -89,30 +88,14 @@ Map<String, dynamic> _$$EvolutionDetailApiImplToJson(
       'turn_upside_down': instance.turnUpsideDown,
     };
 
-_$SpeciesApiModelImpl _$$SpeciesApiModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$SpeciesApiModelImpl(
-      name: json['name'] as String,
-      url: json['url'] as String,
-    );
+_SpeciesApiModel _$SpeciesApiModelFromJson(Map<String, dynamic> json) =>
+    _SpeciesApiModel(name: json['name'] as String, url: json['url'] as String);
 
-Map<String, dynamic> _$$SpeciesApiModelImplToJson(
-        _$SpeciesApiModelImpl instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'url': instance.url,
-    };
+Map<String, dynamic> _$SpeciesApiModelToJson(_SpeciesApiModel instance) =>
+    <String, dynamic>{'name': instance.name, 'url': instance.url};
 
-_$TriggerApiModelImpl _$$TriggerApiModelImplFromJson(
-        Map<String, dynamic> json) =>
-    _$TriggerApiModelImpl(
-      name: json['name'] as String,
-      url: json['url'] as String,
-    );
+_TriggerApiModel _$TriggerApiModelFromJson(Map<String, dynamic> json) =>
+    _TriggerApiModel(name: json['name'] as String, url: json['url'] as String);
 
-Map<String, dynamic> _$$TriggerApiModelImplToJson(
-        _$TriggerApiModelImpl instance) =>
-    <String, dynamic>{
-      'name': instance.name,
-      'url': instance.url,
-    };
+Map<String, dynamic> _$TriggerApiModelToJson(_TriggerApiModel instance) =>
+    <String, dynamic>{'name': instance.name, 'url': instance.url};

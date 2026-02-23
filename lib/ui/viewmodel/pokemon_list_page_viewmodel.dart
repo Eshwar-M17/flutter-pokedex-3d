@@ -4,7 +4,7 @@ import 'package:internet_connection_checker_plus/internet_connection_checker_plu
 import 'package:pokedex_3d/core/utils/enums.dart';
 import 'package:pokedex_3d/data/models/pokemon3d_model/pokemon_3d.dart'
     hide PokemonForm;
-import 'package:pokedex_3d/ui/providers/connectivity_notifier.dart';
+import 'package:pokedex_3d/ui/providers/connectivity_status_provider/connectivity_notifier.dart';
 import 'package:pokedex_3d/ui/providers/pokemon_3d_model_list_notifier.dart';
 import 'package:pokedex_3d/ui/state/pokemon_list_page_state.dart';
 import 'package:pokedex_3d/ui/viewmodel/pokemon_3d_model_list_notifier.dart';
@@ -66,7 +66,7 @@ void refresh() {
     _pokemonListNotifier.getViewedPokemonList();
   } else {
     // Online: force bypass cache for main list
-    _pokemonListNotifier.getMainPokemonList(forceRefresh: true);
+    _pokemonListNotifier.getMainPokemonList();
   }
   
   state = state.copyWith(isFilteredResult: false, isSearchResult: false);

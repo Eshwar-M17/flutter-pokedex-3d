@@ -4,7 +4,7 @@ part 'pokemon_species_api_model.freezed.dart';
 part 'pokemon_species_api_model.g.dart';
 
 @freezed
-class EvolutionChainRefApiModel with _$EvolutionChainRefApiModel {
+abstract class EvolutionChainRefApiModel with _$EvolutionChainRefApiModel {
   factory EvolutionChainRefApiModel({
     required String url,
   }) = _EvolutionChainRefApiModel;
@@ -14,7 +14,7 @@ class EvolutionChainRefApiModel with _$EvolutionChainRefApiModel {
 }
 
 @freezed
-class PokemonSpeciesApiModel with _$PokemonSpeciesApiModel {
+abstract class PokemonSpeciesApiModel with _$PokemonSpeciesApiModel {
   factory PokemonSpeciesApiModel({
     @JsonKey(name: 'evolution_chain')
     required EvolutionChainRefApiModel evolutionChain,

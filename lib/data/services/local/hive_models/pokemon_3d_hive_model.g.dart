@@ -8,7 +8,7 @@ part of 'pokemon_3d_hive_model.dart';
 
 class Pokemon3dHiveAdapter extends TypeAdapter<Pokemon3dHive> {
   @override
-  final int typeId = 2;
+  final typeId = 2;
 
   @override
   Pokemon3dHive read(BinaryReader reader) {
@@ -17,7 +17,7 @@ class Pokemon3dHiveAdapter extends TypeAdapter<Pokemon3dHive> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return Pokemon3dHive(
-      id: fields[0] as int,
+      id: (fields[0] as num).toInt(),
       forms: (fields[1] as List).cast<PokemonFormHive>(),
     );
   }
@@ -45,7 +45,7 @@ class Pokemon3dHiveAdapter extends TypeAdapter<Pokemon3dHive> {
 
 class PokemonFormHiveAdapter extends TypeAdapter<PokemonFormHive> {
   @override
-  final int typeId = 3;
+  final typeId = 3;
 
   @override
   PokemonFormHive read(BinaryReader reader) {

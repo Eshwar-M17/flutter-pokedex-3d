@@ -3,7 +3,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'evolution_chain_model.freezed.dart';
 
 @freezed
-class EvolutionDetail with _$EvolutionDetail {
+abstract class EvolutionDetail with _$EvolutionDetail {
   const factory EvolutionDetail({
     required int specieId,
     required PokemonSpecies pokemonSpecies,
@@ -11,7 +11,7 @@ class EvolutionDetail with _$EvolutionDetail {
 }
 
 @freezed
-class PokemonSpecies with _$PokemonSpecies {
+abstract class PokemonSpecies with _$PokemonSpecies {
   const factory PokemonSpecies({
     required int id,
     required String name,
@@ -22,7 +22,7 @@ class PokemonSpecies with _$PokemonSpecies {
 }
 
 @freezed
-class TriggerDetail with _$TriggerDetail {
+abstract class TriggerDetail with _$TriggerDetail {
   const factory TriggerDetail({
     int? gender,
     required String trigger,
